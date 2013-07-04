@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<!--Written by Shea Yuin Ng-->
+<!--Created 29 August 2012-->
+<!--To login-->
+<!--Index page will be the first page displayed to anyone that wants to use the system-->
+ 
+<html>
+
+<head>
+	<title> Login </title>
+	<link rel="shortcut icon" href="http://192.168.0.10/favicon.ico">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<!-- <script src="jquery/jquery-1.9.1.js"></script>
+	<script src="jquery/jquery.mobile-1.3.0.js"></script>
+	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
+	<script src="jquery/jquery-migrate-1.1.0.js"></script> -->
+	<link rel="stylesheet" href="/themes/melts.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+</head>
+ 
+<body>
+
+	<!-- /Login page -->
+	<div data-role="page" id="page_login">
+		
+		<div data-role="header">
+			<script type="text/javascript" charset="utf-8" src="jsscript/login.js"></script>
+			<h1>MELTS </h1> 
+			<h2>Please Login</h2> 
+		</div><!-- /header -->
+		
+		<div data-role="content" class='content'>
+			<div>
+				<label for="page_login_name">Username</label>
+				<input type="text" id="uname" />
+			</div><!-- /username -->
+			<div>
+				<label for="page_login_pass">Password</label>
+				<input type="password" id="pswd" />
+			</div><!-- /password -->
+			<fieldset>
+				<div class="button1" ><input type="button" data-theme="e" id="page_login_submit" value="Login"/></div>
+			</fieldset>
+			
+			<!-- Checkboxes to save username or password -->
+			<div  data-role="fieldcontain">
+			 	<fieldset data-role="controlgroup" >
+
+					<input type="checkbox" name="checkbox-uname" id="checkbox-uname" class="checkbox" data-mini="true"/>
+					<label for="checkbox-uname">Remember my username</label>
+
+					<input type="checkbox" name="checkbox-pswd" id="checkbox-pswd" class="checkbox" data-mini="true"/>
+					<label for="checkbox-pswd">Remember my username & password</label>
+
+			    </fieldset>
+			</div>
+			
+		</div><!-- /content -->
+
+	</div><!-- /page -->
+
+</body>
+</html>

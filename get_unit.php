@@ -30,9 +30,9 @@ else{
 }
 
 // Get ID of the array
-$query_unitname = mysql_query($get_unitname)  or die("Cannot query unit name!!");
+$query_unitname = mysql_query($get_unitname)  or die("Cannot query unit name!");
 // Get the whole row of information of the user
-$fetch_unitname = mysql_fetch_array($query_unitname) or die("Cannot fetch unitname!!");
+$fetch_unitname = mysql_fetch_array($query_unitname) or die("Cannot fetch unitname!");
 // Extract 'unit_name' field from the array
 $unit_name = $fetch_unitname['unit_name'];
 // Save unit name in session variable
@@ -48,7 +48,7 @@ echo "<Units>"; //Top root directory
 // Print each element in XML
 echo "<Unit>";
 echo "<UnitCode>$unit_chosen</UnitCode>";
-echo "<UnitName>$unit_name</UnitName>";
+// echo "<UnitName>$unit_name</UnitName>";
 echo "</Unit>";
 
 echo "</Units>";//Close root directory

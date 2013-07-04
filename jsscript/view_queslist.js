@@ -17,7 +17,7 @@ $(document).ready(function() {
 				
 				if (ques== "0"){// means there's no units registered for the lecturer
 					// Empty list, show this msg
-					$("#msg").text('No questions found!!');
+					$("#msg").text('Hit "Add Question" to begin');
 				}
 				else{// list the units in an unordered list
 					$("#msg").text('Please choose a question');	

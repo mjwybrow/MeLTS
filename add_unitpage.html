@@ -7,13 +7,13 @@
 <html>
 
 <head>
-	<title> Add Units </title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<script src="jquery/jquery-1.9.1.js"></script>
-	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
-	<script src="jquery/jquery-migrate-1.1.0.js"></script>
+	<title>Add Unit</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="themes/melts.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 	<script type="text/javascript">
 	$.ajax({
 		url: "username.php",
@@ -39,29 +39,34 @@
 <body>
 
 	<!-- Lecturer- add unit page -->
-	<div data-role="page" id="add_unitpage">
+	<div data-role="page" id="add_unitpage" data-theme="a">
 	
-		<div data-role="header">
+		<div data-role="header"  data-theme="c">
 			<script type="text/javascript" charset="utf-8" src="jsscript/add_unit.js"></script>
-			<h1>Add unit</h1> 
+			<center>Add Unit</center>
 			<a href="lecturer_homepage.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
 		</div><!-- /header -->
-		
-		<div data-role="content">
+
+		</br>
+
+		<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 			<!-- Get input for unit code -->
 			<div>
-				<label for="unit_code">Unit code</label>
+				Unit code
 				<input type="text" id="unit_code" />
 			</div><!-- /unit code -->
-			
+			</br>
 			<!-- Get name of unit -->
 			<div>
-				<label for="unit_name">Unit name</label>
+				Unit name
 				<input type="text" id="unit_name" />
 			</div><!-- /unit name -->
 			
+			</br>
+			</br>
+			
 			<fieldset>
-				<div><button type="button" data-theme="e" id="add_unit_submit">Add unit</button></div>
+				<div><button type="button" data-theme="a" id="add_unit_submit">Add unit</button></div>
 			</fieldset>
 			
 			<!-- To write message from PHP -->

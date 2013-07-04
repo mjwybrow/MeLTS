@@ -61,7 +61,7 @@ $.post("join_session.php", function(data){
 					type: 'post',
 					data: 'id=' + id,
 					success: function (prev_ans) {
-						$(".ans_button").buttonMarkup({ theme: "c" });
+						$(".ans_button").buttonMarkup({ theme: "d" });
 						if(prev_ans !='0'){ 
 							var button = "#" + prev_ans;
 							$(button).buttonMarkup({ theme: "e" });
@@ -85,7 +85,7 @@ $.post("join_session.php", function(data){
 		
 		socket.on('reset_answers', function (data){
 			if (unit_code == data.unit_code){
-				$(".ans_button").buttonMarkup({ theme: "c" });
+				$(".ans_button").buttonMarkup({ theme: "d" });
 			}// if it is the correct unit
 		});//socket on receive ques
 		
@@ -119,12 +119,12 @@ $.post("join_session.php", function(data){
 					var flag = result[2];
 					
 					if(flag==1){// Change response
-						$(".ans_button").buttonMarkup({ theme: "c" });
+						$(".ans_button").buttonMarkup({ theme: "d" });
 						var button = "#" + mcq_answer;
 						$(button).buttonMarkup({ theme: "e" });
 					}
 					else{// Retract response
-						$(".ans_button").buttonMarkup({ theme: "c" });
+						$(".ans_button").buttonMarkup({ theme: "d" });
 					}
 					
 					socket.emit('updated',{

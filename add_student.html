@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-
-<!--Written by Shea Yuin Ng-->
+<!--Written by Shea Yuin Ng, Nathan Sherburn-->
 <!--Created 18 January 2013-->
 <!--With reference from "Reading files in JavaScript using the File APIs" available at http://www.html5rocks.com/en/tutorials/file/dndfiles/-->
 <!--For lecturers to add students into the student list of a unit-->
-
 <html>
-
-<head>
-	<title> Add Students </title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<script src="jquery/jquery-1.9.1.js"></script>
-	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
-	<script src="jquery/jquery-migrate-1.1.0.js"></script>
-</head>
-
-<body>
-
-	<!-- /Lecturer- add student-->
-	<div data-role="page" id="add_student">
-
-		<div data-role="header">
-			<script type="text/javascript" charset="utf-8" src="jsscript/get_unit.js"></script>
+	<head>
+		<title>Add Students</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="themes/melts.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="jquery/jquery-1.9.1.js"></script>
+		<script src="jquery/jquery.mobile-1.3.0.js"></script>
+		<script src="jquery/jquery-migrate-1.1.0.js"></script>
+	</head>
+	
+	<body>
+		<!-- /Lecturer- add student-->
+		<div data-role="page" id="add_student" data-theme="a">
+		<div data-role="header" data-theme="c">
 			<script type="text/javascript" charset="utf-8" src="jsscript/add_student.js"></script>
 			<script type="text/javascript">
 				function checkFilename(){
@@ -31,10 +26,10 @@
 					// Store the file name into the variable
 					var fileChosen = document.getElementById('csvfile');
 					var fileName = fileChosen.value;
-			 
+				
 					// Extract and store the file extension into another variable
 					fileExtension = fileName.substr(fileName.length - 3, 3);
-
+				
 					// Only allow .csv files
 					var validFileExtensions = "csv";
 					
@@ -56,28 +51,25 @@
 					}
 				}
 			</script>
-			<h1 id="unitcode"></h1> 
-			<h1>Add Students</h1>
+			<center>Add Students</center>
 			<a href="view_studlist.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
-		</div><!-- /header -->
-	
-		<div data-role="content">
-		
-			<h2>Add a List of Students</h2> 
-			
+		</div>
+		<!-- /header -->
+		<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
+		</br>
+		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+			<b>Add a List of Students</b> 
 			<!--A div to add a .csv list of students-->
 			<div class="file_dialog_window">
-
 				<p>To upload a .csv list</p>
-				
 				<!--File browser and a submit button-->
-				<input type="file" id="csvfile" name="csvfile" onchange="checkFilename()" /> 				
-				<button data-theme="e" id = "student_list_submit">Submit</button>
-				
+				<input type="file" id="csvfile" name="csvfile" onchange="checkFilename()" />
+				</br>
+				<button data-theme="a" id = "student_list_submit">Submit</button>
 				<script>
 					// Define function
 					function readFile(opt_startByte, opt_stopByte) {
-
+					
 						var files = document.getElementById('csvfile').files;
 						if (!files.length) {
 							alert('Please select a file!');
@@ -87,15 +79,15 @@
 						var file = files[0];
 						var start = parseInt(opt_startByte) || 0;
 						var stop = parseInt(opt_stopByte) || file.size - 1;
-
+					
 						var reader = new FileReader();
-
+					
 						// If we use onloadend, we need to check the readyState.
 						reader.onloadend = function(evt) {
 							if (evt.target.readyState == FileReader.DONE) { // DONE == 2
 								list = escape(evt.target.result);
 								list = list.replace(/\+/g, "%2B");
-
+					
 								// Ajax post data to PHP
 								$.ajax({
 									url: "add_studentlist.php",
@@ -115,22 +107,22 @@
 								});//ajax end
 							}
 						};
-
+					
 						var blob = file.slice(start, stop + 1);
 						reader.readAsBinaryString(blob);
 						
 					};//end readFile function
-				  
+					 
 					// When user clicks the submit file button this executes
 					document.querySelector('#student_list_submit').addEventListener('click', function(evt) {
-				  
+					 
 						// Store the file name into the variable
 						var fileChosen = document.getElementById('csvfile');
 						var fileName = fileChosen.value;
-				 
+					
 						// Extract and store the file extension into another variable
 						fileExtension = fileName.substr(fileName.length - 3, 3);
-
+					
 						// Only allow .csv files
 						var validFileExtensions = "csv";
 						
@@ -154,56 +146,61 @@
 								}
 							return true;
 						}
-				
+					
 					}, false);// submit click end
-				  
+					 
 				</script>
-				
-			</div><!--file_dialog_window-->
-			
-			<h2>Copy List from Another Lecturer</h2> 
+			</div>
+			<!--file_dialog_window-->
+		</div>
+		</br>
+		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+			<b>Copy List from Another Lecturer</b> 
 			<div data-role="fieldcontain">
 				<label for="sel_stud_list" class="select">Choose student list:</label>
 				<select name="sel_stud_list" id="sel_stud_list">
-
 				</select>
-				
-				<fieldset>
-					<div><button type="button" data-theme="e" id="copy_studlist">Copy list</button></div>
-				</fieldset>
+				</br>
+				</br>
+				<button type="button" data-theme="a" id="copy_studlist">Copy list</button>
 			</div>
-			
-			<h2>Add a Student</h2> 
-			
+		</div>
+		</br>
+		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+			<b>Add a Student</b> 
+			</br>
 			<p>To register a student</p>
-			
 			<div>
 				<label for="page_login_name">Username</label>
 				<input type="text" id="stud_name" />
-			</div><!-- /username -->
+			</div>
+			<!-- /username -->
 			<div>
 				<label for="page_login_fname">First name</label>
 				<input type="text" id="fname" />
-			</div><!-- /first name -->
+			</div>
+			<!-- /first name -->
 			<div>
 				<label for="page_login_lname">Last name</label>
 				<input type="text" id="lname" />
-			</div><!-- /last name -->
+			</div>
+			<!-- /last name -->
 			<div>
 				<label for="page_login_email">Email address</label>
 				<input type="text" id="email" />
-			</div><!-- /email -->
+			</div>
+			<!-- /email -->
 			<div>
 				<input type="hidden" id="status" value="S">
-			</div><!-- /status -->
-			
+			</div>
+			<!-- /status -->
 			<fieldset>
-				<div><button type="button" data-theme="e" id="add_student_submit">Add student</button></div>
+				<div><button type="button" data-theme="a" id="add_student_submit">Add student</button></div>
 			</fieldset>
-			
-		</div><!-- /content -->
-
-</div><!-- /page -->
-
-</body>
+			<div>
+			</div>
+			<!-- /content -->
+		</div>
+		<!-- /page -->
+	</body>
 </html>

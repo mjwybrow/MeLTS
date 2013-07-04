@@ -42,7 +42,7 @@ $.post("join_session.php", function(data){
 					// Style the bar graph
 					$(".resultbar").css({ 'background': 'Transparent' });
 					$(".resultbar").css({ 'border': 'None' });
-					$(".resultbar > div").css({ 'background': 'Orange' });
+					$(".resultbar > div").css({ 'background': '#FFD177' });
 				});	
 				
 				// Signal answers has been reset
@@ -118,7 +118,7 @@ $.post("join_session.php", function(data){
 							// Style the bar graph
 							$(".resultbar").css({ 'background': 'Transparent' });
 							$(".resultbar").css({ 'border': 'None' });
-							$(".resultbar > div").css({ 'background': 'Orange' });
+							$(".resultbar > div").css({ 'background': '#FFD177' });
 						});	
 						
 						$('#lec_ques').html(lec_ques);

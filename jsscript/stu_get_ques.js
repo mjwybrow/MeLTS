@@ -31,7 +31,7 @@ $.post("join_session.php", function(data){
 							
 					if (id == "0"){// means there's no questions posted by students
 						// Empty list, show this msg
-						$("#view_quesmsg").text('No questions found!!');
+						$("#view_quesmsg").text('No questions found');
 					}
 					else{// list the units in an unordered list
 						$("#view_quesmsg").text('Please choose a question');	

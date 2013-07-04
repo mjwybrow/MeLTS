@@ -7,45 +7,56 @@
 <html>
 
 <head>
-	<title> Settings </title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<script src="jquery/jquery-1.9.1.js"></script>
-	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
-	<script src="jquery/jquery-migrate-1.1.0.js"></script>
+	<title>Settings</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="themes/melts.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="jsscript/settings.js"></script>
 </head>
  
 <body>
 
 	<!-- /Login page -->
-	<div data-role="page" id="create_accountpage">
+	<div data-role="page" id="create_accountpage" data-theme="a">
 
-		<div data-role="header">
-			<script type="text/javascript" charset="utf-8" src="jsscript/settings.js"></script>
+		<div data-role="header"  data-theme="c">
 			<a href="lecturer_homepage.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
-			<h1>Settings</h1> 
+			<center>Settings</center>
 		</div><!-- /header -->
 		
-		<div data-role="content" class='content'>
-			<div data-role="fieldcontain">
-				<h3>Change Password</h3> 
-				<label for="currpswd">Current password:</label>
-				<input type="password" id="currpswd" />
-				<label for="newpswd">New password:</label>
-				<input type="password" id="newpswd" />
-				<label for="repswd">Retype password:</label>
-				<input type="password" id="repswd" />
-			</div>
-			
+		<div data-role="content" class='content' data-theme="a" style="max-width:800px;margin: 0 auto;>
+			</br>
+			<b>Change password</b>
+			</br>
+			</br>
+			</br>
+
+			Current password:
+			</br>
+			<input type="password" id="currpswd" />
+			</br>
+			New password:
+			</br>
+			<input type="password" id="newpswd" />
+			</br>
+			Retype new password:
+			</br>
+			<input type="password" id="repswd" />
+			</br>
+			</br>
+		
 			<!-- /Create account button -->
 			<fieldset>
-				<div><button type="button" data-inline = "true" data-theme="e" id="change_pass">Change password</button></div>
+				<div><button type="button" data-theme="a" id="change_pass">Change password</button></div>
 			</fieldset><!-- /create account button -->
 			
 			<div>
 				<p id = "msg"></p> 
-			</div><!-- /header -->
+			</div>
+
 		</div><!-- /content -->
 
 	</div><!-- /page -->

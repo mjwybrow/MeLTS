@@ -7,48 +7,56 @@
 <html>
 
 <head>
-	<title> Ask Question </title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<script src="jquery/jquery-1.9.1.js"></script>
-	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
+	<title>Ask Question</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="themes/melts.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
 	<script src="jquery/jquery-migrate-1.1.0.js"></script>
-	<script src="http://192.168.0.10:8000/socket.io/socket.io.js"></script>
-	<link rel="stylesheet" href="my_custom_theme.min.css" />
-	<link rel="stylesheet" href="jquery/jquery.mobile.structure-1.3.0.min.css" />
 </head>
 
 <body>
 	<!-- /Student ask question -->
-	<div data-role="page" id="stu_ask_ques">
+	<div data-role="page" id="stu_ask_ques" data-theme="a">
 
-		<div data-role="header">
+		<div data-role="header" data-theme="c">
 			<script type="text/javascript" charset="utf-8" src="jsscript/stu_get_ques.js"></script>
 			<script type="text/javascript" charset="utf-8" src="jsscript/stud_uscale.js"></script>
-			<script type="text/javascript" charset="utf-8" src="jsscript/get_unit.js"></script>
-			<h1 id="unitcode"></h1> 
+			<center>Ask a Question</center>
 			<a href="stud_unit.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
 		</div><!-- /header -->
-		
-		<div data-role="content">
-			<!--U-scale grid-->
-			<div class="ui-grid-a" >
-				<div class="ui-block-a"><a data-role="button"  data-theme="h" class="u_scale" id = "Y"><img src="good.png" /></a></div>
-				<div class="ui-block-b"><a data-role="button"  data-theme="f" class="u_scale" id = "N"><img src="bad.png" /></a></div>
+
+		<!--U-scale grid-->				
+		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">	
+			<div class="ui-grid-a" style="max-width:800px;margin: 0 auto;">
+				<div class="ui-block-a"><a data-role="button"  data-theme="h" class="u_scale" data-mini="true" id = "Y"><img src="good.png" /></a></div>
+				<div class="ui-block-b"><a data-role="button"  data-theme="f" class="u_scale" data-mini="true" id = "N"><img src="bad.png" /></a></div>
 			</div>
+		</div>
+		
+		<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 			
 			<div>
-				<p id="view_quesmsg"></p>
+				</br>
+				<b id="view_quesmsg"></b>
+				</br>
+				</br>
+				</br>
 				<!-- /Display the list of questions-->
-				<ul data-role="listview" data-theme="e" id="stu_queslist">
+				<ul data-role="listview" data-theme="b" id="stu_queslist">
 				</ul>
 			</div><!-- /ques list -->
 			
 			<!-- /Post a question button -->
 			<div>
 				<br>
-				<a href="stu_add_ques.html" rel="external" data-theme="e" data-role="button" data-mini = "true" data-ajax="false">Add Question</a>
+				<br>
+				<br>
+				<a href="stu_add_ques.html" rel="external" data-theme="a" data-role="button" data-ajax="false">Add Question</a>
 			</div><!-- /Add question button -->
 					
 		</div><!-- /content -->

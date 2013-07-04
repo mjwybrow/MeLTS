@@ -7,72 +7,89 @@
 <html>
 
 <head>
-	<title> Ask Question </title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-	<link rel="stylesheet" href="jquery/jquery-ui.css" />
+	<title>Ask Question</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="themes/melts.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
 	<script src="jquery/jquery-1.9.1.js"></script>
 	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<link rel="stylesheet" href="jquery/jquery.mobile-1.3.0.css" />
 	<script src="jquery/jquery-migrate-1.1.0.js"></script>
-	<script src="http://192.168.0.10:8000/socket.io/socket.io.js"></script>
+	<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
 	<script src="jquery/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jquery/jquery-ui.css" />
 </head>
 
 <body>
 	<!-- Lecturer sessionpage -->
-	<div data-role="page" id="lec_sessionpage">
+	<div data-role="page" id="lec_sessionpage" data-theme="a">
 		
-		<div data-role="header">
+		<div data-role="header"data-theme="c">
 			<script type="text/javascript" charset="utf-8" src="jsscript/u_scale.js"></script>
 			<script type="text/javascript" charset="utf-8" src="jsscript/lec_post_ques.js"></script>
-			<script type="text/javascript" charset="utf-8" src="jsscript/get_unit.js"></script>
 			<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>
-			<h1 id="unitcode"></h1> 
 			<a data-role="button" data-ajax="false" id = "end_ques" class = "ui-btn-left">Back</a>
-			<h1>Post a question</h1>
+			<center>Post a question</center>
 		</div><!-- /header -->
 		
-		<div data-role="content">
-			
-			<!--U-Scale bar-->
+		<!-- /U-scale -->
+		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">	
 			<div id="UScale" class="UScale"></div>
-			
+		</div>
+		<!-- /U-scale -->
+		
+		<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
+
+		</br>
+
 			<div>
-				<h1 id="lec_ques"></h1>
+				<b id="lec_ques"></b>
 			</div>
 			
-			<div>
-				<label style="color:green;font-size:20px;" for="unit_name">A</label>
-				<h3 id="A" ></h3>
-				<div id="barA" class="resultbar"></div>
-				<p id="resulta" style="color:blue;font-size:15px;">0 out of 0</p>
+			</br>
+			
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+				<b>A. </b>
+				<b id="A" ></b>
+				<div id="barA" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
+				<i id="resulta" style="color:gray;font-size:15px;">0 out of 0</i>
 			</div>
-			<div>
-				<label style="color:green;font-size:20px;" for="unit_name">B</label>
-				<h3 id="B" ></h3>
-				<div id="barB" class="resultbar"></div>
-				<p id="resultb" style="color:blue;font-size:15px;">0 out of 0</p>
+			
+			</br>
+			
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+				<b>B. </b>
+				<b id="B" ></b>
+				<div id="barB" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
+				<i id="resultb" style="color:gray;font-size:15px;">0 out of 0</i>
 			</div>
-			<div>
-				<label style="color:green;font-size:20px;" for="unit_name">C</label>
-				<h3 id="C" ></h3>
-				<div id="barC" class="resultbar"></div>
-				<p id="resultc" style="color:blue;font-size:15px;">0 out of 0</p>
+			
+			</br>
+			
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+				<b>C. </b>
+				<b id="C" ></b>
+				<div id="barC" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
+				<i id="resultc" style="color:gray;font-size:15px;">0 out of 0</i>
 			</div>
-			<div>
-				<label style="color:green;font-size:20px;" for="unit_name">D</label>
-				<h3 id="D" ></h3>
-				<div id="barD" class="resultbar"></div>
-				<p id="resultd" style="color:blue;font-size:15px;">0 out of 0</p>
+			
+			</br>
+			
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+				<b>D. </b>
+				<b id="D" ></b>
+				<div id="barD" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
+				<i id="resultd" style="color:gray;font-size:15px;">0 out of 0</i>
 			</div>
 
-			<p id='log'>
-			</p>
-			
+			<p id='log'></p>
+						
+			</br>
+			</br>
+
 			<!-- Button to end question -->
 			<div>
-				<a data-role="button" data-mini = "true" id = "reset">Reset Results</a>
+				<a data-role="button" id = "reset">Reset Results</a>
 			</div><!-- Buttons to end question -->
 			
 		</div><!-- /content -->

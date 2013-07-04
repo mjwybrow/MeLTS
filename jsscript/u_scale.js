@@ -23,7 +23,7 @@ $.post("join_session.php", function(data){
 					});
 					
 					// Style the bar graph
-					$("#UScale").css({ 'background': 'Orange' });	
+					$("#UScale").css({ 'background': '#FFD177' });	
 				});	
 
 				// Give signal to reset student's buttons
@@ -55,7 +55,7 @@ $.post("join_session.php", function(data){
 					});	
 					
 					// Style the bar graph
-					$("#UScale").css({ 'background': 'Orange' });
+					$("#UScale").css({ 'background': '#FFD177' });
 					
 					$('#uresult').html('');
 				}
@@ -67,10 +67,10 @@ $.post("join_session.php", function(data){
 					});	
 
 					// Style the bar graph
-					$("#UScale").css({ 'background': 'Red' });
-					$("#UScale > div").css({ 'background': 'Green' });
+					$("#UScale").css({ 'background': '#FF8A84' });
+					$("#UScale > div").css({ 'background': '#70E0AD' });
 					
-					$('#uresult').html(cntY+' out of '+total+' understands AND '+cntN+' out of '+total+' panicking');
+					$('#uresult').html(cntY+' out of '+total+' understand, '+cntN+' out of '+total+' panicking');
 				}
 			},
 			error: function(){	
@@ -102,7 +102,7 @@ $.post("join_session.php", function(data){
 							});	
 							
 							// Style the bar graph
-							$("#UScale").css({ 'background': 'Orange' });
+							$("#UScale").css({ 'background': '#FFD177' });
 							
 							$('#uresult').html('');
 						}
@@ -114,10 +114,10 @@ $.post("join_session.php", function(data){
 							});	
 
 							// Style the bar graph
-							$("#UScale").css({ 'background': 'Red' });
-							$("#UScale > div").css({ 'background': 'Green' });
+							$("#UScale").css({ 'background': '#FF8A84' });
+							$("#UScale > div").css({ 'background': '#70E0AD' });
 							
-							$('#uresult').html(cntY+' out of '+total+' understands AND '+cntN+' out of '+total+' panicking');
+							$('#uresult').html(cntY+' out of '+total+' understand, '+cntN+' out of '+total+' panicking');
 						}
 					},
 					error: function(){	
