@@ -1,74 +1,72 @@
 <!DOCTYPE html>
-
-<!--Written by Shea Yuin Ng-->
+<!--Written by Shea Yuin Ng, Nathan Sherburn-->
 <!--Created 20 September 2012-->
 <!--To register lecturers into the system-->
- 
 <html>
-
-<head>
-	<title>Create Account</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="themes/melts.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-</head>
- 
-<body>
-
-	<!-- /Login page -->
-	<div data-role="page" id="create_accountpage" data-theme="a">
-
-		<div data-role="header" data-theme="c">
-			<script type="text/javascript" charset="utf-8" src="jsscript/create_account.js"></script>
-			<center>Create Lecturer Account</center> 
-		</div><!-- /header -->
-		
-		<div data-role="content" class='content' data-theme="a">
-			</br>
-			<div>
-				<label for="page_login_name">Username:</label>
-				<input type="text" id="uname" />
-			</div><!-- /username -->
-			<div>
-				<label for="page_login_pass">Password:</label>
-				<input type="password" id="pswd" />
-			</div><!-- /password -->
-			<div>
-				<label for="page_login_fname">First name:</label>
-				<input type="text" id="fname" />
-			</div><!-- /first name -->
-			<div>
-				<label for="page_login_lname">Last name:</label>
-				<input type="text" id="lname" />
-			</div><!-- /last name -->
-			<div>
-				<label for="page_login_email">Email address:</label>
-				<input type="text" id="email" />
-			</div><!-- /email -->
-			<div>
-				<input type="hidden" id="status" value="L">
-			</div><!-- /status -->
-			
-			</br>
-			</br>
-
-			<!-- /Create account button -->
-			<fieldset>
-				<div><button type="button" data-theme="a" id="create_account_submit">Create lecturer account</button></div>
-			</fieldset><!-- /create account button -->
-			
-			</br>
-
-			<!-- /Go back index page button -->
-			<fieldset>
-				<div><a href="index.html" rel="external" data-role="button">Use existing account</a> </div>
-			</fieldset><!-- /Go back index page button -->
-		</div><!-- /content -->
-
-	</div><!-- /page -->
-
-</body>
+	<head>
+		<title>Create Account</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/melts.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+		<!-- /Login page -->
+		<div data-role="page" id="create_accountpage" data-theme="a">
+			<div data-role="header" data-theme="c">
+				<script type="text/javascript" charset="utf-8" src="javascript/create_account.js"></script>
+				<center>Create Lecturer Account</center>
+			</div>
+			<!-- /header -->
+			<div data-role="content" class='content' data-theme="a">
+				</br>
+				<div>
+					<label for="page_login_name">Username:</label>
+					<input type="text" id="uname" />
+				</div>
+				<!-- /username -->
+				<div>
+					<label for="page_login_pass">Password:</label>
+					<input type="password" id="pswd" />
+				</div>
+				<!-- /password -->
+				<div>
+					<label for="page_login_fname">First name:</label>
+					<input type="text" id="fname" />
+				</div>
+				<!-- /first name -->
+				<div>
+					<label for="page_login_lname">Last name:</label>
+					<input type="text" id="lname" />
+				</div>
+				<!-- /last name -->
+				<div>
+					<label for="page_login_email">Email address:</label>
+					<input type="text" id="email" />
+				</div>
+				<!-- /email -->
+				<div>
+					<input type="hidden" id="status" value="L">
+				</div>
+				<!-- /status -->
+				</br>
+				</br>
+				<!-- /Create account button -->
+				<fieldset>
+					<div><button type="button" data-theme="a" id="create_account_submit">Create lecturer account</button></div>
+				</fieldset>
+				<!-- /create account button -->
+				</br>
+				<!-- /Go back index page button -->
+				<fieldset>
+					<div><a href="index.html" rel="external" data-role="button">Use existing account</a> </div>
+				</fieldset>
+				<!-- /Go back index page button -->
+			</div>
+			<!-- /content -->
+		</div>
+		<!-- /page -->
+	</body>
 </html>

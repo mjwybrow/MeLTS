@@ -1,57 +1,49 @@
 <!DOCTYPE html>
-
-<!--Written by Shea Yuin Ng-->
+<!--Written by Shea Yuin Ng, Nathan Sherburn-->
 <!--Created 3 May 2013-->
 <!--For lecturers to view the question posted by student-->
-
 <html>
-
-<head>
-	<title>Students' Question</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="themes/melts.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
-	<script src="jquery/jquery-1.9.1.js"></script>
-	<script src="jquery/jquery.mobile-1.3.0.js"></script>
-	<script src="jquery/jquery-migrate-1.1.0.js"></script>
-	<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
-	<script src="jquery/jquery-ui.js"></script>
-	<link rel="stylesheet" href="jquery/jquery-ui.css" />
-</head>
-
-<body>
-	<!-- Lecturer sessionpage -->
-	<div data-role="page" id="lec_sessionpage" data-theme="a">
-		
-		<div data-role="header" data-theme="c">
-			<script type="text/javascript" charset="utf-8" src="jsscript/u_scale.js"></script>
-			<script type="text/javascript" charset="utf-8" src="jsscript/stu_stuques.js"></script>
-			<center>Students' Questions</center>
-			<a href="lec_stuqueslist.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
-			<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>
-		</div><!-- /header -->
-		
-		<!-- /U-scale -->
-		<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">	
-			<div id="UScale" class="UScale"></div>
+	<head>
+		<title>Students' Question</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/melts.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
+		<link rel="stylesheet" href="css/jquery-ui.css" />
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+		<script src="jquery/jquery-migrate-1.1.0.js"></script>
+		<script src="jquery/jquery-ui.js"></script>
+		<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
+	</head>
+	<body>
+		<!-- Lecturer sessionpage -->
+		<div data-role="page" id="lec_sessionpage" data-theme="a">
+			<div data-role="header" data-theme="c">
+				<script type="text/javascript" charset="utf-8" src="javascript/u_scale.js"></script>
+				<script type="text/javascript" charset="utf-8" src="javascript/stu_stuques.js"></script>
+				<center>Students' Questions</center>
+				<a href="lec_stuqueslist.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
+				<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>
+			</div>
+			<!-- /header -->
+			<!-- /U-scale -->
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+				<div id="UScale" class="UScale"></div>
+			</div>
+			<!-- /U-scale -->
+			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
+				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
+					<b id="ques_title" style = "white-space: pre-wrap;"></b>
+					<p id="question" style = "white-space: pre-wrap;"></p>
+				</div>
+				</br>
+				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;font-size:12px;">
+					<p id="numOfVotes" ></p>
+				</div>
+			</div>
+			<!-- /content -->
 		</div>
-		<!-- /U-scale -->
-		
-		<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
-			
-			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">	
-				<b id="ques_title" style = "white-space: pre-wrap;"></b>
-				<p id="question" style = "white-space: pre-wrap;"></p>
-			</div>
-			</br>
-			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:5px;padding-bottom:5px;font-size:12px;">	
-				<p id="numOfVotes" ></p>
-			</div>
-			
-		</div><!-- /content -->
-
-	</div><!-- /page --> 
-	
-</body>
+		<!-- /page --> 
+	</body>
 </html>

@@ -1,0 +1,5 @@
+README
+
+MeLTS is a web application for lecturers disigned to allow the lecturer to enhance their learning environment. Using MeLTS, students will be able to use their laptops, tablets, smartphones and any other devices with modern browsers to connect to the app and interact with the lecturer and other students in real time. For example, students will be able to answer multi choice questions set by the lecturer, post their own questions or even divide instantly into groups of exact numbers. The app will be entirely device-independent - it will not matter what operating system or device the students use.
+
+The web application will run on a server which may be a standalone or virtual machine on the university network or a Raspberry Pi – which much of this project has been specifically developed with in mind. This web app has been tested on and is capable of running on Debian distributions of Linux such as Ubuntu and Raspbian (Debian for the Raspberry Pi) and will be able to serve hundreds of students simultaneously in a lecture type situation or 20-30 students in a small lecture type situation with the Raspberry Pi at project completion.

@@ -7,19 +7,18 @@
 		<title>Welcome</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="themes/melts.css" />
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
-		<script src="jquery/jquery-1.9.1.js"></script>
-		<script src="jquery/jquery.mobile-1.3.0.js"></script>
+		<link rel="stylesheet" href="css/melts.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>	
 	</head>
 	<body>
 		<!-- /Student home page -->
 		<div data-role="page" id="student_homepage" data-theme="a">
 			<div data-role="header" data-theme="c">
-				<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-				<script type="text/javascript" charset="utf-8" src="jsscript/studview_unit.js"></script>
-				<script type="text/javascript" charset="utf-8" src="jsscript/logout.js"></script>
+				<script type="text/javascript" charset="utf-8" src="javascript/studview_unit.js"></script>
+				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
 				<center>Welcome</center>
 				<a data-role="button" data-ajax="false" id="page_logout_submit" class = "ui-btn-left">Logout</a>	
 				<a href="stu_settings.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-right">Settings</a>
@@ -35,7 +34,7 @@
 					<!-- /Display the list of units-->
 					<ul data-role="listview" data-theme="b" id="viewunit_optionlist">
 					</ul>
-					<script type="text/javascript" charset="utf-8" src="jsscript/select_unit.js"></script>
+					<script type="text/javascript" charset="utf-8" src="javascript/select_unit.js"></script>
 				</div>
 				<!-- /unit list -->
 			</div>

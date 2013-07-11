@@ -1,70 +1,55 @@
 <!DOCTYPE html>
-
-<!--Written by Shea Yuin Ng-->
+<!--Written by Shea Yuin Ng, Nathan Sherburn-->
 <!--Created 3 April 2013-->
 <!--For lecturers to view the student list for a unit and to delete students from the list-->
- 
 <html>
-
-<head>
-	<title>Student List</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="themes/melts.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile.structure-1.3.1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-</head>
- 
-<body>
-
-	<!-- /Lecturer home page -->
-	<div data-role="page" id="lec_student_list" data-theme="a">
-		
-		<div data-role="header" data-theme = "c">
-			<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-			<script type="text/javascript" charset="utf-8" src="jsscript/view_studlist.js"></script>
-			<center>Student List</center>
-			<a href="unit.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
-		</div><!-- /header -->
-		
-		<div data-role="content" data-theme = "a" style="max-width:800px;margin: 0 auto;">
-
-		<br>
-
-			
-			<a href="add_student.html" rel="external" data-ajax="false" data-role="button" data-mini = "true" data-theme = "a">Add student</a>
-			
-			<div>
+	<head>
+		<title>Student List</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/melts.css" />
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+		<!-- /Lecturer home page -->
+		<div data-role="page" id="lec_student_list" data-theme="a">
+			<div data-role="header" data-theme = "c">
+				<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+				<script type="text/javascript" charset="utf-8" src="javascript/view_studlist.js"></script>
+				<center>Student List</center>
+				<a href="unit.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
+			</div>
+			<!-- /header -->
+			<div data-role="content" data-theme = "a" style="max-width:800px;margin: 0 auto;">
 				<br>
-				<a data-role="button" data-mini="true" data-inline="true" id="selectall">Select All</a>
-				<a data-role="button" data-mini="true" data-inline="true" id="unselectall">Unselect All</a>
-				<a data-role="button" data-mini="true" data-inline="true" id="delete_stud">Delete</a>
-
+				<div>
+					<a href="add_student.html" rel="external" data-ajax="false" data-inline="true" data-role="button" data-mini="true" data-theme="a">Add student</a>
+					<a data-role="button" data-mini="true" data-inline="true" id="selectall">Select All</a>
+					<a data-role="button" data-mini="true" data-inline="true" id="unselectall">Unselect All</a>
+					<a data-role="button" data-mini="true" data-inline="true" id="delete_stud">Delete</a>
+					<br>
+				</div>
+				<!-- /Back button -->
+				<table data-role="table" id="stud_list" class="ui-responsive table-stroke">
+					<thead>
+						<tr>
+							<th></th>
+							<th>No.</th>
+							<th>Username</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<p id = "msg"></p>
 				<br>
-
-			</div><!-- /Back button -->
-			
-			<table data-role="table" id="stud_list" class="ui-responsive table-stroke">
-				<thead>
-				<tr>
-					<th></th>
-					<th>No.</th>
-					<th>Username</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-				</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-			
-			<p id = "msg"></p>
-			<br>
-			
-		</div><!-- /content -->
-
-	</div><!-- /page --> 
-	
-</body>
+			</div>
+			<!-- /content -->
+		</div>
+		<!-- /page --> 
+	</body>
 </html>
