@@ -440,6 +440,36 @@ background:#70E0AD;
 background:#57DB9D;
 }
 
+/* LECTURE SESSION */
+/* normal */
+.ui-btn-up-j {
+background:#EAEAEA;
+height:60px;
+line-height: 40px;
+padding: 0 0px 0 0px;
+}
+.ui-btn-hover-j {
+background:#FFE970;
+height:60px;
+line-height: 40px;
+padding: 0 0px 0 0px;
+}
+/* selected */
+.ui-btn-up-k {
+background:#FFE970;
+height:60px;
+line-height: 40px;
+padding: 0 0px 0 0px;
+}
+.ui-btn-hover-k {
+background:#EAEAEA;
+height:60px;
+line-height: 40px;
+padding: 0 0px 0 0px;
+}
+
+
+
 /* Structure */
 /* links within "buttons" 
 -----------------------------------------------------------------------------------------------------------*/

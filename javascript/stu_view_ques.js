@@ -32,14 +32,14 @@ $.post("join_session.php", function(data){
 					if (lec_ques!= "0"){// means there's question posted by lecturer
 						$('#lec_ques').html(lec_ques);
 						//$('#btnA').text(data.A); not working
-						$('#btnA').parent().find('.ui-btn-text').text(A);
-						$('#btnB').parent().find('.ui-btn-text').text(B);
-						$('#btnC').parent().find('.ui-btn-text').text(C);
-						$('#btnD').parent().find('.ui-btn-text').text(D);
+						$('#btnA').parent().find('.ui-btn-text').text('A : '+ A);
+						$('#btnB').parent().find('.ui-btn-text').text('B : '+ B);
+						$('#btnC').parent().find('.ui-btn-text').text('C : '+ C);
+						$('#btnD').parent().find('.ui-btn-text').text('D : '+ D);
 						
 						if(prev_ans !="0"){ 
 							var button = "#"+prev_ans;
-							$(button).buttonMarkup({ theme: "e" });
+							$(button).buttonMarkup({ theme: "k" });
 							//$(button).attr('data-theme', 'e'); not working
 						}
 					}
@@ -61,10 +61,10 @@ $.post("join_session.php", function(data){
 					type: 'post',
 					data: 'id=' + id,
 					success: function (prev_ans) {
-						$(".ans_button").buttonMarkup({ theme: "d" });
+						$(".ans_button").buttonMarkup({ theme: "j" });
 						if(prev_ans !='0'){ 
 							var button = "#" + prev_ans;
-							$(button).buttonMarkup({ theme: "e" });
+							$(button).buttonMarkup({ theme: "k" });
 						}
 					},
 					error: function(){	
@@ -85,7 +85,7 @@ $.post("join_session.php", function(data){
 		
 		socket.on('reset_answers', function (data){
 			if (unit_code == data.unit_code){
-				$(".ans_button").buttonMarkup({ theme: "d" });
+				$(".ans_button").buttonMarkup({ theme: "j" });
 			}// if it is the correct unit
 		});//socket on receive ques
 		
@@ -119,12 +119,12 @@ $.post("join_session.php", function(data){
 					var flag = result[2];
 					
 					if(flag==1){// Change response
-						$(".ans_button").buttonMarkup({ theme: "d" });
+						$(".ans_button").buttonMarkup({ theme: "j" });
 						var button = "#" + mcq_answer;
-						$(button).buttonMarkup({ theme: "e" });
+						$(button).buttonMarkup({ theme: "k" });
 					}
 					else{// Retract response
-						$(".ans_button").buttonMarkup({ theme: "d" });
+						$(".ans_button").buttonMarkup({ theme: "j" });
 					}
 					
 					socket.emit('updated',{
