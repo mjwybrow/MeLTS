@@ -14,7 +14,7 @@
 		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>
 		<script src="jquery/jquery-ui.js"></script>
-		<script src="http://192.168.0.103:8000/socket.io/socket.io.js"></script>
+		<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
 			function start_session(){ 
 				$.post("start_session.php", function(data){
@@ -35,7 +35,9 @@
 				<script type="text/javascript" charset="utf-8" src="javascript/u_scale.js"></script>
 				<center id="unitcode"></center>
 				<a href="view_unitpage.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>	
-				<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>
+				<!--<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>-->
+				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
+				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>
 			</div>
 			<!-- /header -->
 			<!-- /U-scale -->	

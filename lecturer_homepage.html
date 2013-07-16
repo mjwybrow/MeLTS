@@ -35,16 +35,16 @@
 	</head>
 	<body>
 		<div data-role="page" id="lecturer_homepage" data-theme="a">
-			<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
+			
 			<!--<script type="text/javascript" charset="utf-8" src="javascript/lecturer_homepage.js"></script>-->
 			<!-- /header -->
 			<div data-role="header" data-theme="c" data-position="inline">
 				<center>Welcome</center>
-				<a href="lec_settings.html" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Settings</a>
-				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-left">Logout</a>
+				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
+				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>
 			</div>
 			<!-- /header -->
-			<div data-role="content" data-theme="b" style="max-width:800px;margin: 0 auto;">
+			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				</br>
 				<b>Please choose an option</b>
 				</br>
@@ -54,6 +54,10 @@
 					<li><a href="add_unitpage.html" rel="external" data-ajax="false">Add units</a></li>
 					<li><a href="view_unitpage.html" rel="external" data-ajax="false">View units</a></li>
 				</ul>
+				</br>
+				</br>
+				</br>
+				<a href="lec_settings.html" rel="external" data-role="button" data-ajax="false">Settings</a>
 			</div>
 			<!-- /content -->
 		</div>

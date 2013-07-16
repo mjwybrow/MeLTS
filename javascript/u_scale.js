@@ -58,6 +58,8 @@ $.post("join_session.php", function(data){
 					$("#UScale").css({ 'background': '#FFD177' });
 					
 					$('#uresult').html('');
+					$('#uresult1').html('0');
+					$('#uresult2').html('0');
 				}
 				else{
 					$(function() {
@@ -69,8 +71,10 @@ $.post("join_session.php", function(data){
 					// Style the bar graph
 					$("#UScale").css({ 'background': '#FF8A84' });
 					$("#UScale > div").css({ 'background': '#70E0AD' });
-					
-					$('#uresult').html(cntY+' out of '+total+' understand, '+cntN+' out of '+total+' panicking');
+							
+					$('#uresult').html(cntY + 'and ' + cntN);
+					$('#uresult1').html(cntY);
+					$('#uresult2').html(cntN);
 				}
 			},
 			error: function(){	
@@ -105,6 +109,8 @@ $.post("join_session.php", function(data){
 							$("#UScale").css({ 'background': '#FFD177' });
 							
 							$('#uresult').html('');
+							$('#uresult2').html('0');
+							$('#uresult2').html('0');
 						}
 						else{
 							$(function() {
@@ -117,7 +123,9 @@ $.post("join_session.php", function(data){
 							$("#UScale").css({ 'background': '#FF8A84' });
 							$("#UScale > div").css({ 'background': '#70E0AD' });
 							
-							$('#uresult').html(cntY+' out of '+total+' understand, '+cntN+' out of '+total+' panicking');
+							$('#uresult').html(cntY + 'and ' + cntN);
+							$('#uresult1').html(cntY);
+							$('#uresult2').html(cntN);
 						}
 					},
 					error: function(){	
