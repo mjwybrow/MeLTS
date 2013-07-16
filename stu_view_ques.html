@@ -12,7 +12,7 @@
 		<script src="jquery/jquery-1.9.1.min.js"></script>
 		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>
-		<script src="http://192.168.0.112:8000/socket.io/socket.io.js"></script>
+		<script src="http://192.168.0.103:8000/socket.io/socket.io.js"></script>
 	</head>
 	<body>
 		<!-- Lecturer sessionpage -->
@@ -37,10 +37,24 @@
 				<b id="lec_ques">There are currently no active questions</b>
 				</br>
 				</br>
-				<button data-theme="j" class="ans_button" id="btnA"></button>
-				<button data-theme="j" class="ans_button" id="btnB"></button>
-				<button data-theme="j" class="ans_button" id="btnC"></button>
-				<button data-theme="j" class="ans_button" id="btnD"></button>
+				<table border="0" style="padding-right:10px;">
+<tr>
+<td><b>A</b></td>
+<td><button data-inline="true" data-theme="j" class="ans_button" id="btnA"></button></td>
+</tr>
+<tr>
+<td><b>B</b></td>
+<td><button data-inline="true" data-theme="j" class="ans_button" id="btnB"></button></td>
+</tr>
+<tr>
+<td><b>C</b></td>
+<td><button data-inline="true" data-theme="j" class="ans_button" id="btnC"></button></td>
+</tr>
+<tr>
+<td><b>D</b></td>
+<td><button data-inline="true" data-theme="j" class="ans_button" id="btnD"></button></td>
+</tr>
+</table>
 			</div>
 		</div>
 		<!-- /content -->

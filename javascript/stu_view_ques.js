@@ -32,10 +32,10 @@ $.post("join_session.php", function(data){
 					if (lec_ques!= "0"){// means there's question posted by lecturer
 						$('#lec_ques').html(lec_ques);
 						//$('#btnA').text(data.A); not working
-						$('#btnA').parent().find('.ui-btn-text').text('A : '+ A);
-						$('#btnB').parent().find('.ui-btn-text').text('B : '+ B);
-						$('#btnC').parent().find('.ui-btn-text').text('C : '+ C);
-						$('#btnD').parent().find('.ui-btn-text').text('D : '+ D);
+						$('#btnA').parent().find('.ui-btn-text').text(A);
+						$('#btnB').parent().find('.ui-btn-text').text(B);
+						$('#btnC').parent().find('.ui-btn-text').text(C);
+						$('#btnD').parent().find('.ui-btn-text').text(D);
 						
 						if(prev_ans !="0"){ 
 							var button = "#"+prev_ans;

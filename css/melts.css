@@ -444,28 +444,20 @@ background:#57DB9D;
 /* normal */
 .ui-btn-up-j {
 background:#EAEAEA;
-height:60px;
-line-height: 40px;
-padding: 0 0px 0 0px;
+min-width:100%;
 }
 .ui-btn-hover-j {
 background:#FFE970;
-height:60px;
-line-height: 40px;
-padding: 0 0px 0 0px;
+min-width:100%;
 }
 /* selected */
 .ui-btn-up-k {
 background:#FFE970;
-height:60px;
-line-height: 40px;
-padding: 0 0px 0 0px;
+min-width:100%;
 }
 .ui-btn-hover-k {
 background:#EAEAEA;
-height:60px;
-line-height: 40px;
-padding: 0 0px 0 0px;
+min-width:100%;
 }
 
 
@@ -496,6 +488,7 @@ a.ui-link-inherit {
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-inner {
+	white-space: normal !important;
 	border-top: 0px solid 	#fff;
 	border-color: 			rgba(255,255,255,.3);
 }
