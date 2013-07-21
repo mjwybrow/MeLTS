@@ -1,5 +1,5 @@
 <?php
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 23 October 2012
 // To get the username and unit code for real time function
 

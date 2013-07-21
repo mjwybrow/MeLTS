@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 28 October 2012
 // The socket io websocket server
 
@@ -45,6 +45,7 @@ io.sockets.on('connection', function (socket) {
 			mcq_answer: answer.mcq_answer
 		});
 	});
+
 	
 	// Lecturer reset the results for mcq ques
 	socket.on('reset_answers', function (response) {
