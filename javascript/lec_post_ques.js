@@ -171,61 +171,59 @@ $.post("join_session.php", function(data){
 
 		// Updated answers from students
 		socket.on('updated', function (data) {
-			if(locked != 1){ // check if question is locked
-				socket.disconnect();
-				var unit_code = data.unit_code;
-				var id = data.id;
-				var mcq_answer = data.mcq_answer;
+			var unit_code = data.unit_code;
+			var id = data.id;
+			var mcq_answer = data.mcq_answer;
 
-				$.ajax({
-					url: "getstu_answers.php",
-					type: 'post',
-					dataType: "xml",  
-					success: function (xml) {
+			$.ajax({
+				url: "getstu_answers.php",
+				type: 'post',
+				dataType: "xml",  
+				success: function (xml) {
 
-						//results sent by PHP
-						cntA = xml.getElementsByTagName("CntA")[0].childNodes[0].nodeValue;
-						cntB = xml.getElementsByTagName("CntB")[0].childNodes[0].nodeValue;
-						cntC = xml.getElementsByTagName("CntC")[0].childNodes[0].nodeValue;
-						cntD = xml.getElementsByTagName("CntD")[0].childNodes[0].nodeValue;
-						total = xml.getElementsByTagName("Total")[0].childNodes[0].nodeValue;
-						//$(xml).find('Answer').each(function(){  
-						//var cntA = $(this).find('CntA').text(); 
-						//var cntB = $(this).find('CntB').text(); 
-						//var cntC = $(this).find('CntC').text(); 
-						//var cntD = $(this).find('CntD').text(); 
-						//var total = $(this).find('Total').text(); 
+					//results sent by PHP
+					cntA = xml.getElementsByTagName("CntA")[0].childNodes[0].nodeValue;
+					cntB = xml.getElementsByTagName("CntB")[0].childNodes[0].nodeValue;
+					cntC = xml.getElementsByTagName("CntC")[0].childNodes[0].nodeValue;
+					cntD = xml.getElementsByTagName("CntD")[0].childNodes[0].nodeValue;
+					total = xml.getElementsByTagName("Total")[0].childNodes[0].nodeValue;
+					//$(xml).find('Answer').each(function(){  
+					//var cntA = $(this).find('CntA').text(); 
+					//var cntB = $(this).find('CntB').text(); 
+					//var cntC = $(this).find('CntC').text(); 
+					//var cntD = $(this).find('CntD').text(); 
+					//var total = $(this).find('Total').text(); 
 
-						//});
-						// Display data
-						$(function() {
-							$( "#barA" ).progressbar({
-								value: cntA/total*100
-							});
-
-							$( "#barB" ).progressbar({
-								value: cntB/total*100
-							});
-
-							$( "#barC" ).progressbar({
-								value: cntC/total*100
-							});
-
-							$( "#barD" ).progressbar({
-								value: cntD/total*100
-							});
+					//});
+					// Display data
+					$(function() {
+						$( "#barA" ).progressbar({
+							value: cntA/total*100
 						});
 
-						$('#resulta').html(cntA+' out of '+total);
-						$('#resultb').html(cntB+' out of '+total);
-						$('#resultc').html(cntC+' out of '+total);
-						$('#resultd').html(cntD+' out of '+total);
-					},
-					error: function(){	
-						alert('There was an error in student answering question');	
-					}
-				});// ajax
-			}; // check if question is locked
+						$( "#barB" ).progressbar({
+							value: cntB/total*100
+						});
+
+						$( "#barC" ).progressbar({
+							value: cntC/total*100
+						});
+
+						$( "#barD" ).progressbar({
+							value: cntD/total*100
+						});
+
+					});					
+
+					$('#resulta').html(cntA+' out of '+total);
+					$('#resultb').html(cntB+' out of '+total);
+					$('#resultc').html(cntC+' out of '+total);
+					$('#resultd').html(cntD+' out of '+total);
+				},
+				error: function(){	
+					alert('There was an error in student answering question');	
+				}
+			});// ajax	
 		});			
 		
 		// ask user to log in again if no username available.

@@ -25,7 +25,6 @@ mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 
 // Find out if currently locked or not
 $sql_resource = mysql_query("SELECT LOCKED FROM lecturer_ques WHERE id='$id'") or die(mysql_error());;
-
 $locked = mysql_fetch_row($sql_resource);
 
 if ($locked[0] == 0) {

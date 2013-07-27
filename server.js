@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng, Nathan Sherburn
+// Written by Shea Yuin Ng
 // Created 28 October 2012
 // The socket io websocket server
 
@@ -46,21 +46,20 @@ io.sockets.on('connection', function (socket) {
 		});
 	});
 
-	
 	// Lecturer reset the results for mcq ques
 	socket.on('reset_answers', function (response) {
 		socket.broadcast.emit('reset_answers',{
 			unit_code: response.unit_code,
 		});
 	});
-	
+
 	// Students respond to u-scale
 	socket.on('updated_uscale', function (response) {
 		socket.broadcast.emit('updated_uscale',{
 			unit_code: response.unit_code,
 		});
 	});
-	
+
 	// Lecturer reset the u-scale
 	socket.on('reset_uscale', function (response) {
 		socket.broadcast.emit('reset_uscale',{
@@ -75,21 +74,21 @@ io.sockets.on('connection', function (socket) {
 			votenum: response.votenum,
 		});
 	});
-	
+
 	// Students post questions to lecturers
 	socket.on('stu_add_ques', function (response) {
 		socket.broadcast.emit('stu_add_ques',{
 			unit_code: response.unit_code,
 		});
 	});
-	
+
 	// Lecturer delete students' question
 	socket.on('del_stu_ques', function (response) {
 		socket.broadcast.emit('del_stu_ques',{
 			unit_code: response.unit_code,
 		});
 	});
-	
+
    // listen for user registrations
    // then set the socket nickname to 
    socket.on('register', function (name) {
