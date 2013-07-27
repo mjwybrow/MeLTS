@@ -829,15 +829,7 @@ a.ui-link-inherit {
 	outline-style: auto;
 }
 
-/* making a straight line */
-div.hr {
-background: #63C69A  no-repeat scroll center;
-margin-left: 0px;
-margin-right: 0px;
-width:100%;
-height:100px;
-}
-
-div.hr hr {
-display: none;
+/* class for back button */
+#logout{
+	padding: 0;
 }

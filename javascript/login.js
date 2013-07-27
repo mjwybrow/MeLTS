@@ -60,8 +60,8 @@ $(document).ready(function() {
 	document.cookie = "login" + "=ImOutOfHere; expires=" + expDate.toGMTString();
 	console.log("Cookie");*/
 	
-	$(document).on('click','#page_login_submit',function(){
-		
+	$('#iform').submit(function(e) { // submit form on ENTER or click
+
 		//get username
 		var uname = $('#uname').val();
 		if (!uname) { alert('Please enter your user name.'); return false; }
@@ -105,6 +105,9 @@ $(document).ready(function() {
 				alert('There was an error logging in');	
 			}
 		});// ajax
+		
+		e.preventDefault(); 
+		
 		return false;
-	});//onclick
+	});//on submit
 });// document ready
