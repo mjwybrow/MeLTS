@@ -44,7 +44,7 @@ if(mysql_affected_rows()==0){//no username exist in database
 	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 	mysql_query("CREATE TABLE student_list (username VARCHAR(20), first_name VARCHAR(30), last_name VARCHAR(50), u_scale VARCHAR(1))")  or die("Students' list table cannot be added!!");
 	//mysql_query("CREATE TABLE participant (username VARCHAR(10), mcq_answer VARCHAR(4))")  or die("Participants' table cannot be added!!");
-	mysql_query("CREATE TABLE lecturer_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id),lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500)), LOCKED INT(1)")  or die("Lecturer's question table cannot be added!!");
+	mysql_query("CREATE TABLE lecturer_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id),lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500), LOCKED INT(1))")  or die("Lecturer's question table cannot be added!!");
 	mysql_query("CREATE TABLE current_lecques (id INT, lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500))")  or die("Lecturer's current question table cannot be added!!");
 	mysql_query("CREATE TABLE students_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id), title VARCHAR(500), stu_ques VARCHAR(2500),votes INT)")  or die("Lecturer's current question table cannot be added!!");
 	echo("1");
