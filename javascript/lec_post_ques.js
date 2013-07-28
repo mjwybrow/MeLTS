@@ -30,6 +30,10 @@ $.post("join_session.php", function(data){
 		
 		// Function that locks-in all the answers from students
 		$(document).on('click',"#lock_in",function(){
+			// Signal to server answers have been locked
+			socket.emit('lock_answers', { 
+				unit_code: unit_code,
+			});
 			if (locked == 1) {
 				locked = 0;
 				$('#locked_in').html('');

@@ -9,6 +9,7 @@ $.post("join_session.php", function(data){
 	var unit_code = string[1];
 	var lec_uname = string[2];
 	var socket = io.connect('http://'+location.host+':8000');
+	var locked;
 	
 	 // at document read (runs only ones).
 	 $(document).ready(function(){
@@ -88,6 +89,30 @@ $.post("join_session.php", function(data){
 				$(".ans_button").buttonMarkup({ theme: "j" });
 			}// if it is the correct unit
 		});//socket on receive ques
+
+		// Check on current status of the lock (only runs once - on page load)
+		$.get("student_lock_check.php", function(data){
+			locked = data;
+			if(data == 1)
+				$('#locked_in').html(' [ locked ]');
+			else
+				$('#locked_in').html('');
+		});
+		
+		// Socket to display [lock] on student page
+		socket.on('lock_answers', function (data){
+			if (unit_code == data.unit_code){
+				if (locked == 1) {
+					locked = 0;
+					$('#locked_in').html('');
+				}
+				else {
+					locked = 1;
+					$('#locked_in').html(' [ locked ]');
+				}
+			}// if it is the correct unit
+		});//socket on receive lock update
+		
 		
 		// ask user to log in again if no username available.
 		while (name == '') {

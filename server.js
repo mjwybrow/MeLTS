@@ -53,6 +53,13 @@ io.sockets.on('connection', function (socket) {
 		});
 	});
 
+	// Lecturer has locked in the results for mcq
+	socket.on('lock_answers', function (response) {
+		socket.broadcast.emit('lock_answers',{
+			unit_code: response.unit_code,
+		});
+	});
+	
 	// Students respond to u-scale
 	socket.on('updated_uscale', function (response) {
 		socket.broadcast.emit('updated_uscale',{
