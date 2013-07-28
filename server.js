@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 28 October 2012
 // The socket io websocket server
 

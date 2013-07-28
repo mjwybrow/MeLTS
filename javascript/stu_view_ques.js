@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 16 April 2013
 // For students to view and answer questions from lecturers
 

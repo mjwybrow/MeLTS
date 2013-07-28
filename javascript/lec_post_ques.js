@@ -22,10 +22,14 @@ $.post("join_session.php", function(data){
 		// Check on current status of the lock (only runs once - on page load)
 		$.get("lock_check.php", function(data){
 			locked = data;
-			if(data == 1)
-				$('#locked_in').html(' [ locked ]');
-			else
+			if(data == 1){
+				$('#locked_in').html(' [locked]');
+				$(".resultbar > div").css({ 'background': '#6DC5DB' });
+			}
+			else{
 				$('#locked_in').html('');
+				$(".resultbar > div").css({ 'background': '#FFE166' });
+			}
 		});
 		
 		// Function that locks-in all the answers from students
@@ -37,10 +41,12 @@ $.post("join_session.php", function(data){
 			if (locked == 1) {
 				locked = 0;
 				$('#locked_in').html('');
+				$(".resultbar > div").css({ 'background': '#FFE166' });
 			}
 			else {
 				locked = 1;
-				$('#locked_in').html(' [ locked ]');
+				$('#locked_in').html(' [locked]');
+				$(".resultbar > div").css({ 'background': '#6DC5DB' });
 			}
 			$.post("lock_ques.php"); // switches lock state
 			return false;
