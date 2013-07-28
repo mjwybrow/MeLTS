@@ -459,7 +459,15 @@ min-width:100%;
 background:#FFE970;
 min-width:100%;
 }
-
+/* locked */
+.ui-btn-up-l {
+background:#D3D3D3;
+min-width:100%;
+}
+.ui-btn-hover-l {
+background:#D3D3D3;
+min-width:100%;
+}
 
 
 /* Structure */

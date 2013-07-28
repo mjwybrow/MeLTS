@@ -91,10 +91,12 @@ $.post("join_session.php", function(data){
 		});//socket on receive ques
 
 		// Check on current status of the lock (only runs once - on page load)
-		$.get("student_lock_check.php", function(data){
+		$.get("stu_lock_check.php", function(data){
 			locked = data;
-			if(data == 1)
+			if(data == 1){
 				$('#locked_in').html(' [ locked ]');
+				$(".ans_button").buttonMarkup({ theme: "l" });
+			}
 			else
 				$('#locked_in').html('');
 		});
@@ -105,10 +107,12 @@ $.post("join_session.php", function(data){
 				if (locked == 1) {
 					locked = 0;
 					$('#locked_in').html('');
+					$(".ans_button").buttonMarkup({ theme: "j" });
 				}
 				else {
 					locked = 1;
 					$('#locked_in').html(' [ locked ]');
+					$(".ans_button").buttonMarkup({ theme: "l" });
 				}
 			}// if it is the correct unit
 		});//socket on receive lock update
@@ -142,16 +146,16 @@ $.post("join_session.php", function(data){
 					var unit_code = result[0];
 					var id = result[1];
 					var flag = result[2];
-					
-					if(flag==1){// Change response
-						$(".ans_button").buttonMarkup({ theme: "j" });
-						var button = "#" + mcq_answer;
-						$(button).buttonMarkup({ theme: "k" });
-					}
-					else{// Retract response
-						$(".ans_button").buttonMarkup({ theme: "j" });
-					}
-					
+					if(locked==0){
+						if(flag==1){// Change response
+							$(".ans_button").buttonMarkup({ theme: "j" });
+							var button = "#" + mcq_answer;
+							$(button).buttonMarkup({ theme: "k" });
+						}
+						else{// Retract response
+							$(".ans_button").buttonMarkup({ theme: "j" });
+						}
+					} // check lock
 					socket.emit('updated',{
 						unit_code: unit_code,
 						id: id,
