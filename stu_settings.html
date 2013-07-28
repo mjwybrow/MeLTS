@@ -17,11 +17,15 @@
 	<body>
 		<!-- /Login page -->
 		<div data-role="page" id="create_accountpage" data-theme="a">
-			<div data-role="header" data-theme="c">
+			<div data-role="header" data-theme="c">				
+				<table border="0"><tr><td style="padding-left:24px;">
+				<a href="student_homepage.html"  rel="external"><img border="0" src="back.png"></a>
+				</td><td width="100%">
 				<center>Settings</center>
-				<a href="student_homepage.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
+				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
-				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>
+				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
+				</td></tr></table>
 			</div>
 			<!-- /header -->
 			<div data-role="content" class='content' data-theme="a" style="max-width:800px;margin: 0 auto;">

@@ -22,8 +22,10 @@ $.post("join_session.php", function(data){
 						value: 0
 					});
 					
-					// Style the bar graph
-					$("#UScale").css({ 'background': '#FFD177' });	
+					// Style the bar graph and set counters to 0
+					$("#UScale").css({ 'background': '#FFD177' });
+					$('#uresult1').html('0');
+					$('#uresult2').html('0');
 				});	
 
 				// Give signal to reset student's buttons

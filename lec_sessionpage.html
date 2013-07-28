@@ -25,19 +25,29 @@
 				
 				<!--<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>-->
 				
-				<table border="0"><tr><td style="padding-left:20px;">
-				<a href data-ajax="false" id = "end_ques"><img border="0" src="back.png"></a>
+				<table border="0"><tr><td style="padding-left:24px;">
+				<a href data-ajax="false" id = "end_ques"  rel="external"><img border="0" src="back.png"></a>
 				</td><td width="100%">
 				<center>Post a Question</center>
-				</td><td style="padding-right:20px;">
+				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
 				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
 				</td></tr></table>
 			</div>
 			<!-- /header -->
-			<!-- /U-scale -->
-			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
-				<div id="UScale" class="UScale"></div>
+			<!-- /U-scale -->	
+			<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;padding-top:10px;padding-bottom:10px;">						
+				<script type="text/javascript" charset="utf-8" src="javascript/u_scale.js"></script>
+					<table border="0"><tr><td style="font-size:13px;"><div style="width: 46px"><center>
+						<b id="uresult1"></b> <img src="good_dark.png" height="15" width="15" align="top"></br>
+						<b id="uresult2"></b> <img src="bad_dark.png" height="15" width="15" align="top">
+						</div></center></td><td width="99%">
+						<div id="UScale" class="UScale" ></div></td><td><div style="width: 46px">
+						<center>
+						<!--<a data-role="button" data-inline="true" data-theme="a"  data-mini="true">-->
+						<a href><img src="refresh.png" height="25" width="25" id="reset_uscale" align="top" alt="Refresh the understanding scale"></a>
+						</center></div></td></tr>
+					</table>
 			</div>
 			<!-- /U-scale -->
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">

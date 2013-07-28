@@ -16,12 +16,17 @@
 	<body>
 		<!-- /Student home page -->
 		<div data-role="page" id="student_homepage" data-theme="a">
-			<div data-role="header" data-theme="c">
+			<div data-role="header" data-theme="c" data-position="inline">
 				<script type="text/javascript" charset="utf-8" src="javascript/studview_unit.js"></script>
+
+				<table border="0"><tr><td style="padding-left:40px;">
+				</td><td width="100%">
 				<center>Welcome</center>
+				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
-				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>				
-			</div>
+				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
+				</td></tr></table>
+			</div>		
 			<!-- /header -->
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				<div>
