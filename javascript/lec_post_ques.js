@@ -24,7 +24,7 @@ $.post("join_session.php", function(data){
 			locked = data;
 			if(data == 1){
 				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#6DC5DB' });
+				$(".resultbar > div").css({ 'background': '#D3D3D3' });
 			}
 			else{
 				$('#locked_in').html('');
@@ -46,7 +46,7 @@ $.post("join_session.php", function(data){
 			else {
 				locked = 1;
 				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#6DC5DB' });
+				$(".resultbar > div").css({ 'background': '#D3D3D3' });
 			}
 			$.post("lock_ques.php"); // switches lock state
 			return false;

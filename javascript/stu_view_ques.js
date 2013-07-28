@@ -94,7 +94,7 @@ $.post("join_session.php", function(data){
 		$.get("stu_lock_check.php", function(data){
 			locked = data;
 			if(data == 1){
-				$('#locked_in').html(' [ locked ]');
+				$('#locked_in').html(' [locked]');
 				$(".ans_button").buttonMarkup({ theme: "l" });
 			}
 			else
@@ -111,7 +111,7 @@ $.post("join_session.php", function(data){
 				}
 				else {
 					locked = 1;
-					$('#locked_in').html(' [ locked ]');
+					$('#locked_in').html(' [locked]');
 					$(".ans_button").buttonMarkup({ theme: "l" });
 				}
 			}// if it is the correct unit

@@ -72,22 +72,18 @@
 	color: #2489ce /*{a-body-link-active}*/;
 }
 .ui-btn-up-a {
-	border: 0px solid #D3D3D3 /*{a-bup-border}*/;
 	background: #D3D3D3 /*{a-bup-background-color}*/;
 	font-weight: normal;
 	color: #7F7F7F /*{a-bup-color}*/;
-	text-shadow: 0 /*{a-bup-shadow-x}*/ 0 /*{a-bup-shadow-y}*/ 0 /*{a-bup-shadow-radius}*/ #444444 /*{a-bup-shadow-color}*/;
 }
 .ui-btn-up-a:visited,
 .ui-btn-up-a a.ui-link-inherit {
 	color: #7F7F7F /*{a-bup-color}*/;
 }
 .ui-btn-hover-a {
-	border: 0px solid #C7C7C7 /*{a-bhover-border}*/;
 	background: #C7C7C7 /*{a-bhover-background-color}*/;
 	font-weight: normal;
 	color: #7F7F7F /*{a-bhover-color}*/;
-	text-shadow: 0 /*{a-bhover-shadow-x}*/ 0 /*{a-bhover-shadow-y}*/ 0 /*{a-bhover-shadow-radius}*/ #444444 /*{a-bhover-shadow-color}*/;
 }
 .ui-btn-hover-a:visited,
 .ui-btn-hover-a:hover,
@@ -95,11 +91,9 @@
 	color: #7F7F7F /*{a-bhover-color}*/;
 }
 .ui-btn-down-a {
-	border: 0px solid #B7B7B7 /*{a-bdown-border}*/;
 	background: #B7B7B7 /*{a-bdown-background-color}*/;
 	font-weight: normal;
 	color: #7F7F7F /*{a-bdown-color}*/;
-	text-shadow: 0 /*{a-bdown-shadow-x}*/ 0 /*{a-bdown-shadow-y}*/ 0 /*{a-bdown-shadow-radius}*/ #444444 /*{a-bdown-shadow-color}*/;
 }
 .ui-btn-down-a:visited,
 .ui-btn-down-a:hover,
@@ -475,23 +469,6 @@ min-width:100%;
 -----------------------------------------------------------------------------------------------------------*/
 a.ui-link-inherit {
 	text-decoration: none !important;
-}
-/* Active class used as the "on" state across all themes
------------------------------------------------------------------------------------------------------------*/
-.ui-btn-active {
-	border: 1px solid transparent /*{global-active-border}*/;
-	background: transparent/*{global-active-background-color}*/;
-	font-weight: normal;
-	color: #D3D3D3 /*{global-active-color}*/;
-	cursor: pointer;
-	text-shadow: 0 /*{global-active-shadow-x}*/ 0 /*{global-active-shadow-y}*/ 0 /*{global-active-shadow-radius}*/ #444444 /*{global-active-shadow-color}*/;
-	text-decoration: none;
-	   font-family: 'Roboto', sans-serif /*{global-font-family}*/;
-}
-.ui-btn-active:visited,
-.ui-btn-active:hover,
-.ui-btn-active a.ui-link-inherit {
-	color: #D3D3D3 /*{global-active-color}*/;
 }
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
