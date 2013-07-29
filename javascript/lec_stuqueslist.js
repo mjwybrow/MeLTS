@@ -32,7 +32,7 @@ $.post("join_session.php", function(data){
 					}
 					else{// list the students in a table format
 						$("#msg").text('Questions from Students');	
-						$("tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
+						$("table#stud_queslist tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
 						counter = counter+1;
 					}
 				})
@@ -129,7 +129,7 @@ $.post("join_session.php", function(data){
 						
 						var counter = 1;
 						// Clear the table
-						$("tbody").html("");
+						$("table#stud_queslist tbody").html("");
 						
 						// Read xml file
 						$(xml).find('Ques').each(function(){ 
@@ -143,7 +143,7 @@ $.post("join_session.php", function(data){
 							}
 							else{// list the students in a table format
 								$("#msg").text('Questions from Students');	
-								$("tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
+								$("table#stud_queslist tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
 								counter = counter+1;
 							}
 						})
@@ -171,7 +171,7 @@ $.post("join_session.php", function(data){
 						
 						var counter = 1;
 						// Clear the table
-						$("tbody").html("");
+						$("table#stud_queslist tbody").html("");
 						
 						// Read xml file
 						$(xml).find('Ques').each(function(){ 
@@ -185,7 +185,7 @@ $.post("join_session.php", function(data){
 							}
 							else{// list the students in a table format
 								$("#msg").text('Questions from Students');	
-								$("tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
+								$("table#stud_queslist tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td class="chooseques" data-name="'+id+'"><a href="#">'+ques_title+'</a></td><td>'+numOfVotes+'</td></tr>');
 								counter = counter+1;
 							}
 						})

@@ -3,7 +3,7 @@
 // Created 20 August 2012
 // To connect to the database
 
-$hostname_localhost ="localhost";
+$hostname_localhost ="127.0.0.1";
 //$database_localhost ="mydatabase";
 $username_localhost ="root";
 $password_localhost =""; 

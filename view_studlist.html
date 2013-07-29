@@ -16,24 +16,26 @@
 		<!-- /Lecturer home page -->
 		<div data-role="page" id="lec_student_list" data-theme="a">
 			<div data-role="header" data-theme = "c">
-				<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 				<script type="text/javascript" charset="utf-8" src="javascript/view_studlist.js"></script>
+
+				<table border="0"><tr><td style="padding-left:24px;">
+				<a href="unit.html"  rel="external"><img border="0" src="back.png"></a>
+				</td><td width="100%">
 				<center>Student List</center>
-				<a href="unit.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
+				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
-				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>
+				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
+				</td></tr></table>
 			</div>
 			<!-- /header -->
 			<div data-role="content" data-theme = "a" style="max-width:800px;margin: 0 auto;">
-				<br>
-				<div>
+					</br>
 					<a href="add_student.html" rel="external" data-ajax="false" data-inline="true" data-role="button" data-mini="true" data-theme="a">Add student</a>
 					<a data-role="button" data-mini="true" data-inline="true" id="selectall">Select All</a>
 					<a data-role="button" data-mini="true" data-inline="true" id="unselectall">Unselect All</a>
 					<a data-role="button" data-mini="true" data-inline="true" id="delete_stud">Delete</a>
-					<br>
-				</div>
-				<!-- /Back button -->
+					</br>
+					</br>
 				<table data-role="table" id="stud_list" class="ui-responsive table-stroke">
 					<thead>
 						<tr>
