@@ -218,8 +218,8 @@
 /* C
 -----------------------------------------------------------------------------------------------------------*/
 .ui-bar-c {
-	border:20px solid #7F7F7F /*{a-bar-border}*/;
-	background: #7F7F7F /*{a-bar-background-color}*/;
+	border:20px solid #E9B050 /*{a-bar-border}*/;
+	background: #E9B050 /*{a-bar-background-color}*/;
 	color: #ffffff /*{a-bar-color}*/;
 	font-weight: normal;
 }

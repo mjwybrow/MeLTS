@@ -1,5 +1,5 @@
 <?php
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 4 September 2012
 // For lecturers to add units taught by them
 
@@ -47,6 +47,10 @@ if(mysql_affected_rows()==0){//no username exist in database
 	mysql_query("CREATE TABLE lecturer_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id),lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500), LOCKED INT(1))")  or die("Lecturer's question table cannot be added!!");
 	mysql_query("CREATE TABLE current_lecques (id INT, lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500))")  or die("Lecturer's current question table cannot be added!!");
 	mysql_query("CREATE TABLE students_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id), title VARCHAR(500), stu_ques VARCHAR(2500),votes INT)")  or die("Lecturer's current question table cannot be added!!");
+	mysql_query("CREATE TABLE themes (selection INT(1), css_string VARCHAR(255))")  or die("Themes table could not be added!!");
+	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (1,\"melts.css\")")  or die("Theme value 1 could not be added!!");
+	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (0,\"melts_arts.css\")")  or die("Theme value 2 could not be added!!");
+	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (0,\"melts_engineering.css\")")  or die("Theme value 3 could not be added!!");
 	echo("1");
 }
 else{
