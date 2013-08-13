@@ -12,7 +12,10 @@ include('connections.php');
 //Get unit code and unit name from form
 $unit_code = mysql_real_escape_string($_POST['unit_code']);
 $unit_name = mysql_real_escape_string($_POST['unit_name']);
+$theme_selection = mysql_real_escape_string($_POST['theme_selection']);
 //$ip = $_SERVER['REMOTE_ADDR'];
+
+echo $theme_selection;
 
 // Select database to connect
 mysql_select_db("main_database",$dbcon) or die("Cannot select main database!");
@@ -48,9 +51,9 @@ if(mysql_affected_rows()==0){//no username exist in database
 	mysql_query("CREATE TABLE current_lecques (id INT, lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500))")  or die("Lecturer's current question table cannot be added!!");
 	mysql_query("CREATE TABLE students_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id), title VARCHAR(500), stu_ques VARCHAR(2500),votes INT)")  or die("Lecturer's current question table cannot be added!!");
 	mysql_query("CREATE TABLE themes (selection INT(1), css_string VARCHAR(255))")  or die("Themes table could not be added!!");
-	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (1,\"melts.css\")")  or die("Theme value 1 could not be added!!");
-	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (0,\"melts_arts.css\")")  or die("Theme value 2 could not be added!!");
-	mysql_query("INSERT INTO  themes (selection, css_string) VALUES (0,\"melts_engineering.css\")")  or die("Theme value 3 could not be added!!");
+	mysql_query("INSERT INTO themes (selection, css_string) VALUES ($theme_selection[0],\"melts.css\")")  or die("Theme value 1 could not be added!!");
+	mysql_query("INSERT INTO  themes (selection, css_string) VALUES ($theme_selection[1],\"melts_arts.css\")")  or die("Theme value 2 could not be added!!");
+	mysql_query("INSERT INTO  themes (selection, css_string) VALUES ($theme_selection[2],\"melts_engineering.css\")")  or die("Theme value 3 could not be added!!");
 	echo("1");
 }
 else{

@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 4 September 2012
 // For lecturers to add units taught by them
 
@@ -17,12 +17,16 @@ $(document).ready(function() {
 		if (!unit_name) { alert('Please enter a unit name.'); return false; }
 		unit_name = escape(unit_name);
 		unit_name = unit_name.replace(/\+/g, "%2B");
-	  
+		
+		//get theme selection
+		alert($('input:radio[name=theme]:checked').val());
+		var theme_selection = $('input:radio[name=theme]:checked').val();
+			
 		//use jquery ajax to post data to php server
 		$.ajax({
 			url: "add_unit.php",
 			type: 'post',
-			data: 'unit_code='+unit_code+'&unit_name='+unit_name,
+			data: 'unit_code='+unit_code+'&unit_name='+unit_name+'&theme_selection='+theme_selection,
 			success: function (result) {
 			//results sent by PHP
 				if (result=="1"){
