@@ -22,7 +22,7 @@ $(document).ready(function() {
 					$("#msg").text('No questions found!!');
 				}
 				else{// list the units in an unordered list
-					$("tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td>'+ques+'</td></tr>');
+					$("table#lecturer_queslist tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+id+'"/></td><td>'+counter+'</td><td>'+ques+'</td></tr>');
 					counter = counter+1;
 				} 
 			})

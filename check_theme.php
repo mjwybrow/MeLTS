@@ -13,7 +13,7 @@ include('connections.php');
 $uname = $_SESSION['uname'];
 $unit_chosen = $_SESSION['unit_chosen'];
 
-// add check for student or lecturer
+// add check for student
 
 $database_name = $unit_chosen.'_'.$uname;
 mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
