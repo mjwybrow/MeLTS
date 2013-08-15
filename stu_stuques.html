@@ -7,7 +7,7 @@
 		<title>Student's Question</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/melts.css" />
+		<?php echo "<link rel=\"stylesheet\" href=\"css/"; include('check_theme.php'); echo "\" />"; ?>
 		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
 		<script src="jquery/jquery-1.9.1.min.js"></script>
 		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
@@ -20,10 +20,15 @@
 			<div data-role="header" data-theme="c">
 				<script type="text/javascript" charset="utf-8" src="javascript/stud_uscale.js"></script>
 				<script type="text/javascript" charset="utf-8" src="javascript/stu_stuques.js"></script>
+
+				<table border="0"><tr><td style="padding-left:24px;">
+				<a href="stu_ask_ques.html"  rel="external"><img border="0" src="back.png"></a>
+				</td><td width="100%">
 				<center>Question</center>
-				<a href="stu_ask_ques.html" rel="external" data-role="button" data-ajax="false" class = "ui-btn-left">Back</a>
+				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
-				<a id="page_logout_submit" rel="external" data-role="button" data-ajax="false" class ="ui-btn-right">Logout</a>
+				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
+				</td></tr></table>
 			</div>
 			<!-- /header -->
 			<!--U-scale grid-->				
