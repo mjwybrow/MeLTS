@@ -1,4 +1,4 @@
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 22 March 2013
 // For lecturers to add questions to question list
 
@@ -38,12 +38,23 @@ $(document).ready(function() {
 		if (!D) { D = ""; }
 		D = escape(D);
 		D = D.replace(/\+/g, "%2B");
-	  
+		
+		//get correct answers
+		var answers = '';
+		if ($('#ans_A').prop('checked'))
+			answers = answers+'A';
+		if ($('#ans_B').prop('checked'))
+			answers = answers+'B';
+		if ($('#ans_C').prop('checked'))
+			answers = answers+'C';
+		if ($('#ans_D').prop('checked'))
+			answers = answers+'D';
+		
 		//use jquery ajax to post data to php server
 		$.ajax({
 			url: "lec_add_ques.php",
 			type: 'post',
-			data: 'lec_ques='+lec_ques+'&A='+A+'&B='+B+'&C='+C+'&D='+D,
+			data: 'lec_ques='+lec_ques+'&A='+A+'&B='+B+'&C='+C+'&D='+D+'&ANSWERS='+answers,
 			success: function (result) {
 				if (result==""){
 					$("#msg").text("Question added successfully.");
@@ -60,7 +71,7 @@ $(document).ready(function() {
 				}	 
 			},
 			error: function(){	
-				alert('There was an error saving lecturers question');	
+				alert('There was an error saving the question');	
 			}
 		});// ajax
 		return false;
