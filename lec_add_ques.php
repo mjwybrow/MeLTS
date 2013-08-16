@@ -1,5 +1,5 @@
 <?php
-// Written by Shea Yuin Ng
+// Written by Shea Yuin Ng, Nathan Sherburn
 // Created 11 October 2012
 // For lecturers to add questions to question list
 
@@ -15,6 +15,7 @@ $A = $_POST['A'];
 $B = $_POST['B'];
 $C = $_POST['C'];
 $D = $_POST['D'];
+$answers = $_POST['ANSWERS'];
 //$ip = $_SERVER['REMOTE_ADDR'];
 
 // Enable saving special characters
@@ -23,6 +24,7 @@ $A = mysql_real_escape_string($A);
 $B = mysql_real_escape_string($B);
 $C = mysql_real_escape_string($C);
 $D = mysql_real_escape_string($D);
+$answers = mysql_real_escape_string($answers);
 
 // Get username and unit code from session variable
 $uname = $_SESSION['uname'];
@@ -33,7 +35,7 @@ $database_name = $unit_code.'_'.$uname;
 mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("INSERT INTO lecturer_ques(lec_ques, A, B, C, D) VALUES('$lec_ques','$A','$B','$C','$D')")  or die("Question cannot be added!!");
+mysql_query("INSERT INTO lecturer_ques(lec_ques, A, B, C, D, ANSWERS) VALUES('$lec_ques','$A','$B','$C','$D','$answers')")  or die("Question cannot be added!!");
 
 // Get id for question
 $get_details="SELECT id FROM lecturer_ques WHERE lec_ques = '$lec_ques'";
