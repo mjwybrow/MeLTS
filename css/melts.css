@@ -545,7 +545,7 @@ a.ui-link-inherit {
 }
 /* arrows */
 .ui-icon-arrow-r {
-	background-position: 	-108px -1px;
+	background-position: 	-108px -1px; /* -108px */
 }
 .ui-icon-arrow-l {
 	background-position: 	-144px -1px;
@@ -643,7 +643,7 @@ a.ui-link-inherit {
 		background-position: 	-72px 50%;
 	}
 	.ui-icon-arrow-r {
-		background-position: 	-108px 50%;
+		background-position: 	-108px 50%; 
 	}
 	.ui-icon-arrow-l {
 		background-position: 	-144px 50%;
