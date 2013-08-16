@@ -15,8 +15,6 @@ $unit_name = mysql_real_escape_string($_POST['unit_name']);
 $theme_selection = mysql_real_escape_string($_POST['theme_selection']);
 //$ip = $_SERVER['REMOTE_ADDR'];
 
-echo $theme_selection;
-
 // Select database to connect
 mysql_select_db("main_database",$dbcon) or die("Cannot select main database!");
 
@@ -54,10 +52,10 @@ if(mysql_affected_rows()==0){//no username exist in database
 	mysql_query("INSERT INTO themes (selection, css_string) VALUES ($theme_selection[0],\"melts.css\")")  or die("Theme value 1 could not be added!!");
 	mysql_query("INSERT INTO  themes (selection, css_string) VALUES ($theme_selection[1],\"melts_arts.css\")")  or die("Theme value 2 could not be added!!");
 	mysql_query("INSERT INTO  themes (selection, css_string) VALUES ($theme_selection[2],\"melts_engineering.css\")")  or die("Theme value 3 could not be added!!");
-	echo("1");
+	echo("Unit added");
 }
 else{
-	echo("0");
+	echo("Failed to add unit");
 }
 
 // Close connection to mySOL
