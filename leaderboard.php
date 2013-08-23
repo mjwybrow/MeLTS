@@ -71,7 +71,7 @@ echo "
 </tr>";
 
 // Select all students and their scores
-$nickname_resource = mysql_query("SELECT * FROM student_list WHERE 1") or die("Cannot get student list");
+$nickname_resource = mysql_query("SELECT * FROM student_list ORDER BY score DESC;") or die("Cannot get student list");
 
 // Fill the table
 while($row = mysql_fetch_array($nickname_resource)){
