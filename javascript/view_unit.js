@@ -17,7 +17,7 @@ $(document).ready(function() {
 				
 				if (unit_code== "0"){// means there's no units registered for the lecturer
 					// Empty list, show this msg
-					$("#view_unitmsg").text('No units found!');
+					$("#view_unitmsg").text('No units found');
 				}
 				else{// list the units in an unordered list
 					$("#view_unitmsg").text('Please choose a unit');	

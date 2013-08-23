@@ -49,7 +49,7 @@ $(document).ready(function() {
 			success: function (result) {
 				//results sent by PHP
 				if (result=="1"){
-					alert('Account successfully created.');
+					alert('Account successfully created');
 					$.mobile.changePage($(document.location.href="index.html"), "slideup");
 				}
 				else{
@@ -58,7 +58,7 @@ $(document).ready(function() {
 				}	 
 			},
 			error: function(){	
-				alert('There was an error in creating account');	
+				alert('There was an error in creating this account');	
 			}
 		});// ajax
 		return false;
