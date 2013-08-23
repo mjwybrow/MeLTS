@@ -35,7 +35,7 @@ if(!$r) {
 // If username not used before
 if(mysql_affected_rows()==0){//no username exist in database
 	// Insert username and password into list of units table in database
-	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added!! Please ensure the unit code has only 7 characters including spacing");
+	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing.");
 	
 	// Create database for the unit to hold sessions
 	$database_name = $unit_code.'_'.$uname;
@@ -43,7 +43,7 @@ if(mysql_affected_rows()==0){//no username exist in database
 	
 	// Create table in newly created database to store the list of students, a list to store the lecturer questions and a table to store current question
 	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
-	mysql_query("CREATE TABLE student_list (username VARCHAR(20), first_name VARCHAR(30), last_name VARCHAR(50), u_scale VARCHAR(1))")  or die("Students' list table cannot be added!!");
+	mysql_query("CREATE TABLE student_list (username VARCHAR(20), first_name VARCHAR(30), last_name VARCHAR(50), u_scale VARCHAR(1))")  or die("Students' list table cannot be added!");
 	//mysql_query("CREATE TABLE participant (username VARCHAR(10), mcq_answer VARCHAR(4))")  or die("Participants' table cannot be added!!");
 	mysql_query("CREATE TABLE lecturer_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id),lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500), ANSWERS VARCHAR(4), LOCKED INT(1))")  or die("Lecturer's question table cannot be added!!");
 	mysql_query("CREATE TABLE current_lecques (id INT, lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500))")  or die("Lecturer's current question table cannot be added!!");

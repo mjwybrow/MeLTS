@@ -32,8 +32,8 @@ if(mysql_affected_rows()!=0){//If the list is not empty
 	while ($studlist_array = mysql_fetch_array($get_studlist)) {
 		// Get details of every student
 		$stud_name = $studlist_array['username'];
-		$stud_fname = $studlist_array['first_name'];
-		$stud_lname = $studlist_array['last_name'];
+		$stud_fname = mysql_real_escape_string($studlist_array['first_name']);
+		$stud_lname = mysql_real_escape_string($studlist_array['last_name']);
 		
 		// Connect to unit database and insert into the database
 		mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
