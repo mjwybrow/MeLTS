@@ -28,4 +28,6 @@ $css_row = mysql_fetch_row($css_resource);
 $css_string = $css_row[1];
 
 echo $css_string;
+
+mysql_close($dbcon);
 ?>

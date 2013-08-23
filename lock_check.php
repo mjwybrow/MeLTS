@@ -29,4 +29,5 @@ $locked = $locked_row[0];
 // Echo lock status
 echo ($locked);
 
+mysql_close($dbcon);
 ?>
