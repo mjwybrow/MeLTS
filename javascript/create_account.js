@@ -49,7 +49,7 @@ $(document).ready(function() {
 			success: function (result) {
 				//results sent by PHP
 				if (result=="1"){
-					alert('Account successfully created. You may login now.=)');
+					alert('Account successfully created.');
 					$.mobile.changePage($(document.location.href="index.html"), "slideup");
 				}
 				else{
