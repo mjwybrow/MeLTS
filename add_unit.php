@@ -12,7 +12,7 @@ include('connections.php');
 //Get unit code and unit name from form
 $unit_code = mysql_real_escape_string($_POST['unit_code']);
 $unit_name = mysql_real_escape_string($_POST['unit_name']);
-$theme_selection = mysql_real_escape_string($_POST['theme_selection']);
+$theme_selection = $_POST['theme_selection'];
 //$ip = $_SERVER['REMOTE_ADDR'];
 
 // Select database to connect
@@ -35,7 +35,7 @@ if(!$r) {
 // If username not used before
 if(mysql_affected_rows()==0){//no username exist in database
 	// Insert username and password into list of units table in database
-	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added!! Please ensure the unit code has only 7 characters including spacing");
+	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing");
 
 	// Create database for the unit to hold sessions
 	$database_name = $unit_code.'_'.$uname;

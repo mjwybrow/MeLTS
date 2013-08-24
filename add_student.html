@@ -41,11 +41,11 @@
 						
 						// Display the alert message box according to the flag value
 						if(flag == false){
-							alert('Files with extension ".' + fileExtension.toUpperCase() + '" are not allowed.\n\nYou can upload the files with .csv extensions only');
+							alert('Please select a csv file');
 							return false;
 						}
 						else{
-							alert('File has valid extension.');
+							//alert('File has valid extension.');
 							return true;
 						}
 					}
@@ -141,7 +141,7 @@
 								
 								// Display the alert message box according to the flag value
 								if(flag == false){
-									alert('Files with extension ".' + fileExtension.toUpperCase() + '" are not allowed.\n\nYou can upload the files with .csv extensions only');
+									alert('Please select a csv file');
 									return false;
 								}
 								else{
@@ -150,6 +150,7 @@
 											var endByte = evt.target.getAttribute('data-endbyte');
 											readFile(startByte, endByte);
 										}
+										alert('Students added successfully');
 									return true;
 								}
 							
