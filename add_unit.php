@@ -12,7 +12,7 @@ include('connections.php');
 //Get unit code and unit name from form
 $unit_code = mysql_real_escape_string($_POST['unit_code']);
 $unit_name = mysql_real_escape_string($_POST['unit_name']);
-$theme_selection = $_POST['theme_selection'];
+$theme_selection = mysql_real_escape_string($_POST['theme_selection']);
 //$ip = $_SERVER['REMOTE_ADDR'];
 
 // Select database to connect

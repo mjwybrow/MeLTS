@@ -3,13 +3,15 @@
 // For lecturers to view the student list for a unit
 
 $(document).ready(function() {
+				
 	// Use jquery ajax to get data from php server
 	$.ajax({
 		url: "view_studlist.php",
 		type: 'post',
 		dataType: "xml",  
 		success: function (xml) {
-			
+
+
 			var counter = 1;
 
 			// Read xml file
@@ -25,6 +27,7 @@ $(document).ready(function() {
 				else{// list the students in a table format
 					$("table#stud_list tbody").append('<tr><td align="center"><input type="checkbox" class="cbox" id="'+stud_uname+'"/></td><td>'+counter+'</td><td>'+stud_uname+'</td><td>'+stud_fname+'</td><td>'+stud_lname+'</td></tr>');
 					counter = counter+1;
+
 				}
 			})
 		},  
@@ -36,7 +39,7 @@ $(document).ready(function() {
 			$.mobile.changePage($(document.location.href="index.html"), "slideup");  
 		}  
 	});// ajax
-
+	
 	// Select all functionality
 	$(document).on('click',"#selectall",function(){
 		  $('.cbox').prop('checked', true);

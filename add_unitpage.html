@@ -49,6 +49,7 @@
 			<!-- /header -->
 			</br>
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
+				<fieldset>
 				<!-- Get input for unit code -->
 				<div>
 					Unit code
@@ -64,13 +65,18 @@
 				<!-- /unit name -->
 				</br>
 				Unit Theme
-				<form>
-					<input type="radio" id="theme1" name="theme" value="100" /><label for="theme1">MeLTS</label>
-					<input type="radio" id="theme2" name="theme" value="010" /><label for="theme2">Arts</label>
-					<input type="radio" id="theme3" name="theme" value="001" /><label for="theme3">Engineering</label>
-				</form>
+				<select id="theme" name="theme" data-theme="a">
+					<option value="100">
+						Default
+					</option>
+					<option value="010">
+						Arts
+					</option>
+					<option value="001">
+						Engineering
+					</option>
+				</select>
 				</br>
-				<fieldset>
 					<div><button type="button" data-theme="a" id="add_unit_submit">Add unit</button></div>
 				</fieldset>
 				<!-- To write message from PHP -->

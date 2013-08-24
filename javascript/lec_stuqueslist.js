@@ -28,7 +28,7 @@ $.post("join_session.php", function(data){
 
 					if (ques_title== "0"){// means there's no students
 						// Empty table, show this msg
-						$("#msg").text('No question found!!');
+						$("#msg").text('No questions today');
 					}
 					else{// list the students in a table format
 						$("#msg").text('Questions from Students');	
@@ -139,7 +139,7 @@ $.post("join_session.php", function(data){
 
 							if (ques_title== "0"){// means there's no students
 								// Empty table, show this msg
-								$("#msg").text('No question found!!');
+								$("#msg").text('No questions today');
 							}
 							else{// list the students in a table format
 								$("#msg").text('Questions from Students');	
@@ -181,7 +181,7 @@ $.post("join_session.php", function(data){
 
 							if (ques_title== "0"){// means there's no students
 								// Empty table, show this msg
-								$("#msg").text('No question found!!');
+								$("#msg").text('No questions today');
 							}
 							else{// list the students in a table format
 								$("#msg").text('Questions from Students');	

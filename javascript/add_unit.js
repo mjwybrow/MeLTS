@@ -19,8 +19,9 @@ $(document).ready(function() {
 		unit_name = unit_name.replace(/\+/g, "%2B");
 		
 		//get theme selection
-		var theme_selection = $('input:radio[name=theme]:checked').val();
-			
+		var theme_selection = $("#theme").val();
+		alert(theme_selection);
+		
 		//use jquery ajax to post data to php server
 		$.ajax({
 			url: "add_unit.php",
