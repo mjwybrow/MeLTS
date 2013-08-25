@@ -39,16 +39,24 @@ $(document).ready(function() {
 		D = escape(D);
 		D = D.replace(/\+/g, "%2B");
 		
-		//get correct answers
+		//get correct answer key
 		var answers = '';
 		if ($('#ans_A').prop('checked'))
 			answers = answers+'A';
+		else
+			answers = answers+'#';
 		if ($('#ans_B').prop('checked'))
 			answers = answers+'B';
+		else
+			answers = answers+'#';
 		if ($('#ans_C').prop('checked'))
 			answers = answers+'C';
+		else
+			answers = answers+'#';
 		if ($('#ans_D').prop('checked'))
 			answers = answers+'D';
+		else
+			answers = answers+'#';
 		
 		//use jquery ajax to post data to php server
 		$.ajax({

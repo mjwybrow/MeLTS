@@ -54,8 +54,13 @@ while($correct_answer = mysql_fetch_array($correct_answer_res)){
 				echo $student_answer['mcq_answer'][3];
 				echo '</br>';
 			}*/
-			if($student_answer['username']==$current_student && $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS']){
+			if($student_answer['username']==$current_student && 
+			($student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][0] || 
+			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][1] || 
+			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][2] || 
+			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][3])){
 				mysql_query("UPDATE student_list SET score=score+1 WHERE username='$current_student'") or die('Cannot update score');
+				echo 'updating score';
 			};
 		};
 	};
