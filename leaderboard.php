@@ -60,7 +60,7 @@ while($correct_answer = mysql_fetch_array($correct_answer_res)){
 			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][2] || 
 			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][3])){
 				mysql_query("UPDATE student_list SET score=score+1 WHERE username='$current_student'") or die('Cannot update score');
-				echo 'updating score';
+				//echo 'updating score';
 			};
 		};
 	};

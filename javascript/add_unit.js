@@ -20,7 +20,7 @@ $(document).ready(function() {
 		
 		//get theme selection
 		var theme_selection = $("#theme").val();
-		alert(theme_selection);
+		//alert(theme_selection);
 		
 		//use jquery ajax to post data to php server
 		$.ajax({
