@@ -1,0 +1,52 @@
+<!--Written by Nathan Sherburn-->
+<!--Created 16 August 2013-->
+<!DOCTYPE html>
+<!--Lecturer's homepage-->
+<html>
+	<head>
+		<title>Leaderboard</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<?php echo "<link rel=\"stylesheet\" href=\"css/"; include('check_theme.php'); echo "\" />"; ?>
+		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
+		<script src="jquery/jquery-1.9.1.min.js"></script>
+		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
+		<style> 
+			tr:nth-child(even) {
+				background-color: #EAEAEA;
+			}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" id="lec_data_analysis" data-theme="a">
+			<!-- /header -->
+			<div data-role="header" data-theme="c" data-position="inline">
+				<script type="text/javascript" charset="utf-8" src="javascript/change_alias.js"></script>
+
+				<table border="0"><tr><td style="padding-left:24px;">
+				<a href="stud_unit.html"  rel="external"><img border="0" src="back.png"></a>
+				</td><td width="100%">
+				<center>Leaderboard</center>
+				</td><td style="padding-right:24px;">
+				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
+				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png"></a>
+				</td></tr></table>
+			</div>
+			<!-- /header -->
+			<!-- /content -->
+			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
+				</br>
+				</br>
+				<form class="iform" id="change_alias">
+					Change alias:
+					<input id="nickname" name="nickname" placeholder="Nickname" data-mini="true"></input>
+					<input type="submit" data-theme="a" data-mini="true" id="change_nickname" value="Change"/>
+				</form>
+				</br>
+				<?php include('leaderboard.php'); ?>
+				</br>
+			</div>
+			<!-- /content -->
+		</div>
+	</body>
+</html>
