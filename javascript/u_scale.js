@@ -111,7 +111,7 @@ $.post("join_session.php", function(data){
 							$("#UScale").css({ 'background': '#FFD177' });
 							
 							$('#uresult').html('');
-							$('#uresult2').html('0');
+							$('#uresult1').html('0');
 							$('#uresult2').html('0');
 						}
 						else{
