@@ -1,0 +1,19 @@
+Art, Design and Architecture [no theme]
+
+Arts #911c11;
+
+Business and Economics #00889C;
+
+Education #9E0039;
+
+Engineering #E9B050;
+
+Information Technology #643579;
+
+Law #968D81;
+
+Medicine, Nursing and Health Sciences #0091c0;
+
+Pharmacy and Pharmaceutical Sciences #9AA71D;
+
+Science #035f40;
