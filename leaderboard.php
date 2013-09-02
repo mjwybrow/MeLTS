@@ -10,12 +10,20 @@ include('connections.php');
 $uname = $_SESSION['uname'];
 $unit_chosen = $_SESSION['unit_chosen'];
 $status = $_SESSION['status'];
-//$id = $_SESSION['id'];
+
 
 // Set database name
 if ($status=='S'){
 	$lec_uname = $_SESSION['lec_uname'];
 	$database_name = $unit_chosen.'_'.$lec_uname;
+	
+	// update nickname from main_database's account table
+	mysql_select_db('main_database',$dbcon) or die("Cannot select main_database database!");
+	$nickname_resource = mysql_query("SELECT * FROM account WHERE username = '$uname'");
+	$nickname_row = mysql_fetch_array($nickname_resource);
+	$nickname = $nickname_row['nickname'];
+	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_query("UPDATE student_list SET nickname = '$nickname' WHERE username = '$uname'");
 }
 else{
 	$uname = $_SESSION['uname'];
