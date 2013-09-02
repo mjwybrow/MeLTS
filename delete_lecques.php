@@ -24,11 +24,11 @@ for ($i=0; $i<$j; $i++){
 	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 	
 	// Delete from question list
-	mysql_query("DELETE FROM lecturer_ques WHERE  id='$qid[$i]'") or die("Question cannot be deleted!!");
+	mysql_query("DELETE FROM lecturer_ques WHERE  id='$qid[$i]'") or die("Question cannot be deleted!");
 	
 	// Drop table containing the results
 	$tablename = 'q_'.$qid[$i];
-	mysql_query("DROP TABLE $tablename") or die("Question table cannot be dropped!!");
+	mysql_query("DROP TABLE $tablename") or die("Question table cannot be dropped!");
 	
 }//for every question
 

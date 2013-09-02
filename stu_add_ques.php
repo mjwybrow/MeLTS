@@ -26,21 +26,21 @@ $database_name = $unit_code.'_'.$lec_uname;
 mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("INSERT INTO students_ques(title, stu_ques, votes) VALUES('$ques_title','$question','0')")  or die("Question cannot be added!!");
+mysql_query("INSERT INTO students_ques(title, stu_ques, votes) VALUES('$ques_title','$question','0')")  or die("Question cannot be added!");
 
 // Get id for question
 $get_details="SELECT id FROM students_ques WHERE title = '$ques_title' and stu_ques = '$question'";
 // Get ID of the array
-$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+$query_details = mysql_query($get_details)  or die("Cannot query details!");
 // Get the whole row of information of the question
-$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 // Extract 'id' field from the array
 $id = $fetch_details['id'];
 
 $table_name='sq_'.$id;
 
 // Create a table for each question
-mysql_query("CREATE TABLE $table_name (username VARCHAR(20))") or die("Question table cannot be added!!");
+mysql_query("CREATE TABLE $table_name (username VARCHAR(20))") or die("Question table cannot be added!");
 
 // Close connection to mySOL
 mysql_close($dbcon);

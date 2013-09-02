@@ -20,7 +20,7 @@ $database_name = $unit_code.'_'.$uname;
 mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 
 // Reset the whole list to 0
-mysql_query("UPDATE student_list SET u_scale='0'")  or die("Answer not updated!!");
+mysql_query("UPDATE student_list SET u_scale='0'")  or die("Answer not updated!");
 
 // Send info back to JS
 echo $unit_code;

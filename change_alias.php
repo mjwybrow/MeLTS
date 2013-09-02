@@ -14,15 +14,14 @@ $nickname = mysql_real_escape_string($_POST['nickname']);
 
 // Get username from session variable
 $uname = $_SESSION['uname'];
-$lecu_name = $_SESSION['lec_uname'];
-$unit_code = $_SESSION['unit_chosen'];
+//$lecu_name = $_SESSION['lec_uname'];
+//$unit_code = $_SESSION['unit_chosen'];
 
 // Connect to database and insert into the database
-$database_name = $unit_code.'_'.$lecu_name;
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db('main_database',$dbcon) or die("Cannot select main database!");
 
 // Check whether the username already existed
-$sql="SELECT * FROM student_list WHERE nickname = '$nickname'";
+$sql="SELECT * FROM account WHERE nickname = '$nickname'";
 $r = mysql_query($sql);
 
 // If error in selecting table
@@ -34,7 +33,7 @@ if(!$r) {
 
 // If student not registered
 if(mysql_affected_rows()==0){
-	mysql_query("UPDATE student_list SET nickname = '$nickname' WHERE username = '$uname'");
+	//mysql_query("UPDATE student_list SET nickname = '$nickname' WHERE username = '$uname'");
 	mysql_select_db('main_database',$dbcon) or die("Cannot select main database!");
 	mysql_query("UPDATE account SET nickname = '$nickname' WHERE username = '$uname'");
 	echo("1");

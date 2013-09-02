@@ -35,21 +35,21 @@ $database_name = $unit_code.'_'.$uname;
 mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("INSERT INTO lecturer_ques(lec_ques, A, B, C, D, ANSWERS) VALUES('$lec_ques','$A','$B','$C','$D','$answers')")  or die("Question cannot be added!!");
+mysql_query("INSERT INTO lecturer_ques(lec_ques, A, B, C, D, ANSWERS) VALUES('$lec_ques','$A','$B','$C','$D','$answers')")  or die("Question cannot be added!");
 
 // Get id for question
 $get_details="SELECT id FROM lecturer_ques WHERE lec_ques = '$lec_ques'";
 // Get ID of the array
-$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+$query_details = mysql_query($get_details)  or die("Cannot query details!");
 // Get the whole row of information of the question
-$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 // Extract 'id' field from the array
 $id = $fetch_details['id'];
 
 $table_name='q_'.$id;
 
 // Create a table for each question
-mysql_query("CREATE TABLE $table_name (username VARCHAR(20), mcq_answer VARCHAR(4))") or die("Question table cannot be created!!");
+mysql_query("CREATE TABLE $table_name (username VARCHAR(20), mcq_answer VARCHAR(4))") or die("Question table cannot be created!");
 
 // Close connection to mySOL
 mysql_close($dbcon);

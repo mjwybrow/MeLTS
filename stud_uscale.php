@@ -26,18 +26,18 @@ mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 // Get the details of the unit
 $get_details="SELECT * FROM student_list WHERE username = '$uname'";
 // Get ID of the array
-$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+$query_details = mysql_query($get_details)  or die("Cannot query details!");
 // Get the whole row of information of the unit
-$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 // Extract 'unit_name' field from the array
 $prev_uscale = $fetch_details['u_scale'];
 
 if ($prev_uscale==$u_scale){// To retract response
-	mysql_query("UPDATE student_list SET u_scale='0' WHERE username='$uname'")  or die("Response not updated!!");
+	mysql_query("UPDATE student_list SET u_scale='0' WHERE username='$uname'")  or die("Response not updated!");
 	$flag = 0;
 }
 else{// To respond or to change response
-	mysql_query("UPDATE student_list SET u_scale='$u_scale' WHERE username='$uname'")  or die("Response not updated!!");
+	mysql_query("UPDATE student_list SET u_scale='$u_scale' WHERE username='$uname'")  or die("Response not updated!");
 	$flag = 1;
 }
 

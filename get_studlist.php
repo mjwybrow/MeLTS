@@ -18,7 +18,7 @@ mysql_select_db("main_database",$dbcon) or die("Cannot select database!");
 
 // Get the unitname for other lecturers
 $query = "SELECT * FROM units WHERE unit_code='$unit_chosen' AND NOT lecturer='$uname'";
-$get_lecname = mysql_query($query) or die("Cannot get other list!!");
+$get_lecname = mysql_query($query) or die("Cannot get other list!");
 
 // Output data in XML format
 header("Content-type: text/xml"); //Declare saving data in XML form

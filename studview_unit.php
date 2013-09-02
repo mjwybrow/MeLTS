@@ -46,7 +46,7 @@ else{
 	echo "<Units>"; //Top root directory
 
 	// Get the whole row of information of the unit
-	$fetch_details = mysql_fetch_array($r) or die("Cannot fetch details!!");
+	$fetch_details = mysql_fetch_array($r) or die("Cannot fetch details!");
 	//Get each element
 	$unit1_code = $fetch_details["unit1"];
 	$unit2_code = $fetch_details["unit2"];
@@ -64,7 +64,7 @@ else{
 			//If no, 
 			if(mysql_affected_rows()==1){
 				// Get the whole row of information of the unit
-				$fetch_details = mysql_fetch_array($query) or die("Cannot fetch details!!");
+				$fetch_details = mysql_fetch_array($query) or die("Cannot fetch details!");
 				// Extract 'unit_name' and 'lecturer' field from the array
 				$unit_name = htmlspecialchars($fetch_details['unit_name']);
 				$unit_lecname = htmlspecialchars($fetch_details['lecturer']);
@@ -101,9 +101,9 @@ else{
 						// Get the details of the unit
 						$get_details="SELECT * FROM units WHERE unit_code = '$unit_code[$i]' and lecturer = '$lecturer_uname'";
 						// Get ID of the array
-						$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+						$query_details = mysql_query($get_details)  or die("Cannot query details!");
 						// Get the whole row of information of the unit
-						$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+						$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 						// Extract 'unit_name' field from the array
 						$unit_name = htmlspecialchars($fetch_details['unit_name']);
 						$lecturer_uname = htmlspecialchars($lecturer_uname);

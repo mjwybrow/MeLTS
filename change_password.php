@@ -32,9 +32,9 @@ if(mysql_affected_rows()!=0){// username exist in database
 	// Get the details of the user
 	$get_details="SELECT * FROM account WHERE username = '$uname'";
 	// Get ID of the array
-	$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+	$query_details = mysql_query($get_details)  or die("Cannot query details!");
 	// Get the whole row of information of the unit
-	$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+	$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 	// Extract 'unit_name' field from the array
 	$prevpswd = $fetch_details['password'];
 	
@@ -43,7 +43,7 @@ if(mysql_affected_rows()!=0){// username exist in database
 	}
 	else{
 		// Change the password in database
-		mysql_query("UPDATE account SET password='$newpswd' WHERE username='$uname'")  or die("Password not changed!!");
+		mysql_query("UPDATE account SET password='$newpswd' WHERE username='$uname'")  or die("Password not changed!");
 		echo('1');// Represent success
 	}
 }

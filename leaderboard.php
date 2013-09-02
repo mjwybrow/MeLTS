@@ -16,14 +16,6 @@ $status = $_SESSION['status'];
 if ($status=='S'){
 	$lec_uname = $_SESSION['lec_uname'];
 	$database_name = $unit_chosen.'_'.$lec_uname;
-	
-	// update nickname from main_database's account table
-	mysql_select_db('main_database',$dbcon) or die("Cannot select main_database database!");
-	$nickname_resource = mysql_query("SELECT * FROM account WHERE username = '$uname'");
-	$nickname_row = mysql_fetch_array($nickname_resource);
-	$nickname = $nickname_row['nickname'];
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
-	mysql_query("UPDATE student_list SET nickname = '$nickname' WHERE username = '$uname'");
 }
 else{
 	$uname = $_SESSION['uname'];
@@ -84,14 +76,18 @@ echo "
 </tr>";
 
 // Select all students and their scores
-$nickname_resource = mysql_query("SELECT * FROM student_list ORDER BY score DESC;") or die("Cannot get student list");
+$score_resource = mysql_query("SELECT * FROM student_list ORDER BY score DESC;") or die("Cannot get student list");
 
 // Fill the table
-while($row = mysql_fetch_array($nickname_resource)){
-  echo "<tr>";
-  echo "<td align=\"left\">" . $row['nickname'] . "</td>";
-  echo "<td align=\"left\">" . $row['score'] . "</td>";
-  echo "</tr>";
+while($score_row = mysql_fetch_array($score_resource)){
+	$username = $score_row['username'];
+	mysql_select_db('main_database', $dbcon) or die("Cannot select main database!");
+	$nickname_resource = mysql_query("SELECT * FROM account WHERE username = '$username'");	
+	$nickname_row = mysql_fetch_array($nickname_resource);
+	echo "<tr>";
+	echo "<td align=\"left\">" . $nickname_row['nickname'] . "</td>";
+	echo "<td align=\"left\">" . $score_row['score'] . "</td>";
+	echo "</tr>";
 }
 echo "</table>";
 

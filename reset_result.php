@@ -23,7 +23,7 @@ mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 
 // Reset the students' answers
 $table_name='q_'.$id;	
-mysql_query("UPDATE $table_name SET mcq_answer='0'")  or die("Answer not updated!!");
+mysql_query("UPDATE $table_name SET mcq_answer='0'")  or die("Answer not updated!");
 
 echo $unit_code;
 
