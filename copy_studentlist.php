@@ -25,7 +25,7 @@ mysql_select_db($copydatabase_name,$dbcon) or die("Cannot select unit database!"
 
 // Access the student list of the unit
 $query = "SELECT * FROM student_list";
-$get_studlist = mysql_query($query) or die("Student list cannot be found!!");
+$get_studlist = mysql_query($query) or die("Student list cannot be found!");
 
 $i = 1;
 if(mysql_affected_rows()!=0){//If the list is not empty
@@ -44,7 +44,7 @@ if(mysql_affected_rows()!=0){//If the list is not empty
 
 		// If student not registered
 		if(mysql_affected_rows()==0){//name does not exist in unit database
-			mysql_query("INSERT INTO student_list(username, nickname, first_name, last_name, u_scale) VALUES('$stud_name', 'anonymous', '$stud_fname','$stud_lname','0')")  or die("Student cannot be added!!");
+			mysql_query("INSERT INTO student_list(username, first_name, last_name, u_scale) VALUES('$stud_name', '$stud_fname','$stud_lname','0')")  or die("Student cannot be added!");
 		}
 		else{
 			echo("No.$i: '$stud_name' is already registered in this unit.\n");

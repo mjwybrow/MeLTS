@@ -23,7 +23,7 @@ else{
 
 mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 
-$css_resource = mysql_query("SELECT * FROM themes WHERE selection=1") or die("Could not find theme!!");
+$css_resource = mysql_query("SELECT * FROM themes WHERE selection=1") or die("Could not find theme!");
 $css_row = mysql_fetch_row($css_resource);
 $css_string = $css_row[1];
 

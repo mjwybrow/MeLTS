@@ -66,9 +66,9 @@ else{
 		// Get the details of the unit
 		$get_details="SELECT * FROM $table_name WHERE username = '$uname'";
 		// Get ID of the array
-		$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+		$query_details = mysql_query($get_details)  or die("Cannot query details!");
 		// Get the whole row of information of the unit
-		$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+		$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 		// Extract 'unit_name' field from the array
 		$mcq_answer = $fetch_details['mcq_answer'];
 	}

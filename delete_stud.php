@@ -24,7 +24,7 @@ for ($i=0; $i<$j; $i++){
 	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 	
 	// Get the ID of all the questions from lecturers
-	$getid = mysql_query("SELECT id FROM lecturer_ques") or die("Cannot get question id!!");
+	$getid = mysql_query("SELECT id FROM lecturer_ques") or die("Cannot get question id!");
 	$no_id=0;
 	 while ($ques_id_array = mysql_fetch_array($getid)) {
 		// Get id number of every question
@@ -36,11 +36,11 @@ for ($i=0; $i<$j; $i++){
 	for ($a=0; $a<$no_id; $a++){
 		$id = $ques_id[$a];
 		$table_name = 'q_'.$id;
-		mysql_query("DELETE FROM $table_name WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from question table!!");
+		mysql_query("DELETE FROM $table_name WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from question table!");
 	}
 	
 	// Get the ID of all the questions from students
-	$getid = mysql_query("SELECT id FROM students_ques") or die("Cannot get question id!!");
+	$getid = mysql_query("SELECT id FROM students_ques") or die("Cannot get question id!");
 	$no_id=0;
 	 while ($stuques_id_array = mysql_fetch_array($getid)) {
 		// Get id number of every question
@@ -52,15 +52,15 @@ for ($i=0; $i<$j; $i++){
 	for ($a=0; $a<$no_id; $a++){
 		$id = $stuques_id[$a];
 		$table_name = 'sq_'.$id;
-		mysql_query("DELETE FROM $table_name WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from question table!!");
+		mysql_query("DELETE FROM $table_name WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from question table!");
 		$votes = mysql_query("SELECT * FROM $table_name", $dbcon);
 		$cnt = mysql_num_rows($votes); 
-		mysql_query("UPDATE students_ques SET votes='$cnt' WHERE id='$id'")  or die("Votes not updated!!");
+		mysql_query("UPDATE students_ques SET votes='$cnt' WHERE id='$id'")  or die("Votes not updated!");
 	}
 	
 	// Delete the unit from the list of units
 	$sql="DELETE FROM student_list WHERE  username='$stud_uname[$i]'";
-	$r = mysql_query($sql) or die("Student cannot be deleted!!");
+	$r = mysql_query($sql) or die("Student cannot be deleted!");
 	
 	// Check if there is a same unit of different lecturers has the same student in units
 	// Connect to main database
@@ -75,9 +75,9 @@ for ($i=0; $i<$j; $i++){
 		
 		//Search for the unit code
 		// Get ID of the array
-		$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+		$query_details = mysql_query($get_details)  or die("Cannot query details!");
 		// Get the whole row of information of the user
-		$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+		$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 		// Extract 'unit1','unit2','unit3','unit4' and 'unit5' field from the array
 		$unit1 = $fetch_details['unit1'];
 		$unit2 = $fetch_details['unit2'];
@@ -87,23 +87,23 @@ for ($i=0; $i<$j; $i++){
 		
 		// Delete unit code from the record of what units the students are taking
 		if($unit1 == $unit_chosen){
-			mysql_query("UPDATE students SET unit1 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+			mysql_query("UPDATE students SET unit1 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 			$unit1 = '';
 		}
 		elseif($unit2 == $unit_chosen){
-			mysql_query("UPDATE students SET unit2 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+			mysql_query("UPDATE students SET unit2 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 			$unit2 = '';
 		}
 		elseif($unit3 == $unit_chosen){
-			mysql_query("UPDATE students SET unit3 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+			mysql_query("UPDATE students SET unit3 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 			$unit3 = '';
 		}
 		elseif($unit4 == $unit_chosen){
-			mysql_query("UPDATE students SET unit4 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+			mysql_query("UPDATE students SET unit4 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 			$unit4 = '';
 		}
 		elseif($unit5 == $unit_chosen){
-			mysql_query("UPDATE students SET unit5 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+			mysql_query("UPDATE students SET unit5 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 			$unit5 = '';
 		}
 		else{
@@ -111,8 +111,8 @@ for ($i=0; $i<$j; $i++){
 		}
 		
 		if ($unit1==''&&$unit2==''&&$unit3==''&&$unit4==''&&$unit5==''){
-			mysql_query("DELETE FROM students WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from students in main database!!");
-			mysql_query("DELETE FROM account WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from account in main database!!");
+			mysql_query("DELETE FROM students WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from students in main database!");
+			mysql_query("DELETE FROM account WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from account in main database!");
 		}
 	}//main if
 	else{
@@ -148,9 +148,9 @@ for ($i=0; $i<$j; $i++){
 			
 			//Search for the unit code
 			// Get ID of the array
-			$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+			$query_details = mysql_query($get_details)  or die("Cannot query details!");
 			// Get the whole row of information of the user
-			$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+			$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 			// Extract 'unit1','unit2','unit3','unit4' and 'unit5' field from the array
 			$unit1 = $fetch_details['unit1'];
 			$unit2 = $fetch_details['unit2'];
@@ -160,23 +160,23 @@ for ($i=0; $i<$j; $i++){
 			
 			// Delete unit code from the record of what units the students are taking
 			if($unit1 == $unit_chosen){
-				mysql_query("UPDATE students SET unit1 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+				mysql_query("UPDATE students SET unit1 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 				$unit1 = '';
 			}
 			elseif($unit2 == $unit_chosen){
-				mysql_query("UPDATE students SET unit2 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+				mysql_query("UPDATE students SET unit2 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 				$unit2 = '';
 			}
 			elseif($unit3 == $unit_chosen){
-				mysql_query("UPDATE students SET unit3 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+				mysql_query("UPDATE students SET unit3 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 				$unit3 = '';
 			}
 			elseif($unit4 == $unit_chosen){
-				mysql_query("UPDATE students SET unit4 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+				mysql_query("UPDATE students SET unit4 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 				$unit4 = '';
 			}
 			elseif($unit5 == $unit_chosen){
-				mysql_query("UPDATE students SET unit5 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!!");
+				mysql_query("UPDATE students SET unit5 = '' WHERE username='$stud_uname[$i]'") or die("Cannot delete the unit from student!");
 				$unit5 = '';
 			}
 			else{
@@ -184,8 +184,8 @@ for ($i=0; $i<$j; $i++){
 			}
 			
 			if ($unit1==''&&$unit2==''&&$unit3==''&&$unit4==''&&$unit5==''){
-				mysql_query("DELETE FROM students WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from students in main database!!");
-				mysql_query("DELETE FROM account WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from account in main database!!");
+				mysql_query("DELETE FROM students WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from students in main database!");
+				mysql_query("DELETE FROM account WHERE  username='$stud_uname[$i]'") or die("Student cannot be deleted from account in main database!");
 			}
 		}
 	}//main if

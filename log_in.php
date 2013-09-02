@@ -36,9 +36,9 @@ else{// Log in successful, username and password matching
 	// Get the details of login username
 	$get_details="SELECT * FROM account WHERE username = '$uname' and password='$pswd'";
 	// Get ID of the array
-	$query_details = mysql_query($get_details)  or die("Cannot query details!!");
+	$query_details = mysql_query($get_details)  or die("Cannot query details!");
 	// Get the whole row of information of the user
-	$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!!");
+	$fetch_details = mysql_fetch_array($query_details) or die("Cannot fetch details!");
 	// Extract 'status' and 'first name' field from the array
 	$status = $fetch_details['status'];
 	$fname = $fetch_details['first_name'];

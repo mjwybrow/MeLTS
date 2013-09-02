@@ -32,11 +32,11 @@ exit();
 // If username not used before
 if(mysql_affected_rows()==0){//no username exist in database
 	// Insert username and password into database
-	mysql_query("INSERT INTO account(username, password, first_name, last_name, status, email) VALUES('$uname','$pswd','$fname','$lname','$status','$email')")  or die("Account not created!! Username probably more than 20 characters");
+	mysql_query("INSERT INTO account(username, password, first_name, last_name, status, email) VALUES('$uname','$pswd','$fname','$lname','$status','$email')")  or die("Account not created! 20 character limit for usernames.");
 	echo('1');// Represent success
 }
 else{
-	echo('Account existed!');// Represents failure
+	echo('Account already exists!');// Represents failure
 }
 
 // Close connection to mySOL
