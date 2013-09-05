@@ -32,6 +32,7 @@ else{// Log in successful, username and password matching
 	$uname = strtolower($uname);
 	$_SESSION['uname'] = $uname;
 	$_SESSION['pswd'] = $pswd;
+	$_SESSION['LOGGEDIN'] = 1;
 	
 	// Get the details of login username
 	$get_details="SELECT * FROM account WHERE username = '$uname' and password='$pswd'";
