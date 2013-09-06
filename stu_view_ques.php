@@ -17,11 +17,8 @@ if($status=='L'){
 
 	$uname = $_SESSION['uname'];
 
-	// Create database for the unit to hold sessions
-	$database_name = $unit_code.'_'.$uname;
-		
 	// Select database to connect
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 	// Check whether the username for the unit already existed
 	$sql="SELECT * FROM students_ques ORDER BY votes DESC";
@@ -71,11 +68,8 @@ if($status=='L'){
 else if($status=='S'){
 	$lec_uname = $_SESSION['lec_uname'];
 
-	// Create database for the unit to hold sessions
-	$database_name = $unit_code.'_'.$lec_uname;
-		
 	// Select database to connect
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 	// Check whether the username for the unit already existed
 	//$sql="SELECT * FROM students_ques ORDER BY votes DESC LIMIT 0,5";//To limit the number of questions viewed

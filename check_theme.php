@@ -12,16 +12,8 @@ include('connections.php');
 // Get data from session variable
 $unit_chosen = $_SESSION['unit_chosen'];
 $status = $_SESSION['status'];
-if ($status=='S'){
-	$lec_uname = $_SESSION['lec_uname'];
-	$database_name = $unit_chosen.'_'.$lec_uname;
-}
-else{
-	$uname = $_SESSION['uname'];
-	$database_name = $unit_chosen.'_'.$uname;
-}
 
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 
 $css_resource = mysql_query("SELECT * FROM themes WHERE selection=1") or die("Could not find theme!");
 $css_row = mysql_fetch_row($css_resource);

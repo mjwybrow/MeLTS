@@ -19,12 +19,9 @@ $_SESSION['id'] = $id;
 
 // Check whether the student viewed the question before
 $table_name='q_'.$id;
-
-// Create database for the unit to hold sessions
-$database_name = $unit_code.'_'.$lec_uname;
 	
 // Select database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 $reg_stud = mysql_query("SELECT * FROM $table_name WHERE username = '$uname'") or die("Cannot query student's username!");
 

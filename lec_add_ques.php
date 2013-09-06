@@ -9,6 +9,9 @@ session_start();
 // Connect to mySQL
 include('connections.php');
 
+// Get lecturer's username
+$uname = $_SESSION['uname'];
+
 //Get question from lecturer
 $lec_ques = $_POST['lec_ques'];
 $A = $_POST['A'];
@@ -30,12 +33,10 @@ $answers = mysql_real_escape_string($answers);
 $uname = $_SESSION['uname'];
 $unit_code = $_SESSION['unit_chosen'];
 
-// Select database to connect
-$database_name = $unit_code.'_'.$uname;
-mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("INSERT INTO lecturer_ques(lec_ques, A, B, C, D, ANSWERS) VALUES('$lec_ques','$A','$B','$C','$D','$answers')")  or die("Question cannot be added!");
+mysql_query("INSERT INTO lecturer_ques(username, lec_ques, A, B, C, D, ANSWERS) VALUES('$uname','$lec_ques','$A','$B','$C','$D','$answers')")  or die("Question cannot be added!");
 
 // Get id for question
 $get_details="SELECT id FROM lecturer_ques WHERE lec_ques = '$lec_ques'";

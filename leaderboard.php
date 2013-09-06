@@ -11,19 +11,8 @@ $uname = $_SESSION['uname'];
 $unit_chosen = $_SESSION['unit_chosen'];
 $status = $_SESSION['status'];
 
-
-// Set database name
-if ($status=='S'){
-	$lec_uname = $_SESSION['lec_uname'];
-	$database_name = $unit_chosen.'_'.$lec_uname;
-}
-else{
-	$uname = $_SESSION['uname'];
-	$database_name = $unit_chosen.'_'.$uname;
-}
-
 // Connect to the database
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 
 // Select all students and their scores
 $student_resource = mysql_query("SELECT * FROM student_list WHERE 1") or die("Cannot get student list");

@@ -17,11 +17,8 @@ $lec_uname = $_SESSION['lec_uname'];
 // Get student's response
 $u_scale = $_POST['uscale'];
 
-// Create database for the unit to hold sessions
-$database_name = $unit_code.'_'.$lec_uname;
-	
 // Select database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // Get the details of the unit
 $get_details="SELECT * FROM student_list WHERE username = '$uname'";

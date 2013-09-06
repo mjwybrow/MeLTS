@@ -21,9 +21,7 @@ $question = mysql_real_escape_string($question);
 $lec_uname = $_SESSION['lec_uname'];
 $unit_code = $_SESSION['unit_chosen'];
 
-// Select database to connect
-$database_name = $unit_code.'_'.$lec_uname;
-mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
 mysql_query("INSERT INTO students_ques(title, stu_ques, votes) VALUES('$ques_title','$question','0')")  or die("Question cannot be added!");

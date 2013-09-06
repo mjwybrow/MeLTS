@@ -16,9 +16,7 @@ $unit_code = $_SESSION['unit_chosen'];
 //Get question from lecturer
 $id = $_POST['ques_chosen'];// holds the id number of the ques
 
-// Select database to connect
-$database_name = $unit_code.'_'.$uname;
-mysql_select_db("$database_name",$dbcon) or die("Cannot select database for unit!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select database for unit!");
 
 // Get the question based on the id
 $get_details="SELECT * FROM lecturer_ques WHERE id = '$id'";

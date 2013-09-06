@@ -18,7 +18,7 @@ $uname = $_SESSION['uname'];
 //$unit_code = $_SESSION['unit_chosen'];
 
 // Connect to database and insert into the database
-mysql_select_db('main_database',$dbcon) or die("Cannot select main database!");
+mysql_select_db("main_database", $dbcon) or die("Cannot select main database!");
 
 // Check whether the username already existed
 $sql="SELECT * FROM account WHERE nickname = '$nickname'";

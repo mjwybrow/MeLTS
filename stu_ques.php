@@ -15,18 +15,8 @@ $unit_code = $_SESSION['unit_chosen'];
 $id = $_SESSION['stu_ques_chosen'];
 $stu_uname = $_SESSION['uname'];
 
-if($status== 'L'){
-	$uname = $_SESSION['uname'];
-}
-else{
-	$uname = $_SESSION['lec_uname'];
-}
-	
-// Create database for the unit to hold sessions
-$database_name = $unit_code.'_'.$uname;
-	
 // Select database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // To keep track who has voted for this question
 $table_name='sq_'.$id;

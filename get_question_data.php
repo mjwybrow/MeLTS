@@ -22,11 +22,8 @@ $uname = $_SESSION['uname'];
 $unit_code = $_SESSION['unit_chosen'];
 $question_number = 1;
 
-// Create database for the unit to hold sessions
-$database_name = $unit_code.'_'.$uname;
-	
 // Select database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // Check whether the username for the unit already existed
 $resource = mysql_query("SELECT * FROM lecturer_ques");

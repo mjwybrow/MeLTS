@@ -10,8 +10,8 @@ session_start();
 include('connections.php');
 
 // Select database to connect
-mysql_select_db("main_database",$dbcon) or die("Cannot select database!");
-
+mysql_select_db("main_database", $dbcon) or die("Cannot select database!");
+ 
 // Get username from session variable
 $uname = $_SESSION['uname'];
 

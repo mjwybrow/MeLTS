@@ -20,8 +20,7 @@ $j = count($stud_uname);
 
 for ($i=0; $i<$j; $i++){
 	//Access the student list of the unit
-	$database_name = $unit_chosen.'_'.$uname;
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 	
 	// Get the ID of all the questions from lecturers
 	$getid = mysql_query("SELECT id FROM lecturer_ques") or die("Cannot get question id!");
@@ -129,7 +128,7 @@ for ($i=0; $i<$j; $i++){
 		for ($l=0; $l<$k; $l++){
 			$lecturer_uname = $lecturer[$l];
 			
-			$database_name2 = $unit_chosen.'_'.$lecturer_uname;
+			$database_name2 = $unit_chosen;
 			mysql_select_db($database_name2,$dbcon) or die("Cannot select unit database!");
 			$query_stud_list=mysql_query("SELECT * FROM student_list WHERE username = '$stud_uname[$i]'")or die("Cannot access table!");
 			

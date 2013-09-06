@@ -17,7 +17,6 @@ $uname = $_SESSION['uname'];
 $unit_code = $_SESSION['unit_chosen'];
 
 // Unit database name
-$database_name = $unit_code.'_'.$uname;
 $copydatabase_name = $unit_code.'_'.$stud_list;
 
 // Connect to unit database and insert into the database
@@ -36,7 +35,7 @@ if(mysql_affected_rows()!=0){//If the list is not empty
 		$stud_lname = mysql_real_escape_string($studlist_array['last_name']);
 		
 		// Connect to unit database and insert into the database
-		mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+		mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 		// Check whether the username already existed
 		$sql="SELECT * FROM student_list WHERE username = '$stud_name'";

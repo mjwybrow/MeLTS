@@ -17,11 +17,8 @@ $unit_name = $_SESSION['unit_name'];
 $lec_uname = $_SESSION['lec_uname'];
 $id = $_SESSION['id'];
 
-// Create database string for the unit which hold quiz sessions
-$database_name = $unit_code.'_'.$lec_uname;
-
 // Select first database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // Find out if currently locked or not
 $sql_resource = mysql_query("SELECT LOCKED FROM lecturer_ques WHERE id='$id'") or die(mysql_error());;
@@ -32,11 +29,8 @@ if ($locked[0] == 0) {
 	// Get student's answer
 	$mcqanswer = $_POST['mcqanswer'];
 
-	// Create database for the unit to hold sessions
-	$database_name = $unit_code.'_'.$lec_uname;
-		
 	// Select database to connect
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 	// Create table of the unit added in main database to insert list of students
 	//mysql_query("CREATE TABLE $table_name (lec_ques VARCHAR(30), uscale TINYINT(1))")  or die("Unit table cannot be added!");

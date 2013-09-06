@@ -20,8 +20,7 @@ $j = count($qid);
 
 for ($i=0; $i<$j; $i++){
 	//Access the student list of the unit
-	$database_name = $unit_chosen.'_'.$uname;
-	mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+	mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 	
 	// Delete from question list
 	mysql_query("DELETE FROM lecturer_ques WHERE  id='$qid[$i]'") or die("Question cannot be deleted!");

@@ -16,11 +16,8 @@ $unit_code = $_SESSION['unit_chosen'];
 $id = $_SESSION['stu_ques_chosen'];
 $btn_status=$_POST['btn_status'];
 
-// Create database for the unit to hold sessions
-$database_name = $unit_code.'_'.$lec_uname;
-	
 // Select database to connect
-mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
+mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 $table_name='sq_'.$id;
 

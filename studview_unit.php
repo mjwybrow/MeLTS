@@ -3,6 +3,7 @@
 // Created 18 March 2013
 // For students to view list  of units after the lecturers added them  
 
+//THIS CAN BE SIMPLIFIED NOW THAT LECTURERS SHARE DATABASES
 
 // Resume session from previous session
 session_start();
@@ -91,7 +92,7 @@ else{
 					$lecturer_uname = $lecturer[$k];
 					
 					//Check if student's name in the unit's student list
-					$database_name = $unit_code[$i].'_'.$lecturer_uname;
+					$database_name = $unit_code[$i];
 					mysql_select_db($database_name,$dbcon) or die("Cannot select unit database!");
 					$query_stud_list=mysql_query("SELECT * FROM student_list WHERE username = '$uname'")or die("Cannot access table!");
 					

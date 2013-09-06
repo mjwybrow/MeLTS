@@ -16,7 +16,7 @@ $email = mysql_real_escape_string($_POST['email']);
 $status = $_POST['status'];
 
 // Select database to connect
-mysql_select_db("main_database",$dbcon) or die("Cannot select database!");
+mysql_select_db("main_database", $dbcon) or die("Cannot select database!");
 	
 // Check whether the username already existed
 $sql="SELECT username FROM account WHERE username = '$uname'";
