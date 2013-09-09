@@ -21,19 +21,32 @@ mysql_select_db("main_database", $dbcon) or die("Cannot select main database!");
 // Get username from session variable
 $uname = $_SESSION['uname'];
 
-// Check whether the username already existed
-$sql="SELECT * FROM units WHERE unit_code = '$unit_code' and lecturer = '$uname'";
+// Check whether the unit already existed
+$sql="SELECT * FROM units WHERE unit_code = '$unit_code'";
 $r = mysql_query($sql);
-
 // If error in selecting table
 if(!$r) {
 	$err=mysql_error();
 	print $err;
 	exit();
 }
+$unit_already_made = mysql_affected_rows();
+
+// Check whether the lecturer has already created this unit
+$sql="SELECT * FROM units WHERE unit_code = '$unit_code' and lecturer = '$uname'";
+$r = mysql_query($sql);
+// If error in selecting table
+if(!$r) {
+	$err=mysql_error();
+	print $err;
+	exit();
+}
+$lecturer_added_to_unit = mysql_affected_rows();
+
 
 // If username not used before
-if(mysql_affected_rows()==0){//no username exist in database
+if($unit_already_made==0){
+//no username exist in database
 	// Insert username and password into list of units table in database
 	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing");
 
@@ -51,6 +64,11 @@ if(mysql_affected_rows()==0){//no username exist in database
 	mysql_query("INSERT INTO themes (selection, css_string) VALUES ($theme_selection[0],\"melts.css\")")  or die("Theme value 1 could not be added!");
 	mysql_query("INSERT INTO themes (selection, css_string) VALUES ($theme_selection[1],\"melts_arts.css\")")  or die("Theme value 2 could not be added!");
 	mysql_query("INSERT INTO themes (selection, css_string) VALUES ($theme_selection[2],\"melts_engineering.css\")")  or die("Theme value 3 could not be added!");
+	echo("Unit added");
+}
+else if ($lecturer_added_to_unit==0){
+	// Insert username and password into list of units table in database
+	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing");
 	echo("Unit added");
 }
 else{
