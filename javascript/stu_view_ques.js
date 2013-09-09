@@ -32,7 +32,6 @@ $.post("join_session.php", function(data){
 					
 					if (lec_ques!= "0"){// means there's question posted by lecturer
 						$('#lec_ques').html(lec_ques);
-						//$('#btnA').text(data.A); not working
 						$('#btnA').parent().find('.ui-btn-text').text(A);
 						$('#btnB').parent().find('.ui-btn-text').text(B);
 						$('#btnC').parent().find('.ui-btn-text').text(C);
@@ -41,7 +40,6 @@ $.post("join_session.php", function(data){
 						if(prev_ans !="0"){ 
 							var button = "#"+prev_ans;
 							$(button).buttonMarkup({ theme: "k" });
-							//$(button).attr('data-theme', 'e'); not working
 						}
 					}
 				});				
@@ -125,7 +123,7 @@ $.post("join_session.php", function(data){
 		}
 		
 		// send the name to the server, and the server's 
-		// register wait will recieve this.
+		// register wait will receive this.
 		socket.emit('register', name );
 		
 		// When a button is clicked / Student answers question
@@ -136,7 +134,6 @@ $.post("join_session.php", function(data){
 			var mcq_answer = $(this).prop("id");
 
 			$.ajax({
-				//url: "http://syngtest.myproject/stu_answers.php",
 				url: "stu_answers.php",
 				type: 'post',
 				data: 'mcqanswer='+ mcq_answer,

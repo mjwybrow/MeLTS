@@ -14,15 +14,14 @@ $(document).ready(function() {
 			$(xml).find('Unit').each(function(){  
 				var unit_code = $(this).find('UnitCode').text(); 
 				var unit_name = $(this).find('UnitName').text();
-				var lec_name = $(this).find('LecName').text();
 				
 				if (unit_code== "0"){// means there's no units registered for the lecturer
 						// Empty list, show this msg
-						$("#view_unitmsg").text('No units found!!');
+						$("#view_unitmsg").text('No units found!');
 				}
 				else{// list the units in an unordered list
 						$("#view_unitmsg").text('Please choose a unit');	
-						$("#viewunit_optionlist").append('<li class="chooseunit" data-name="'+unit_code+'_'+lec_name+'"><a href="#">'+unit_code+'  '+unit_name+' ('+lec_name+')</a></li>');
+						$("#viewunit_optionlist").append('<li class="chooseunit" data-name="'+unit_code+'"><a href="#">'+unit_code+'  '+unit_name+'</a></li>');
 				} 
 			})
 		},  

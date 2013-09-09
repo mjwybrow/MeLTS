@@ -15,18 +15,16 @@ $status = $_SESSION['status'];
 include('connections.php');
 
 // Select database to connect
-mysql_select_db("main_database",$dbcon) or die("Cannot select database!");
+mysql_select_db("main_database", $dbcon) or die("Cannot select database!");
 
 if ($status=='L'){
 	// Get the unitname
-	//$get_unitname="SELECT * FROM units WHERE lecturer = '$uname' and unit_code='$unit_chosen'";
 	$get_unitname="SELECT * FROM units WHERE unit_code='$unit_chosen' and lecturer='$uname'";
 }
 else{
 	$lec_uname = $_SESSION['lec_uname'];
 	// Get the unitname
-	//$get_unitname="SELECT * FROM units WHERE lecturer = '$uname' and unit_code='$unit_chosen'";
-	$get_unitname="SELECT * FROM units WHERE unit_code='$unit_chosen' and lecturer='$lec_uname'";
+	$get_unitname="SELECT * FROM units WHERE unit_code='$unit_chosen'";
 }
 
 // Get ID of the array
