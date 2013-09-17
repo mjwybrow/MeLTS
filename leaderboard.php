@@ -14,47 +14,27 @@ $status = $_SESSION['status'];
 // Connect to the database
 mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 
-// Select all students and their scores
-$student_resource = mysql_query("SELECT * FROM student_list WHERE 1") or die("Cannot get student list");
-
 // Set all scores to 0
-while($students = mysql_fetch_array($student_resource)){
-		mysql_query("UPDATE student_list SET score=0 WHERE 1") or die('Cannot update score');
-};
+mysql_query("UPDATE student_list SET score=0 WHERE 1") or die("Cannot reset score to 0");
 
 // Tally up the results
-$correct_answer_res = mysql_query("SELECT * FROM lecturer_ques WHERE 1") or die("Cannot read lecturer questions");
 
-while($correct_answer = mysql_fetch_array($correct_answer_res)){
-	$student_resource = mysql_query("SELECT * FROM student_list WHERE 1") or die("Cannot get student list");
-	$id = $correct_answer['id'];
-	//echo $correct_answer['id'];
-	//echo'</br>';
-	while($students = mysql_fetch_array($student_resource)){
-		$student_answer_res = mysql_query("SELECT * FROM q_$id WHERE 1") or die("Cannot read questions");
-		$current_student = $students['username'];
-		$student_resource_ch = mysql_query("SELECT * FROM student_list WHERE 1") or die("Cannot get student list");
-		while($student_answer = mysql_fetch_array($student_answer_res)){
-			/*if($student_answer['username']==$current_student){
-				echo $current_student;
-				echo '</br>';
-				echo $correct_answer['ANSWERS'][0];
-				echo '</br>';
-				echo $student_answer['mcq_answer'][3];
-				echo '</br>';
-			}*/
-			if($student_answer['username']==$current_student && 
-			($student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][0] || 
-			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][1] || 
-			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][2] || 
-			 $student_answer['mcq_answer'][3] == $correct_answer['ANSWERS'][3])){
-				mysql_query("UPDATE student_list SET score=score+1 WHERE username='$current_student'") or die('Cannot update score');
-				//echo 'updating score';
-			};
-		};
-	};
-};
+$question_ids = mysql_query("SELECT id FROM lecturer_ques");
 
+while($id_array = mysql_fetch_array($question_ids)){
+$id = $id_array['id'];
+$correct_resource = mysql_query("SELECT ANSWERS FROM lecturer_ques WHERE id='$id'") or die("Cannot get correct answers");
+$correct = mysql_fetch_array($correct_resource);
+
+if($correct['ANSWERS'][0] == 'A')
+	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnA')") or die ("Could not update score 1");
+if($correct['ANSWERS'][1] == 'B')
+	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 2");
+if($correct['ANSWERS'][2] == 'C')
+	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 3");
+if($correct['ANSWERS'][3] == 'D')
+	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 4");
+}
 
 // Print the table
 echo "
