@@ -24,6 +24,9 @@ $.post("join_session.php", function(data){
 			$.get("end_session.php", function(data){
 				window.location.href = "lec_ques_list.html";
 			});
+			
+			$.get("update_leaderboard.php");
+			
 			return false;
 		});// onclick end session
 
@@ -39,7 +42,7 @@ $.post("join_session.php", function(data){
 		});
 
 		// Function that locks-in all the answers from students
-		$(document).on('click',"#lock_in",function(){
+		$(document).on('click',"#lock_in", function(){
 			// Signal to server answers have been locked
 			socket.emit('lock_answers', { 
 				unit_code: unit_code,
