@@ -52,7 +52,7 @@ $.post("join_session.php", function(data){
 		
 		// On receiving questions
 		socket.on('ques', function (data){
-			if (unit_code == data.unit_code && lec_uname == data.lec_name){
+			if (unit_code == data.unit_code){
 				var id = data.id;
 
 				$.ajax({

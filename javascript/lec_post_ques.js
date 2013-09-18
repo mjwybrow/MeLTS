@@ -15,7 +15,7 @@ $.post("join_session.php", function(data){
 	
 		// End student side quiz session when lecturer ends quiz session
 		$(document).on('click',"#end_ques",function(){
-			
+		
 			// Signal to server session has ended
 			socket.emit('end_quiz_session', { 
 				unit_code: unit_code,
@@ -26,20 +26,18 @@ $.post("join_session.php", function(data){
 			});
 			return false;
 		});// onclick end session
-				
+
 		// Check on current status of the lock (only runs once - on page load)
 		$.get("lock_check.php", function(data){
 			locked = data;
 			if(data == 1){
 				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#D3D3D3' });
 			}
 			else{
 				$('#locked_in').html('');
-				$(".resultbar > div").css({ 'background': '#FFE166' });
 			}
 		});
-		
+
 		// Function that locks-in all the answers from students
 		$(document).on('click',"#lock_in",function(){
 			// Signal to server answers have been locked
@@ -162,7 +160,8 @@ $.post("join_session.php", function(data){
 							// Style the bar graph
 							$(".resultbar").css({ 'background': 'Transparent' });
 							$(".resultbar").css({ 'border': 'None' });
-							$(".resultbar > div").css({ 'background': '#FFE166' });
+							if(locked == 1) $(".resultbar > div").css({ 'background': '#D3D3D3' });
+							else $(".resultbar > div").css({ 'background': '#FFE166' });
 						});	
 
 						$('#lec_ques').html(lec_ques);
@@ -242,7 +241,7 @@ $.post("join_session.php", function(data){
 					alert('There was an error in student answering question');	
 				}
 			});// ajax	
-		});			
+		});
 		
 		// ask user to log in again if no username available.
 		while (name == '') {
