@@ -79,7 +79,6 @@ $.post("join_session.php", function(data){
 				$('#btnD').parent().find('.ui-btn-text').text(data.D);
 
 			}// if it is the correct unit
-			
 		});//socket on receive ques
 		
 		socket.on('reset_answers', function (data){
@@ -115,6 +114,10 @@ $.post("join_session.php", function(data){
 			}// if it is the correct unit
 		});//socket on receive lock update
 		
+		// Socket to refresh page on end quiz session
+		socket.on('end_quiz_session', function (data){
+			location.reload();
+		});//socket on receive refresh page
 		
 		// ask user to log in again if no username available.
 		while (name == '') {

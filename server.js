@@ -60,6 +60,13 @@ io.sockets.on('connection', function (socket) {
 		});
 	});
 	
+	// Lecturer has ended the quiz session
+	socket.on('end_quiz_session', function (response) {
+		socket.broadcast.emit('end_quiz_session',{
+			unit_code: response.unit_code,
+		});
+	});
+	
 	// Students respond to u-scale
 	socket.on('updated_uscale', function (response) {
 		socket.broadcast.emit('updated_uscale',{

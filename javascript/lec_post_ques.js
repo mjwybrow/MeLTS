@@ -12,7 +12,15 @@ $.post("join_session.php", function(data){
 	
 	// at document read (runs only once).
 	$(document).ready(function(){
+	
+		// End student side quiz session when lecturer ends quiz session
 		$(document).on('click',"#end_ques",function(){
+			
+			// Signal to server session has ended
+			socket.emit('end_quiz_session', { 
+				unit_code: unit_code,
+			});
+			
 			$.get("end_session.php", function(data){
 				window.location.href = "lec_ques_list.html";
 			});
