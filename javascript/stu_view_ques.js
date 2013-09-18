@@ -116,7 +116,11 @@ $.post("join_session.php", function(data){
 		
 		// Socket to refresh page on end quiz session
 		socket.on('end_quiz_session', function (data){
-			location.reload();
+				$('#lec_ques').html('Quiz has been ended by lecturer');
+				$('#btnA').parent().find('.ui-btn-text').text('');
+				$('#btnB').parent().find('.ui-btn-text').text('');
+				$('#btnC').parent().find('.ui-btn-text').text('');
+				$('#btnD').parent().find('.ui-btn-text').text('');
 		});//socket on receive refresh page
 		
 		// ask user to log in again if no username available.
