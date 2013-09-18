@@ -9,8 +9,7 @@ if ($_SESSION['LOGGEDIN'] == null){
 	// check if page viewer is currently logged in
 	header('Location: index.html');
 }
-
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 3600)) {
+else if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 7200)) {
 	// check if last request was more than 2h ago
 	session_unset();     // unset $_SESSION variable for the run-time (frees all session variables currently registered)
 	session_destroy();   // destroy session data in storage (destroys all of the data associated with the current session)
