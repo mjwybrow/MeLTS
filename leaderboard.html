@@ -36,6 +36,15 @@
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				</br>
 				</br>
+				<input type="button" data-theme="a" id="refresh_leaderboard" value="Refresh Leaderboard"/>
+				<script type="text/javascript">
+					$(document).on('click',"#refresh_leaderboard", function(){
+						$.post("update_leaderboard.php");
+						location.reload();
+						location.reload();
+					});
+				</script>
+				</br>
 				<?php include('leaderboard.php'); ?>
 				</br>
 			</div>
