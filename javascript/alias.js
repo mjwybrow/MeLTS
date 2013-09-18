@@ -40,4 +40,10 @@ $(document).ready(function() {
 		});// ajax
 		return false;
 	});//onclick submit student button
+	
+	// get current alias and post it to html site
+	$.get("get_alias.php", function(data){
+		$('#current_alias').html(' ('+data+')');
+	});
+	
 }); //doc ready
