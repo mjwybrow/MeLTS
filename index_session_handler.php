@@ -5,7 +5,7 @@
 
 session_start();
 
-if ($_SESSION['LOGGEDIN'] != null && isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 3)) {
+if ($_SESSION['LOGGEDIN'] != null && isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] < 7200)) {
 	// check if last request was more than 2h ago
 	if ($_SESSION['status'] == 'L')
 		header('Location: lecturer_homepage.html');
