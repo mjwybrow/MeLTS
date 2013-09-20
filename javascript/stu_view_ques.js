@@ -158,8 +158,8 @@ $.post("join_session.php", function(data){
 					var unit_code = result[0];
 					var id = result[1];
 					var flag = result[2];
-					prev_ans = mcq_answer;
 					if(locked==0){
+						prev_ans = mcq_answer;
 						if(flag==1){// Change response
 							$(".ans_button").buttonMarkup({ theme: "j" });
 							var button = "#" + mcq_answer;
