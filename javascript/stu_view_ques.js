@@ -10,7 +10,7 @@ $.post("join_session.php", function(data){
 	var lec_uname = string[2];
 	var socket = io.connect('http://'+location.host+':8000');
 	var locked;
-	
+	var prev_ans;
 	 // at document read (runs only ones).
 	 $(document).ready(function(){
 		
@@ -28,7 +28,7 @@ $.post("join_session.php", function(data){
 					var B = $(this).find('B').text(); 	
 					var C = $(this).find('C').text(); 	
 					var D = $(this).find('D').text(); 	
-					var prev_ans = $(this).find('PrevAns').text();
+					prev_ans = $(this).find('PrevAns').text();
 					
 					if (lec_ques!= "0"){// means there's question posted by lecturer
 						$('#lec_ques').html(lec_ques);
@@ -60,10 +60,14 @@ $.post("join_session.php", function(data){
 					type: 'post',
 					data: 'id=' + id,
 					success: function (prev_ans) {
-						$(".ans_button").buttonMarkup({ theme: "j" });
-						if(prev_ans !='0'){ 
-							var button = "#" + prev_ans;
-							$(button).buttonMarkup({ theme: "k" });
+						if (locked == 1)
+							$(".ans_button").buttonMarkup({ theme: "l" });
+						else {
+							$(".ans_button").buttonMarkup({ theme: "j" });
+							if(prev_ans !='0'){ 
+								var button = "#" + prev_ans;
+								$(button).buttonMarkup({ theme: "k" });
+							}
 						}
 					},
 					error: function(){	
@@ -105,6 +109,10 @@ $.post("join_session.php", function(data){
 					locked = 0;
 					$('#locked_in').html('');
 					$(".ans_button").buttonMarkup({ theme: "j" });
+					if(prev_ans !='0'){ 
+						var button = "#" + prev_ans;
+						$(button).buttonMarkup({ theme: "k" });
+					}
 				}
 				else {
 					locked = 1;
@@ -150,6 +158,7 @@ $.post("join_session.php", function(data){
 					var unit_code = result[0];
 					var id = result[1];
 					var flag = result[2];
+					prev_ans = mcq_answer;
 					if(locked==0){
 						if(flag==1){// Change response
 							$(".ans_button").buttonMarkup({ theme: "j" });

@@ -25,6 +25,18 @@ $.post("join_session.php", function(data){
 				window.location.href = "lec_ques_list.html";
 			});
 			
+			// lock quiz
+			if (locked == 0) {
+				locked = 1;
+				socket.emit('lock_answers', { // Signal to server answers have been locked
+					unit_code: unit_code,
+				});
+				$('#locked_in').html(' [locked]');
+				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
+				$.post("lock_ques.php"); // switches lock state			else {
+			}
+			
+			// update leaderboard
 			$.get("update_leaderboard.php");
 			
 			return false;
@@ -43,19 +55,19 @@ $.post("join_session.php", function(data){
 
 		// Function that locks-in all the answers from students
 		$(document).on('click',"#lock_in", function(){
-			// Signal to server answers have been locked
+			// Signal to server answers have been locked/unlocked
 			socket.emit('lock_answers', { 
 				unit_code: unit_code,
 			});
 			if (locked == 1) {
 				locked = 0;
 				$('#locked_in').html('');
-				$(".resultbar > div").css({ 'background': '#FFE166' });
+				$(".resultbar > div").css({ 'background': '#FFE166' }); // working
 			}
 			else {
 				locked = 1;
 				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#D3D3D3' });
+				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
 			}
 			$.post("lock_ques.php"); // switches lock state
 			return false;
@@ -81,14 +93,16 @@ $.post("join_session.php", function(data){
 						$( "#barD" ).progressbar({
 							value: 0
 						});
-
+						
+						/*
 						// Style the bar graph
 						$(".resultbar").css({ 'background': 'Transparent' });
 						$(".resultbar").css({ 'border': 'None' });
 						$(".resultbar > div").css({ 'background': '#FFE166' });
+						*/
 					});	
 
-					// Signal answers has been reset
+					// Signal answers have been reset
 					socket.emit('reset_answers', { 
 						unit_code: unit_code,			
 					});
@@ -127,7 +141,7 @@ $.post("join_session.php", function(data){
 
 					if (lec_ques== "0"){// means there's no question posted by lecturer
 						// Empty list, show this msg
-						$("p#log").text('No question posted!!');
+						$("p#log").text('No question posted!');
 					}
 					else{// list the units in an unordered list
 						// send message on inputbox to server
@@ -161,10 +175,10 @@ $.post("join_session.php", function(data){
 							});
 
 							// Style the bar graph
-							$(".resultbar").css({ 'background': 'Transparent' });
-							$(".resultbar").css({ 'border': 'None' });
-							if(locked == 1) $(".resultbar > div").css({ 'background': '#D3D3D3' });
-							else $(".resultbar > div").css({ 'background': '#FFE166' });
+							//$(".resultbar").css({ 'background': 'Transparent' });
+							//$(".resultbar").css({ 'border': 'None' });
+							$(".resultbar > div").css({ 'background': '#D3D3D3' });
+							if (locked == 0) $(".resultbar > div").css({ 'background': '#FFE166' });
 						});	
 
 						$('#lec_ques').html(lec_ques);
