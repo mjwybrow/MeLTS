@@ -107,10 +107,10 @@ $.post("join_session.php", function(data){
 						unit_code: unit_code,			
 					});
 
-					$('#resulta').html('0 out of 0');
-					$('#resultb').html('0 out of 0');
-					$('#resultc').html('0 out of 0');
-					$('#resultd').html('0 out of 0');
+					$('#resulta').html('0/0');
+					$('#resultb').html('0/0');
+					$('#resultc').html('0/0');
+					$('#resultd').html('0/0');
 				});// get
 			}; // check if locked
 			return false;
@@ -187,10 +187,10 @@ $.post("join_session.php", function(data){
 						$('#C').html(C);
 						$('#D').html(D);
 
-						$('#resulta').html(cntA+' out of '+total);
-						$('#resultb').html(cntB+' out of '+total);
-						$('#resultc').html(cntC+' out of '+total);
-						$('#resultd').html(cntD+' out of '+total);
+						$('#resulta').html(cntA+'/'+total);
+						$('#resultb').html(cntB+'/'+total);
+						$('#resultc').html(cntC+'/'+total);
+						$('#resultd').html(cntD+'/'+total);
 					} 
 				})
 
@@ -249,10 +249,10 @@ $.post("join_session.php", function(data){
 
 					});					
 
-					$('#resulta').html(cntA+' out of '+total);
-					$('#resultb').html(cntB+' out of '+total);
-					$('#resultc').html(cntC+' out of '+total);
-					$('#resultd').html(cntD+' out of '+total);
+					$('#resulta').html(cntA+'/'+total);
+					$('#resultb').html(cntB+'/'+total);
+					$('#resultc').html(cntC+'/'+total);
+					$('#resultd').html(cntD+'/'+total);
 				},
 				error: function(){	
 					alert('There was an error in student answering question');	

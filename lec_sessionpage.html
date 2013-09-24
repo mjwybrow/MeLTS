@@ -16,6 +16,23 @@
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>
 		<script src="jquery/jquery-ui.js"></script>
 		<?php echo '<script src="http://';	echo $_SERVER['HTTP_HOST']; echo ':8000/socket.io/socket.io.js"/></script>' ?>
+		<style type="text/css">
+		#answerbox {
+		background-color:#EAEAEA;
+		padding-left:10px;
+		padding-right:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		}
+		
+		#scoretext {
+		style="height:44px;
+		float:left;
+		line-height:2.9em;
+		color:gray;
+		font-size:.9em
+		}
+		</style>
 	</head>
 	<body>
 		<!-- Lecturer sessionpage -->
@@ -51,44 +68,53 @@
 					</table>
 			</div>
 			<!-- /U-scale -->
+			
+			
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				</br>
 				<div>
 					<b id="lec_ques"></b><b id="locked_in"></b>
 				</div>
 				</br>
-				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
-					<b>A. </b>
-					<b id="A" ></b>
-					<div id="barA" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
-					<i id="resulta" style="color:gray;font-size:15px;">0 out of 0</i>
+				
+				<div id="answerbox">
+					<div><b>A. </b><b id="A" ></b></div>
+					<div id="scoretext"><i id="resulta"></i></div>
+
+					<div id="barA" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
 				</div>
 				</br>
-				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
-					<b>B. </b>
-					<b id="B" ></b>
-					<div id="barB" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
-					<i id="resultb" style="color:gray;font-size:15px;">0 out of 0</i>
+				
+				<div id="answerbox">
+					<div><b>B. </b><b id="B" ></b></div>
+					<div id="scoretext"><i id="resultb"></i></div>
+
+					<div id="barB" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
 				</div>
 				</br>
-				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
-					<b>C. </b>
-					<b id="C" ></b>
-					<div id="barC" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
-					<i id="resultc" style="color:gray;font-size:15px;">0 out of 0</i>
+				
+				<div id="answerbox">
+					<div><b>C. </b><b id="C" ></b></div>
+					<div id="scoretext"><i id="resultc"></i></div>
+
+					<div id="barC" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
 				</div>
 				</br>
-				<div style="background-color:#EAEAEA;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;">
-					<b>D. </b>
-					<b id="D" ></b>
-					<div id="barD" class="resultbar" style="padding-left:1px;padding-right:1px;padding-top:10px;padding-bottom:10px;"></div>
-					<i id="resultd" style="color:gray;font-size:15px;">0 out of 0</i>
+				
+				<div id="answerbox">
+					<div><b>D. </b><b id="D" ></b></div>
+					<div id="scoretext"><i id="resultd"></i></div>
+
+					<div id="barD" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
 				</div>
+				
+
+
 				<p id='log'></p>
 				</br>
 				<!-- Button to end question -->
 				<div>
-					<a data-role="button" id="lock_in"></br>Lock/Unlock Results</br></br></a>
+					<a data-role="button" id="lock_in">Lock/Unlock Results</a>
 					</br>
 					<a data-role="button" id="reset">Reset Results</a>
 				</div>
