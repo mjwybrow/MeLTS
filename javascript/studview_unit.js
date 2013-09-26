@@ -22,8 +22,11 @@ $(document).ready(function() {
 				else{// list the units in an unordered list
 						$("#view_unitmsg").text('Please choose a unit');	
 						$("#viewunit_optionlist").append('<li class="chooseunit" data-name="'+unit_code+'"><a href="#">'+unit_code+'  '+unit_name+'</a></li>');
-				} 
+				}				
 			})
+			// Add the settings option to the list
+			$("#viewunit_optionlist").append('<li><a href="stu_settings.html" data-ajax="false">Settings</a></li>');
+
 		},  
 		complete:function(){
 			$("#viewunit_optionlist").listview('refresh');
