@@ -15,11 +15,11 @@
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>
 		<?php echo '<script src="http://';	echo $_SERVER['HTTP_HOST']; echo ':8000/socket.io/socket.io.js"/></script>' ?>
 		<style type="text/css">
-			#lineBlue {
+			.lineBlue {
 			border-bottom: solid #6DC5DB;
 			border-bottom-width: 3px;
 			}
-			#lineRed {
+			.lineRed {
 			border-bottom: solid #FF8A84;
 			border-bottom-width: 3px;
 			}
@@ -53,7 +53,10 @@
 			
 			
 			<!--TEAM LINE-->
-			<div id="team_line"></div>
+			<div id="team_line">
+				<div class="lineRed"></div>
+				<div class="lineBlue"></div>
+			</div>
 			
 
 

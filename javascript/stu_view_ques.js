@@ -11,6 +11,7 @@ $.post("join_session.php", function(data){
 	var socket = io.connect('http://'+location.host+':8000');
 	var locked;
 	var prev_ans;
+	
 	 // at document read (runs only ones).
 	 $(document).ready(function(){
 		
@@ -88,6 +89,7 @@ $.post("join_session.php", function(data){
 		socket.on('reset_answers', function (data){
 			if (unit_code == data.unit_code){
 				$(".ans_button").buttonMarkup({ theme: "j" });
+				prev_ans = '';
 			}// if it is the correct unit
 		});//socket on receive ques
 

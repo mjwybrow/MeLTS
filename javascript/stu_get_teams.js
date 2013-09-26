@@ -15,10 +15,10 @@ $.post("join_session.php", function(data){
 		// Do an initial check for team colour
 		$.get("get_teams.php", function(data){
 			if(data == 'red'){
-				document.getElementById('team_line').innerHTML = '<div id="lineRed"></div>';
+				document.getElementById('team_line').innerHTML = '<div class="lineRed"></div>';
 			}
 			else if(data == 'blue'){
-				document.getElementById('team_line').innerHTML = '<div id="lineBlue"></div>';
+				document.getElementById('team_line').innerHTML = '<div class="lineBlue"></div>';
 			}
 			else{
 				document.getElementById('team_line').innerHTML = '';
@@ -30,10 +30,10 @@ $.post("join_session.php", function(data){
 			if (unit_code == data.unit_code){
 				$.get("get_teams.php", function(data){
 					if(data == 'red'){
-						document.getElementById('team_line').innerHTML = '<div id="lineRed"></div>';
+						document.getElementById('team_line').innerHTML = '<div class="lineRed"></div>';
 					}
 					else if(data == 'blue'){
-						document.getElementById('team_line').innerHTML = '<div id="lineBlue"></div>';
+						document.getElementById('team_line').innerHTML = '<div class="lineBlue"></div>';
 					}
 					else{
 						document.getElementById('team_line').innerHTML = '';
