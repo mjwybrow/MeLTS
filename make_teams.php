@@ -16,14 +16,10 @@ $unit_code = $_SESSION['unit_chosen'];
 mysql_select_db("$unit_code", $dbcon) or die("Cannot select main database!");
 
 $all_students = mysql_query("SELECT * FROM student_list");
-$number_of_students = mysql_num_rows($all_students);
+$half_number_of_students = round(mysql_num_rows($all_students)/2);
+echo $half_number_of_students;
 mysql_query("UPDATE student_list SET team='blue' WHERE 1") or die ("Could not update teams to blue");
-
-for ($i = 1; $i <= $number_of_students/2; $i++) {
-    $red_student = mt_rand(0,$number_of_students);
-	echo $red_student;
-	
-}
+mysql_query("UPDATE student_list SET team='red' WHERE 1 ORDER BY RAND() LIMIT $half_number_of_students") or die ("Could not update teams to red");
 
 // Close connection to mySOL
 mysql_close($dbcon);
