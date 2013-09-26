@@ -21,6 +21,8 @@
 		<!-- /Login page -->
 		<div data-role="page" id="create_accountpage" data-theme="a">
 			<div data-role="header"  data-theme="c">
+				<script type="text/javascript" charset="utf-8" src="javascript/teams_menu.js"></script>
+
 				<table border="0"><tr><td style="padding-left:24px;">
 				<a href="unit.html"  rel="external"><img border="0" src="back.png" height="24" width="20"></a>
 				</td><td width="100%">
@@ -50,15 +52,9 @@
 				</br>
 				<b>Split students into red team and blue team:</b>
 				<input type="button" data-theme="a" id="make_teams" value="Make Teams"/>
-				<script type="text/javascript">
-					$(document).on('click',"#make_teams", function(){$.post("make_teams.php");});
-				</script>
 				</br>
 				<b>Remove teams from student profiles:</b>
 				<input type="button" data-theme="a" id="remove_teams" value="Remove Teams"/>
-				<script type="text/javascript">
-					$(document).on('click',"#remove_teams", function(){$.post("remove_teams.php");});
-				</script>
 			</div>
 			<!-- /content -->
 		</div>

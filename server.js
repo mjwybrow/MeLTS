@@ -60,6 +60,13 @@ io.sockets.on('connection', function (socket) {
 		});
 	});
 	
+	// Lecturer has updated the teams
+	socket.on('teams_update', function (response) {
+		socket.broadcast.emit('teams_update',{
+			unit_code: response.unit_code,
+		});
+	});
+	
 	// Lecturer has ended the quiz session
 	socket.on('end_quiz_session', function (response) {
 		socket.broadcast.emit('end_quiz_session',{

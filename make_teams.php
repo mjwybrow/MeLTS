@@ -15,10 +15,14 @@ $unit_code = $_SESSION['unit_chosen'];
 // Connect to database and insert into the database
 mysql_select_db("$unit_code", $dbcon) or die("Cannot select main database!");
 
+// Count how many students there are
 $all_students = mysql_query("SELECT * FROM student_list");
 $half_number_of_students = round(mysql_num_rows($all_students)/2);
-echo $half_number_of_students;
+
+// Make all students blue
 mysql_query("UPDATE student_list SET team='blue' WHERE 1") or die ("Could not update teams to blue");
+
+// Randomly assign half the students to be red
 mysql_query("UPDATE student_list SET team='red' WHERE 1 ORDER BY RAND() LIMIT $half_number_of_students") or die ("Could not update teams to red");
 
 // Close connection to mySOL
