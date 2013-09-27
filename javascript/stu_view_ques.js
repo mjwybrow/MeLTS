@@ -38,10 +38,22 @@ $.post("join_session.php", function(data){
 						$('#btnC').parent().find('.ui-btn-text').text(C);
 						$('#btnD').parent().find('.ui-btn-text').text(D);
 						
-						if(prev_ans !="0"){ 
-							var button = "#"+prev_ans;
-							$(button).buttonMarkup({ theme: "k" });
-						}
+						// Check on current status of the lock (only runs once - on page load)
+						$.get("stu_lock_check.php", function(data){
+							locked = data;
+							if(data == 1){
+								$('#locked_in').html(' [locked]');
+								$(".ans_button").buttonMarkup({ theme: "l" });
+							}
+							else{
+								$('#locked_in').html('');
+								$(".ans_button").buttonMarkup({ theme: "j" });
+								if(prev_ans !="0"){ 
+								var button = "#"+prev_ans;
+								$(button).buttonMarkup({ theme: "k" });
+								}
+							}
+						});
 					}
 				});				
 			},
@@ -61,15 +73,22 @@ $.post("join_session.php", function(data){
 					type: 'post',
 					data: 'id=' + id,
 					success: function (prev_ans) {
-						if (locked == 1)
-							$(".ans_button").buttonMarkup({ theme: "l" });
-						else {
-							$(".ans_button").buttonMarkup({ theme: "j" });
-							if(prev_ans !='0'){ 
-								var button = "#" + prev_ans;
-								$(button).buttonMarkup({ theme: "k" });
+						// Check on status of the lock for new question
+						$.get("stu_lock_check.php", function(data){
+							locked = data;
+							if(data == 1){
+								$('#locked_in').html(' [locked]');
+								$(".ans_button").buttonMarkup({ theme: "l" });
 							}
-						}
+							else {
+								$('#locked_in').html('');
+								$(".ans_button").buttonMarkup({ theme: "j" });
+								if(prev_ans !='0'){ 
+									var button = "#" + prev_ans;
+									$(button).buttonMarkup({ theme: "k" });
+								}
+							}
+						});
 					},
 					error: function(){	
 						alert('There was an error updating question ID');
@@ -85,24 +104,13 @@ $.post("join_session.php", function(data){
 
 			}// if it is the correct unit
 		});//socket on receive ques
-		
+
 		socket.on('reset_answers', function (data){
 			if (unit_code == data.unit_code){
 				$(".ans_button").buttonMarkup({ theme: "j" });
 				prev_ans = '';
 			}// if it is the correct unit
 		});//socket on receive ques
-
-		// Check on current status of the lock (only runs once - on page load)
-		$.get("stu_lock_check.php", function(data){
-			locked = data;
-			if(data == 1){
-				$('#locked_in').html(' [locked]');
-				$(".ans_button").buttonMarkup({ theme: "l" });
-			}
-			else
-				$('#locked_in').html('');
-		});
 		
 		// Socket to display [lock] on student page
 		socket.on('lock_answers', function (data){
@@ -145,7 +153,7 @@ $.post("join_session.php", function(data){
 		
 		// When a button is clicked / Student answers question
 		$(document).on('click','button', function(){
-			
+						
 			// Get the id of the button clicked
 			//var lec_ques = $('#lec_ques').val();
 			var mcq_answer = $(this).prop("id");

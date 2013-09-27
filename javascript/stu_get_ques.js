@@ -15,8 +15,8 @@ $.post("join_session.php", function(data){
 	   $.mobile.changePage($(document.location.href="index.html"), "slideup");
 	}
 	 
-	 // at document read (runs only ones).
-	 $(document).ready(function(){
+	// at document read (runs only ones).
+	$(document).ready(function(){
 		// Use jquery ajax to get data from php server
 		$.ajax({
 			url: "stu_view_ques.php",

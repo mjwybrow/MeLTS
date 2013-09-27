@@ -55,7 +55,7 @@ if($unit_already_made==0){
 
 	// Create table in newly created database to store the list of students, a list to store the lecturer questions and a table to store current question
 	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
-	mysql_query("CREATE TABLE student_list (username VARCHAR(20), first_name VARCHAR(30), last_name VARCHAR(50), u_scale VARCHAR(1), score INT(255))")  or die("Students' list table cannot be added!");
+	mysql_query("CREATE TABLE student_list (username VARCHAR(20), first_name VARCHAR(30), last_name VARCHAR(50), u_scale VARCHAR(1), score INT(255), team VARCHAR(4))")  or die("Students' list table cannot be added!");
 	//mysql_query("CREATE TABLE participant (username VARCHAR(10), mcq_answer VARCHAR(4))")  or die("Participants' table cannot be added!");
 	mysql_query("CREATE TABLE lecturer_ques (id INT NOT NULL AUTO_INCREMENT,PRIMARY KEY(id), username VARCHAR(30), lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500), ANSWERS VARCHAR(4), LOCKED INT(1))")  or die("Lecturer's question table cannot be added!");
 	mysql_query("CREATE TABLE current_lecques (id INT, lec_ques VARCHAR(500), A VARCHAR(500), B VARCHAR(500), C VARCHAR(500), D VARCHAR(500))")  or die("Lecturer's current question table cannot be added!");

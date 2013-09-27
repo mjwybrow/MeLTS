@@ -12,7 +12,20 @@ $.post("join_session.php", function(data){
 	
 	// at document read (runs only once).
 	$(document).ready(function(){
-	
+
+		// Check on current status of the lock (only runs once - on page load)
+		$.get("lock_check.php", function(data){
+			locked = data;
+			if(data == 1){
+				$('#locked_in').html(' [locked]');
+				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
+			}
+			else{
+				$('#locked_in').html('');
+				$(".resultbar > div").css({ 'background': '#FFE166' }); // working
+			}
+		});
+
 		// End student side quiz session when lecturer ends quiz session
 		$(document).on('click',"#end_ques",function(){
 		
@@ -41,17 +54,6 @@ $.post("join_session.php", function(data){
 			
 			return false;
 		});// onclick end session
-
-		// Check on current status of the lock (only runs once - on page load)
-		$.get("lock_check.php", function(data){
-			locked = data;
-			if(data == 1){
-				$('#locked_in').html(' [locked]');
-			}
-			else{
-				$('#locked_in').html('');
-			}
-		});
 
 		// Function that locks-in all the answers from students
 		$(document).on('click',"#lock_in", function(){
