@@ -28,6 +28,9 @@ if ($locked[0] == 0) {
 
 	// Get student's answer
 	$mcqanswer = $_POST['mcqanswer'];
+	
+	// Get the student's team
+	$team = $_POST['team'];
 
 	// Select database to connect
 	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
@@ -45,12 +48,12 @@ if ($locked[0] == 0) {
 	// Extract 'mcq_answer' field from the array
 	$prev_mcqanswer = $fetch_details['mcq_answer'];
 
-	if ($prev_mcqanswer==$mcqanswer){// To retract answer
-		mysql_query("UPDATE $table_name SET mcq_answer='0' WHERE username='$uname'")  or die("Answer not updated!");
+	if ($prev_mcqanswer==$mcqanswer){ // To retract answer
+		mysql_query("UPDATE $table_name SET mcq_answer='0', team='$team' WHERE username='$uname'")  or die("Answer not updated!");
 		$flag = 0;
 	}
 	else{// To answer or to change answer
-		mysql_query("UPDATE $table_name SET mcq_answer='$mcqanswer' WHERE username='$uname'")  or die("Answer not updated!");
+		mysql_query("UPDATE $table_name SET mcq_answer='$mcqanswer', team='$team' WHERE username='$uname'")  or die("Answer not updated!");
 		$flag = 1;
 	}
 

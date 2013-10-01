@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--Written by Shea Yuin Ng, Nathan Sherburn-->
-<!--Created 15 May 2013-->
-<!--For lecturers to change the settings for their account-->
+<!--Created 22 March 2013-->
+<!--For lecturers to view their list of questions-->
 <html>
 	<head>
-		<title>Teams Menu</title>
+		<title>Question List</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="css/jquery-ui.css" />
@@ -12,21 +12,24 @@
 		<?php echo '<link rel="stylesheet" href="css/'; include('check_theme.php'); echo '" />'; ?>
 		<link rel="stylesheet" href="css/jquery.mobile.structure-1.3.1.min.css" />
 		<script src="jquery/jquery-1.9.1.min.js"></script>
-		<script src="jquery/jquery-ui.js"></script>
 		<script src="jquery/jquery.mobile-1.3.1.min.js"></script>
-		<script src="jquery/jquery-migrate-1.1.0.js"></script>
+		<script src="jquery/jquery-ui.js"></script>
 		<?php echo '<script src="http://';	echo $_SERVER['HTTP_HOST']; echo ':8000/socket.io/socket.io.js"/></script>' ?>
+		<script type="text/javascript"> window.history.forward(); function noBack() { window.history.forward(); } </script>
 	</head>
-	<body>
-		<!-- /Login page -->
-		<div data-role="page" id="create_accountpage" data-theme="a">
-			<div data-role="header"  data-theme="c">
-				<script type="text/javascript" charset="utf-8" src="javascript/teams_menu.js"></script>
+	<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
+		<!-- /Lecturer home page -->
+		<div data-role="page" id="lec_ques_list" data-theme="a">
+			<div data-role="header" data-theme="c">
+				<script type="text/javascript" charset="utf-8" src="javascript/view_queslist.js"></script>
+				<script type="text/javascript" charset="utf-8" src="javascript/u_scale.js"></script>
+				
+				<!--<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>-->
 
 				<table border="0"><tr><td style="padding-left:24px;">
-				<a href="unit.html"  rel="external"><img border="0" src="back.png" height="24" width="20"></a>
+				<a href="lec_teams_menu.html"  rel="external"><img border="0" src="back.png" height="24" width="20"></a>
 				</td><td width="100%">
-				<center>Teams Menu</center>
+				<center>Question List</center>
 				</td><td style="padding-right:24px;">
 				<script type="text/javascript" charset="utf-8" src="javascript/logout.js"></script>
 				<a href id="page_logout_submit" rel="external" data-ajax="false"><img border="0" src="logout.png" height="24" width="20"></a>
@@ -48,21 +51,25 @@
 					</table>
 			</div>
 			<!-- /U-scale -->
-			<div data-role="content" style="max-width:800px;margin: 0 auto;">
+			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				</br>
-				<ul data-role="listview" data-theme="b" id="unit_optionlist">
-					<li><a href="lec_ques_list_teams.html" rel="external" data-ajax="false">Begin a Team Quiz Session</a></li>
+				<b id = "msg"></b>
+				</br>
+				</br>
+				<ul data-role="listview" data-theme="b" id="lecturer_queslist">
 				</ul>
+				<script type="text/javascript" charset="utf-8" src="javascript/select_ques_teams.js"></script>
 				</br>
-				</br>
-				<b>Split students into red team and blue team:</b>
-				<input type="button" data-theme="a" id="make_teams" value="Make Teams"/>
-				</br>
-				<b>Remove teams from student profiles:</b>
-				<input type="button" data-theme="a" id="remove_teams" value="Remove Teams"/>
+				<!-- /Add question button -->
+				<div>
+					<br>
+					<a href="lec_add_ques.html" rel="external" data-theme="a" data-role="button" data-ajax="false">Add Question</a>
+					<a href="lec_del_ques.html" rel="external" data-theme="a" data-role="button" data-ajax="false">Delete Question</a>
+				</div>
+				<!-- /Add question button -->
 			</div>
 			<!-- /content -->
 		</div>
-		<!-- /page -->
+		<!-- /page --> 
 	</body>
 </html>

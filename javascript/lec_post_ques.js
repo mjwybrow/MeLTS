@@ -123,7 +123,7 @@ $.post("join_session.php", function(data){
 		$.ajax({
 			url: "lec_post_ques.php",
 			type: 'post',
-			dataType: "xml",  
+			dataType: "xml",
 			success: function (xml) {
 
 				// Read xml file
@@ -210,7 +210,7 @@ $.post("join_session.php", function(data){
 			var unit_code = data.unit_code;
 			var id = data.id;
 			var mcq_answer = data.mcq_answer;
-
+			
 			$.ajax({
 				url: "getstu_answers.php",
 				type: 'post',

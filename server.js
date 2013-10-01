@@ -42,7 +42,8 @@ io.sockets.on('connection', function (socket) {
 		socket.broadcast.emit('updated',{
 			unit_code: answer.unit_code,
 			id: answer.id,
-			mcq_answer: answer.mcq_answer
+			mcq_answer: answer.mcq_answer,
+			team: answer.team
 		});
 	});
 

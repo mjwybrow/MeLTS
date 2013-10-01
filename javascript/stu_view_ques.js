@@ -8,6 +8,7 @@ $.post("join_session.php", function(data){
 	var name = string[0];
 	var unit_code = string[1];
 	var lec_uname = string[2];
+	var team;
 	var socket = io.connect('http://'+location.host+':8000');
 	var locked;
 	var prev_ans;
@@ -153,7 +154,12 @@ $.post("join_session.php", function(data){
 		
 		// When a button is clicked / Student answers question
 		$(document).on('click','button', function(){
-						
+			
+			// Check which team this student is on
+			$.get("get_teams.php", function(data){
+				team = data;
+			});
+			
 			// Get the id of the button clicked
 			//var lec_ques = $('#lec_ques').val();
 			var mcq_answer = $(this).prop("id");
@@ -161,7 +167,7 @@ $.post("join_session.php", function(data){
 			$.ajax({
 				url: "stu_answers.php",
 				type: 'post',
-				data: 'mcqanswer='+ mcq_answer,
+				data: 'mcqanswer='+mcq_answer+'&team='+team,
 				success: function (data) {
 				//results sent by PHP
 					var result = data.split('_');
@@ -182,7 +188,8 @@ $.post("join_session.php", function(data){
 					socket.emit('updated',{
 						unit_code: unit_code,
 						id: id,
-						mcq_answer: mcq_answer
+						mcq_answer: mcq_answer,
+						team: team
 					});//socket emit
 				},
 				error: function(){	

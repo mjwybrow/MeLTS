@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--Written by Shea Yuin Ng, Nathan Sherburn-->
 <!--Created 3 October 2012-->
-<!--For lecturers to view the results of the posted question-->
+<!--For lecturers to view the results of the posted team questions -->
 <html>
 	<head>
 		<title>Ask Question</title>
@@ -28,7 +28,7 @@
 		#scoretext {
 		style="height:44px;
 		float:left;
-		line-height:2.97em;
+		line-height:2.2em;
 		color:gray;
 		font-size:.9em
 		}
@@ -39,7 +39,7 @@
 		<div data-role="page" id="lec_sessionpage" data-theme="a">
 			<div data-role="header"data-theme="c">
 				<script type="text/javascript" charset="utf-8" src="javascript/u_scale.js"></script>
-				<script type="text/javascript" charset="utf-8" src="javascript/lec_post_ques.js"></script>
+				<script type="text/javascript" charset="utf-8" src="javascript/lec_post_ques_teams.js"></script>
 				
 				<!--<a href="lec_uscale.html" rel="external" data-role="button" data-mini = "true" data-ajax="false" class = "ui-btn-right">U-Scale</a>-->
 				
@@ -69,7 +69,6 @@
 			</div>
 			<!-- /U-scale -->
 			
-			
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
 				</br>
 				<div>
@@ -79,37 +78,44 @@
 				
 				<div id="answerbox">
 					<div><b>A. </b><b id="A" ></b></div>
-					<div id="scoretext"><center id="resulta"></center></div>
-
-					<div id="barA" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
+					<div id="scoretext"><center id="resultaRed"></center></div>
+					<div id="barARed" class="resultbarRed" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
+					
+					<div id="scoretext"><center id="resultaBlue"></center></div>
+					<div id="barABlue" class="resultbarBlue" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
 				</div>
 				</br>
 				
 				<div id="answerbox">
 					<div><b>B. </b><b id="B" ></b></div>
-					<div id="scoretext"><center id="resultb"></center></div>
+					<div id="scoretext"><center id="resultbRed"></center></div>
+					<div id="barBRed" class="resultbarRed" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
+					
+					<div id="scoretext"><center id="resultbBlue"></center></div>
+					<div id="barBBlue" class="resultbarBlue" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
 
-					<div id="barB" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
 				</div>
 				</br>
 				
 				<div id="answerbox">
 					<div><b>C. </b><b id="C" ></b></div>
-					<div id="scoretext"><center id="resultc"></center></div>
-
-					<div id="barC" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
+					<div id="scoretext"><center id="resultcRed"></center></div>
+					<div id="barCRed" class="resultbarRed" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
+					
+					<div id="scoretext"><center id="resultcBlue"></center></div>
+					<div id="barCBlue" class="resultbarBlue" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
 				</div>
 				</br>
 				
 				<div id="answerbox">
 					<div><b>D. </b><b id="D" ></b></div>
-					<div id="scoretext"><center id="resultd"></center></div>
-
-					<div id="barD" class="resultbar" style="padding-left:12px;padding-right:12px;padding-top:10px;padding-bottom:10px;"></div>
+					<div id="scoretext"><center id="resultdRed"></center></div>
+					<div id="barDRed" class="resultbarRed" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
+					
+					<div id="scoretext"><center id="resultdBlue"></center></div>
+					<div id="barDBlue" class="resultbarBlue" style="padding-left:12px;padding-right:12px;padding-top:4px;padding-bottom:4px;"></div>
 				</div>
 				
-
-
 				<p id='log'></p>
 				</br>
 				<!-- Button to end question -->
