@@ -13,112 +13,6 @@ $.post("join_session.php", function(data){
 	// at document read (runs only once).
 	$(document).ready(function(){
 
-		// Check on current status of the lock (only runs once - on page load)
-		$.get("lock_check.php", function(data){
-			locked = data;
-			if(data == 1){
-				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
-			}
-			else{
-				$('#locked_in').html('');
-				$(".resultbar > div").css({ 'background': '#FFE166' }); // working
-			}
-		});
-
-		// End student side quiz session when lecturer ends quiz session
-		$(document).on('click',"#end_ques",function(){
-		
-			// Signal to server session has ended
-			socket.emit('end_quiz_session', { 
-				unit_code: unit_code,
-			});
-			
-			$.get("end_session.php", function(data){
-				window.location.href = "lec_ques_list.html";
-			});
-			
-			// lock quiz
-			if (locked == 0) {
-				locked = 1;
-				socket.emit('lock_answers', { // Signal to server answers have been locked
-					unit_code: unit_code,
-				});
-				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
-				$.post("lock_ques.php"); // switches lock state			else {
-			}
-			
-			// update leaderboard
-			$.get("update_leaderboard.php");
-			
-			return false;
-		});// onclick end session
-
-		// Function that locks-in all the answers from students
-		$(document).on('click',"#lock_in", function(){
-			// Signal to server answers have been locked/unlocked
-			socket.emit('lock_answers', { 
-				unit_code: unit_code,
-			});
-			if (locked == 1) {
-				locked = 0;
-				$('#locked_in').html('');
-				$(".resultbar > div").css({ 'background': '#FFE166' }); // working
-			}
-			else {
-				locked = 1;
-				$('#locked_in').html(' [locked]');
-				$(".resultbar > div").css({ 'background': '#D3D3D3' }); // working
-			}
-			$.post("lock_ques.php"); // switches lock state
-			return false;
-		});// onclick lock-in answers
-		
-		// Function that delete all the answers from students
-		$(document).on('click',"#reset",function(){
-			if(locked != 1){ // check if question is locked
-				$.get("reset_result.php", function(data){
-					$(function() {
-						$( "#barA" ).progressbar({
-							value: 0
-						});
-
-						$( "#barB" ).progressbar({
-							value: 0
-						});
-
-						$( "#barC" ).progressbar({
-							value: 0
-						});
-
-						$( "#barD" ).progressbar({
-							value: 0
-						});
-						
-						/*
-						// Style the bar graph
-						$(".resultbar").css({ 'background': 'Transparent' });
-						$(".resultbar").css({ 'border': 'None' });
-						$(".resultbar > div").css({ 'background': '#FFE166' });
-						*/
-					});	
-
-					// Signal answers have been reset
-					socket.emit('reset_answers', { 
-						unit_code: unit_code,			
-					});
-
-					$('#resulta').html('0/0');
-					$('#resultb').html('0/0');
-					$('#resultc').html('0/0');
-					$('#resultd').html('0/0');
-				});// get
-			}; // check if locked
-			return false;
-		});
-		// onclick reset answers
-
 		//use jquery ajax to post data to php server
 		$.ajax({
 			url: "lec_post_ques.php",
@@ -176,11 +70,21 @@ $.post("join_session.php", function(data){
 								value: cntD/total*100
 							});
 
-							// Style the bar graph
-							//$(".resultbar").css({ 'background': 'Transparent' });
-							//$(".resultbar").css({ 'border': 'None' });
-							$(".resultbar > div").css({ 'background': '#D3D3D3' });
-							if (locked == 0) $(".resultbar > div").css({ 'background': '#FFE166' });
+							// Check on current status of the lock
+							$.get("lock_check.php", function(data){
+								locked = data;
+								if(locked == 1){
+									$('#locked_in').html(' [locked]');
+									$(".resultbar > div").css({ 'background': '#D3D3D3' });
+								}
+								else if(locked == 0){
+									$('#locked_in').html('');
+									$(".resultbar > div").css({ 'background': '#FFE166' });
+								}
+								else{
+									alert('Something has gone horribly wrong!');
+								}
+							});
 						});	
 
 						$('#lec_ques').html(lec_ques);
@@ -204,6 +108,94 @@ $.post("join_session.php", function(data){
 			}	
 		});
 		//ajax
+
+		// End student side quiz session when lecturer ends quiz session
+		$(document).on('click',"#end_ques",function(){
+		
+			// Signal to server session has ended
+			socket.emit('end_quiz_session', { 
+				unit_code: unit_code,
+			});
+			
+			$.get("end_session.php", function(data){
+				window.location.href = "lec_ques_list.html";
+			});
+			
+			// lock quiz
+			if (locked == 0) {
+				locked = 1;
+				socket.emit('lock_answers', { // Signal to server answers have been locked
+					unit_code: unit_code,
+				});
+				$.post("lock_ques.php");
+			}
+			
+			// update leaderboard
+			$.get("update_leaderboard.php");
+			
+			return false;
+		});// onclick end session
+
+		// Function that locks-in all the answers from students
+		$(document).on('click',"#lock_in", function(){
+			// Signal to server answers have been locked/unlocked
+			socket.emit('lock_answers', { 
+				unit_code: unit_code,
+			});
+			if (locked == 1) {
+				locked = 0;
+				$('#locked_in').html('');
+				$(".resultbar > div").css({ 'background': '#FFE166' });
+			}
+			else if(locked == 0) {
+				locked = 1;
+				$('#locked_in').html(' [locked]');
+				$(".resultbar > div").css({ 'background': '#D3D3D3' });
+			}
+			else{
+				alert('Something has gone horribly wrong, alert the farmers!');
+			}
+			$.post("lock_ques.php"); // switches lock state
+			return false;
+		});// onclick lock-in answers
+		
+		// Function that delete all the answers from students
+		$(document).on('click',"#reset",function(){
+			if(locked != 1){ // check if question is locked
+				$.get("reset_result.php", function(data){
+					$(function() {
+						$( "#barA" ).progressbar({
+							value: 0
+						});
+
+						$( "#barB" ).progressbar({
+							value: 0
+						});
+
+						$( "#barC" ).progressbar({
+							value: 0
+						});
+
+						$( "#barD" ).progressbar({
+							value: 0
+						});
+						
+					});	
+
+					// Signal answers have been reset
+					socket.emit('reset_answers', { 
+						unit_code: unit_code,			
+					});
+
+					$('#resulta').html('0/0');
+					$('#resultb').html('0/0');
+					$('#resultc').html('0/0');
+					$('#resultd').html('0/0');
+				});// get
+			}; // check if locked
+			return false;
+		});
+		// onclick reset answers
 
 		// Updated answers from students
 		socket.on('updated', function (data) {

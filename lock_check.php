@@ -1,7 +1,7 @@
 <?php
 // Written by Nathan Sherburn
 // Created 18 July 2012
-// Check status of lock at Quiz session begin
+// Check status of lock in quiz session
 
 // Resume session from previous session
 session_start();
@@ -10,9 +10,7 @@ session_start();
 include('connections.php');
 
 // Get username, unit code and unit name from session variable
-$uname = $_SESSION['uname'];
 $unit_code = $_SESSION['unit_chosen'];
-$status = $_SESSION['status'];
 $id = $_SESSION['id'];
 
 // Select database to connect

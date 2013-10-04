@@ -52,6 +52,7 @@ else{
 	header("Content-type: text/xml"); //Declare saving data in XML form
 	echo '<?xml version="1.0" encoding="utf-8"?>'; // Print XML tag
 	echo "<QuesList>"; //Top root directory
+	
 	$current_ques = mysql_fetch_array($r);
 	//Get each element
 	$id = $current_ques["id"];
@@ -66,29 +67,52 @@ else{
 	
 	$table_name='q_'.$id;
 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnA' && team='red'", $dbcon);
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnA'") or die("failed");
 	$cntARed = mysql_num_rows($result); 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnA' && team='blue'", $dbcon);
-	$cntABlue = mysql_num_rows($result); 
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnA'");
+	$cntABlue = mysql_num_rows($result);
 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnB' && team='red'", $dbcon);
-	$cntBRed = mysql_num_rows($result); 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnB' && team='blue'", $dbcon);
-	$cntBBlue = mysql_num_rows($result); 
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnB'");
+	$cntBRed = mysql_num_rows($result);
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnB'");
+	$cntBBlue = mysql_num_rows($result);
 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnC' && team='red'", $dbcon);
-	$cntCRed = mysql_num_rows($result); 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnC' && team='blue'", $dbcon);
-	$cntCBlue = mysql_num_rows($result); 
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnC'");
+	$cntCRed = mysql_num_rows($result);
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnC'");
+	$cntCBlue = mysql_num_rows($result);
 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnD' && team='red'", $dbcon);
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnD'");
 	$cntDRed = mysql_num_rows($result); 
-	$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnD' && team='blue'", $dbcon);
-	$cntDBlue = mysql_num_rows($result); 
+	$result = mysql_query("
+	SELECT   $table_name.mcq_answer, student_list.team
+	FROM     $table_name, student_list 
+	WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnD'");
+	$cntDBlue = mysql_num_rows($result);
 
 	$totalRed = $cntARed+$cntBRed+$cntCRed+$cntDRed;
 	$totalBlue = $cntABlue+$cntBBlue+$cntCBlue+$cntDBlue;
-	
 	// Print each element in XML
 	echo "<Ques>";
 	echo "<UnitCode>$unit_code</UnitCode>";

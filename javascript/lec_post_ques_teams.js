@@ -12,109 +12,7 @@ $.post("join_session.php", function(data){
 	
 	// at document read (runs only once).
 	$(document).ready(function(){
-
-		// Check on current status of the lock (only runs once - on page load)
-		$.get("lock_check.php", function(data){
-			locked = data;
-			if(data == 1){
-				$('#locked_in').html(' [locked]');
-				$(".resultbarRed > div").css({ 'background': '#D3D3D3' }); // working? resultbarRed -> resultbar might work
-				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' }); // working?
-			}
-			else{
-				$('#locked_in').html('');
-				$(".resultbarRed > div").css({ 'background': '#FF8A84' }); // working?
-				$(".resultbarBlue > div").css({ 'background': '#6DC5DB' }); // working?
-			}
-		});
-
-		// End student side quiz session when lecturer ends quiz session
-		$(document).on('click',"#end_ques",function(){
-		
-			// Signal to server session has ended
-			socket.emit('end_quiz_session', { 
-				unit_code: unit_code,
-			});
-			
-			$.get("end_session.php", function(data){
-				window.location.href = "lec_ques_list_teams.html";
-			});
-			
-			// lock quiz
-			if (locked == 0) {
-				locked = 1;
-				socket.emit('lock_answers', { // Signal to server answers have been locked
-					unit_code: unit_code,
-				});
-				$('#locked_in').html(' [locked]');
-				$(".resultbarRed > div").css({ 'background': '#D3D3D3' }); // working? resultbarRed -> resultbar might work
-				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' }); // working?
-				$.post("lock_ques.php"); // switches lock state			else {
-			}
-			
-			// update leaderboard
-			$.get("update_leaderboard.php");
-			
-			return false;
-		});// onclick end session
-
-		// Function that locks-in all the answers from students
-		$(document).on('click',"#lock_in", function(){
-			// Signal to server answers have been locked/unlocked
-			socket.emit('lock_answers', { 
-				unit_code: unit_code,
-			});
-			if (locked == 1) {
-				locked = 0;
-				$('#locked_in').html('');
-				$(".resultbarRed > div").css({ 'background': '#FF8A84' }); // working?
-				$(".resultbarBlue > div").css({ 'background': '#6DC5DB' }); // working?
-			}
-			else {
-				locked = 1;
-				$('#locked_in').html(' [locked]');
-				$(".resultbarRed > div").css({ 'background': '#D3D3D3' }); // working? resultbarRed -> resultbar might work
-				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' }); // working?
-			}
-			$.post("lock_ques.php"); // switches lock state
-			return false;
-		});// onclick lock-in answers
-		
-		// Function that delete all the answers from students
-		$(document).on('click',"#reset",function(){
-			if(locked != 1){ // check if question is locked
-				$.get("reset_result.php", function(data){
-					$(function() {
-						$( "#barARed" ).progressbar({value: 0});
-						$( "#barABlue" ).progressbar({value: 0});
-						$( "#barBRed" ).progressbar({value: 0});
-						$( "#barBBlue" ).progressbar({value: 0});
-						$( "#barCRed" ).progressbar({value: 0});
-						$( "#barCBlue" ).progressbar({value: 0});
-						$( "#barDRed" ).progressbar({value: 0});
-						$( "#barDBlue" ).progressbar({value: 0});
-						
-					});	
-
-					// Signal answers have been reset
-					socket.emit('reset_answers', { 
-						unit_code: unit_code,			
-					});
-
-					$('#resultaRed').html('0/0');
-					$('#resultaBlue').html('0/0');
-					$('#resultbRed').html('0/0');
-					$('#resultbBlue').html('0/0');
-					$('#resultcRed').html('0/0');
-					$('#resultcBlue').html('0/0');
-					$('#resultdRed').html('0/0');
-					$('#resultdBlue').html('0/0');
-				});// get
-			}; // check if locked
-			return false;
-		});
-		// onclick reset answers
-
+	
 		//use jquery ajax to post data to php server
 		$.ajax({
 			url: "lec_post_ques_teams.php",
@@ -170,11 +68,21 @@ $.post("join_session.php", function(data){
 							$( "#barDRed" ).progressbar({value: cntDRed/totalRed*100});
 							$( "#barDBlue" ).progressbar({value: cntDBlue/totalBlue*100});
 
-							$(".resultbar > div").css({ 'background': '#D3D3D3' });
-							if (locked == 0){
-								$(".resultbarRed > div").css({ 'background': '#FF8A84' }); // working?
-								$(".resultbarBlue > div").css({ 'background': '#6DC5DB' }); // working?
-							}
+							// Check on current status of the lock
+							$.get("lock_check.php", function(data){
+								locked = data;
+								if(locked == 1){
+									$('#locked_in').html(' [locked]1');
+									$(".resultbar > div").css({ 'background': '#D3D3D3' });
+								}
+								else if(locked == 0){
+									$('#locked_in').html('');
+									$(".resultbar > div").css({ 'background': '#FFE166' });
+								}
+								else{
+									alert('Something has gone horribly wrong!');
+								}
+							});
 						});	
 
 						$('#lec_ques').html(lec_ques);
@@ -204,12 +112,113 @@ $.post("join_session.php", function(data){
 		});
 		//ajax
 
+		// Check on current status of the lock (only runs once - on page load)
+		$.get("lock_check.php", function(data){
+			locked = data;
+			if(data == 1){
+				$('#locked_in').html(' [locked]');
+				$(".resultbarRed > div").css({ 'background': '#D3D3D3' });
+				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' });
+			}
+			else{
+				$('#locked_in').html('');
+				$(".resultbarRed > div").css({ 'background': '#FF8A84' });
+				$(".resultbarBlue > div").css({ 'background': '#6DC5DB' });
+			}
+		});
+
+		// End student side quiz session when lecturer ends quiz session
+		$(document).on('click',"#end_ques",function(){
+		
+			// Signal to server session has ended
+			socket.emit('end_quiz_session', { 
+				unit_code: unit_code,
+			});
+			
+			$.get("end_session.php", function(data){
+				window.location.href = "lec_ques_list.html";
+			});
+			
+			// lock quiz
+			if (locked == 0) {
+				locked = 1;
+				socket.emit('lock_answers', { // Signal to server answers have been locked
+					unit_code: unit_code,
+				});
+				$('#locked_in').html(' [locked]');
+				$(".resultbarRed > div").css({ 'background': '#D3D3D3' });
+				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' });
+				$.post("lock_ques.php");
+			}
+			
+			// update leaderboard
+			$.get("update_leaderboard.php");
+			
+			return false;
+		});// onclick end session
+
+		// Function that locks-in all the answers from students
+		$(document).on('click',"#lock_in", function(){
+			// Signal to server answers have been locked/unlocked
+			socket.emit('lock_answers', { 
+				unit_code: unit_code,
+			});
+			if (locked == 1) {
+				locked = 0;
+				$('#locked_in').html('');
+				$(".resultbarRed > div").css({ 'background': '#FF8A84' });
+				$(".resultbarBlue > div").css({ 'background': '#6DC5DB' });
+			}
+			else {
+				locked = 1;
+				$('#locked_in').html(' [locked]');
+				$(".resultbarRed > div").css({ 'background': '#D3D3D3' });
+				$(".resultbarBlue > div").css({ 'background': '#D3D3D3' });
+			}
+			$.post("lock_ques.php"); // switches lock state
+			return false;
+		});// onclick lock-in answers
+		
+		// Function that delete all the answers from students
+		$(document).on('click',"#reset",function(){
+			if(locked != 1){ // check if question is locked
+				$.get("reset_result.php", function(data){
+					$(function() {
+						$( "#barARed" ).progressbar({value: 0});
+						$( "#barABlue" ).progressbar({value: 0});
+						$( "#barBRed" ).progressbar({value: 0});
+						$( "#barBBlue" ).progressbar({value: 0});
+						$( "#barCRed" ).progressbar({value: 0});
+						$( "#barCBlue" ).progressbar({value: 0});
+						$( "#barDRed" ).progressbar({value: 0});
+						$( "#barDBlue" ).progressbar({value: 0});
+						
+					});	
+
+					// Signal answers have been reset
+					socket.emit('reset_answers', { 
+						unit_code: unit_code,			
+					});
+
+					$('#resultaRed').html('0/0');
+					$('#resultaBlue').html('0/0');
+					$('#resultbRed').html('0/0');
+					$('#resultbBlue').html('0/0');
+					$('#resultcRed').html('0/0');
+					$('#resultcBlue').html('0/0');
+					$('#resultdRed').html('0/0');
+					$('#resultdBlue').html('0/0');
+				});// get
+			}; // check if locked
+			return false;
+		});
+		// onclick reset answers
+
 		// Updated answers from students
 		socket.on('updated', function (data) {
 			var unit_code = data.unit_code;
 			var id = data.id;
 			var mcq_answer = data.mcq_answer;
-			var team = data.team;
 						
 			$.ajax({
 				url: "getstu_answers_teams.php",
@@ -217,7 +226,7 @@ $.post("join_session.php", function(data){
 				dataType: "xml",  
 				success: function (xml) {
 
-					//results sent by PHP
+					// results sent by PHP
 					cntARed = xml.getElementsByTagName("CntARed")[0].childNodes[0].nodeValue;
 					cntABlue = xml.getElementsByTagName("CntABlue")[0].childNodes[0].nodeValue;
 					cntBRed = xml.getElementsByTagName("CntBRed")[0].childNodes[0].nodeValue;
@@ -229,25 +238,15 @@ $.post("join_session.php", function(data){
 					totalRed = xml.getElementsByTagName("TotalRed")[0].childNodes[0].nodeValue;
 					totalBlue = xml.getElementsByTagName("TotalBlue")[0].childNodes[0].nodeValue;
 					
-					if(team == 'red'){
-						$(function() {
-							$( "#barARed" ).progressbar({value: cntARed/totalRed*100});
-							$( "#barBRed" ).progressbar({value: cntBRed/totalRed*100});
-							$( "#barCRed" ).progressbar({value: cntCRed/totalRed*100});
-							$( "#barDRed" ).progressbar({value: cntDRed/totalRed*100});
-						});					
-					}
-					else if(team == 'blue'){
-						$(function() {
-							$( "#barABlue" ).progressbar({value: cntABlue/totalBlue*100});
-							$( "#barBBlue" ).progressbar({value: cntBBlue/totalBlue*100});
-							$( "#barCBlue" ).progressbar({value: cntCBlue/totalBlue*100});
-							$( "#barDBlue" ).progressbar({value: cntDBlue/totalBlue*100});
-						});					
-					}
-					else{
-						alert('An error has occurred!');
-					}
+					// update percentage bars
+					$( "#barARed" ).progressbar({value: cntARed/totalRed*100});
+					$( "#barBRed" ).progressbar({value: cntBRed/totalRed*100});
+					$( "#barCRed" ).progressbar({value: cntCRed/totalRed*100});
+					$( "#barDRed" ).progressbar({value: cntDRed/totalRed*100});
+					$( "#barABlue" ).progressbar({value: cntABlue/totalBlue*100});
+					$( "#barBBlue" ).progressbar({value: cntBBlue/totalBlue*100});
+					$( "#barCBlue" ).progressbar({value: cntCBlue/totalBlue*100});
+					$( "#barDBlue" ).progressbar({value: cntDBlue/totalBlue*100});
 					
 					// update scores
 					$('#resultaRed').html(cntARed+'/'+totalRed);

@@ -16,7 +16,7 @@
 		<script src="jquery/jquery-migrate-1.1.0.js"></script>
 		<script src="jquery/jquery-ui.js"></script>
 		<?php echo '<script src="http://';	echo $_SERVER['HTTP_HOST']; echo ':8000/socket.io/socket.io.js"/></script>' ?>
-		<style type="text/css">
+		<style>
 		#answerbox {
 		background-color:#EAEAEA;
 		padding-left:10px;
@@ -121,6 +121,7 @@
 				<!-- Button to end question -->
 				<div>
 					<a data-role="button" id="lock_in">Lock/Unlock Results</a>
+					<a href="lec_sessionpage.html" rel="external" data-theme="a" data-role="button" data-ajax="false">Team Mode Off</a>
 					<a data-role="button" id="reset">Reset Results</a>
 				</div>
 				<!-- Buttons to end question -->

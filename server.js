@@ -43,7 +43,6 @@ io.sockets.on('connection', function (socket) {
 			unit_code: answer.unit_code,
 			id: answer.id,
 			mcq_answer: answer.mcq_answer,
-			team: answer.team
 		});
 	});
 

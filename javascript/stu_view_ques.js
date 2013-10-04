@@ -8,7 +8,6 @@ $.post("join_session.php", function(data){
 	var name = string[0];
 	var unit_code = string[1];
 	var lec_uname = string[2];
-	var team;
 	var socket = io.connect('http://'+location.host+':8000');
 	var locked;
 	var prev_ans;
@@ -42,17 +41,20 @@ $.post("join_session.php", function(data){
 						// Check on current status of the lock (only runs once - on page load)
 						$.get("stu_lock_check.php", function(data){
 							locked = data;
-							if(data == 1){
+							if(locked == 1){
 								$('#locked_in').html(' [locked]');
 								$(".ans_button").buttonMarkup({ theme: "l" });
 							}
-							else{
+							else if (locked == 0){
 								$('#locked_in').html('');
 								$(".ans_button").buttonMarkup({ theme: "j" });
 								if(prev_ans !="0"){ 
-								var button = "#"+prev_ans;
-								$(button).buttonMarkup({ theme: "k" });
+									var button = "#"+prev_ans;
+									$(button).buttonMarkup({ theme: "k" });
 								}
+							}
+							else{
+								alert('Something has gone horribly wrong!');
 							}
 						});
 					}
@@ -103,8 +105,8 @@ $.post("join_session.php", function(data){
 				$('#btnC').parent().find('.ui-btn-text').text(data.C);
 				$('#btnD').parent().find('.ui-btn-text').text(data.D);
 
-			}// if it is the correct unit
-		});//socket on receive ques
+			} // if it is the correct unit
+		}); // socket on receive ques
 
 		socket.on('reset_answers', function (data){
 			if (unit_code == data.unit_code){
@@ -155,11 +157,6 @@ $.post("join_session.php", function(data){
 		// When a button is clicked / Student answers question
 		$(document).on('click','button', function(){
 			
-			// Check which team this student is on
-			$.get("get_teams.php", function(data){
-				team = data;
-			});
-			
 			// Get the id of the button clicked
 			//var lec_ques = $('#lec_ques').val();
 			var mcq_answer = $(this).prop("id");
@@ -167,21 +164,22 @@ $.post("join_session.php", function(data){
 			$.ajax({
 				url: "stu_answers.php",
 				type: 'post',
-				data: 'mcqanswer='+mcq_answer+'&team='+team,
+				data: 'mcqanswer='+mcq_answer,
 				success: function (data) {
 				//results sent by PHP
+					//alert(data);
 					var result = data.split('_');
 					var unit_code = result[0];
 					var id = result[1];
 					var flag = result[2];
-					if(locked==0){
+					if(locked == 0){
 						prev_ans = mcq_answer;
-						if(flag==1){// Change response
+						if(flag == 1){ // Change response
 							$(".ans_button").buttonMarkup({ theme: "j" });
 							var button = "#" + mcq_answer;
 							$(button).buttonMarkup({ theme: "k" });
 						}
-						else{// Retract response
+						else{ // Retract response
 							$(".ans_button").buttonMarkup({ theme: "j" });
 						}
 					} // check lock
@@ -189,7 +187,6 @@ $.post("join_session.php", function(data){
 						unit_code: unit_code,
 						id: id,
 						mcq_answer: mcq_answer,
-						team: team
 					});//socket emit
 				},
 				error: function(){	

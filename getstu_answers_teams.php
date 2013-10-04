@@ -20,24 +20,48 @@ mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 $table_name='q_'.$id;
 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer='btnA' && team='red'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnA'", $dbcon);
 $cntARed = mysql_num_rows($result); 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer='btnA' && team='blue'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnA'", $dbcon);
 $cntABlue = mysql_num_rows($result);
 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnB' && team='red'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnB'", $dbcon);
 $cntBRed = mysql_num_rows($result);
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer='btnB' && team='blue'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnB'", $dbcon);
 $cntBBlue = mysql_num_rows($result);
 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnC' && team='red'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnC'", $dbcon);
 $cntCRed = mysql_num_rows($result);
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer='btnC' && team='blue'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnC'", $dbcon);
 $cntCBlue = mysql_num_rows($result);
 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer = 'btnD' && team='red'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='red' AND mcq_answer='btnD'", $dbcon);
 $cntDRed = mysql_num_rows($result); 
-$result = mysql_query("SELECT * FROM $table_name WHERE mcq_answer='btnD' && team='blue'", $dbcon);
+$result = mysql_query("
+SELECT   $table_name.mcq_answer, student_list.team
+FROM     $table_name, student_list 
+WHERE    $table_name.username = student_list.username AND team='blue' AND mcq_answer='btnD'", $dbcon);
 $cntDBlue = mysql_num_rows($result);
 
 $totalRed = $cntARed+$cntBRed+$cntCRed+$cntDRed;
