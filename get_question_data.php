@@ -43,22 +43,38 @@ else{
 
 	$result_res = mysql_query("SELECT * FROM student_list");
 	$question_row = array();
-	while ($student_list = mysql_fetch_array($result_res)) { // Obtain all lecturer quiz questions
+	array_push($question_row, 'Lecturer'); // Make 'Lecturer' column title
+	array_push($question_row, 'Answers'); // Make 'Answers' column title
+	while ($student_list = mysql_fetch_array($result_res)) { // Make all student's name column title's
 			$student = ($student_list["username"]);
 			array_push($question_row, $student);
 	}
-	array_push($question_row, 'Answers'); // add 'Answers' at end
-	array_push($csv_container, $question_row); // Create top row of student names
-
-	// Get answers
+	array_push($csv_container, $question_row); // Create top row of table
+	
+	// Get answers and lecturers
 	$answers_res = mysql_query("SELECT ANSWERS FROM lecturer_ques");
+	$lecturer_res = mysql_query("SELECT username FROM lecturer_ques");
 	
 	while ($lecturer_questions = mysql_fetch_array($resource)) { // Obtain all lecturer quiz questions
-		$answer_list = mysql_fetch_array($answers_res); // // Get answers into a variable
 		$q_number = $lecturer_questions["id"]; // the question number (ie q_2 in database)
 		$lec_ques = $lecturer_questions["lec_ques"]; // the worded lecturer question
 		$result_res = mysql_query("SELECT * FROM student_list"); // obtaining the resource from the database
 		$question_row = array();
+		
+		
+		// Create lecture key
+		$lecturer_list = mysql_fetch_array($lecturer_res); // // Get lecturers into a variable
+		array_push($question_row, $lecturer_list[0]); // push answers onto the end of the question row
+		
+		// Create answer key
+		$answer_string = '';
+		$answer_list = mysql_fetch_array($answers_res); // // Get answers into a variable
+		if($answer_list[0][0] == 'A') $answer_string = 'btnA ';
+		if($answer_list[0][1] == 'B') $answer_string = $answer_string.'btnB ';
+		if($answer_list[0][2] == 'C') $answer_string = $answer_string.'btnC ';
+		if($answer_list[0][3] == 'D') $answer_string = $answer_string.'btnD ';
+		array_push($question_row, $answer_string); // push answers onto the end of the question row
+		
 		while ($student_list = mysql_fetch_array($result_res)) { // Obtain all lecturer quiz questions
 			$student = ($student_list["username"]);
 			$result = mysql_query("SELECT * FROM q_$q_number WHERE username = '$student'");
@@ -67,16 +83,7 @@ else{
 			array_push($question_row, $answer);
 		}
 		
-		$answer_string = '';
-		
-		// Create answer key
-		if($answer_list[0][0] == 'A') $answer_string = 'btnA ';
-		if($answer_list[0][1] == 'B') $answer_string = $answer_string.'btnB ';
-		if($answer_list[0][2] == 'C') $answer_string = $answer_string.'btnC ';
-		if($answer_list[0][3] == 'D') $answer_string = $answer_string.'btnD ';
-		array_push($question_row, $answer_string); // push answers onto the end of the question row
-		
-		// 
+		// put question row at bottom of table
 		array_push($csv_container, $question_row);
 		$question_number ++;
 	}
