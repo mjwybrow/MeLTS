@@ -14,7 +14,7 @@ $unit_code = mysql_real_escape_string($_POST['unit_code']);
 $unit_name = mysql_real_escape_string($_POST['unit_name']);
 $theme_selection = mysql_real_escape_string($_POST['theme_selection']);
 //$ip = $_SERVER['REMOTE_ADDR'];
-
+	
 // Select database to connect
 mysql_select_db("main_database", $dbcon) or die("Cannot select main database!");
 
@@ -48,10 +48,10 @@ $lecturer_added_to_unit = mysql_affected_rows();
 if($unit_already_made==0){
 //no username exist in database
 	// Insert username and password into list of units table in database
-	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')")  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing");
+	mysql_query("INSERT INTO units(unit_code, unit_name, lecturer) VALUES('$unit_code','$unit_name','$uname')");//  or die("Unit cannot be added! Please ensure the unit code has only 7 characters including spacing");
 
 	// Create database for the unit to hold sessions
-	mysql_query("CREATE DATABASE $unit_code");
+	mysql_query("CREATE DATABASE `$unit_code`")or die("Unable to create database");
 
 	// Create table in newly created database to store the list of students, a list to store the lecturer questions and a table to store current question
 	mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");

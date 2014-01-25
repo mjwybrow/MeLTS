@@ -8,7 +8,7 @@ $(document).ready(function() {
 		//get unit code
 		var unit_code = $('#unit_code').val();
 		if (!unit_code) { alert('Please enter a unit code.'); return false; }
-		if(/^[a-zA-Z0-9- ]*$/.test(unit_code) == false) {
+		if(/[A-Za-z0-9 ()-]/.test(unit_code) == false) {
 			alert('Please enter a unit code without any special characters'); return false;
 		}
 		
