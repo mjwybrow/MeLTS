@@ -15,25 +15,32 @@ mysql_select_db($unit_chosen, $dbcon) or die("Cannot select unit database!");
 
 // Set all scores to 0
 mysql_query("UPDATE student_list SET score=0 WHERE 1") or die("Cannot reset score to 0");
+mysql_query("UPDATE student_list SET attempted=0 WHERE 1") or die("Cannot reset score to 0");
 
 // Tally up the results
 
 $question_ids = mysql_query("SELECT id FROM lecturer_ques");
 
 while($id_array = mysql_fetch_array($question_ids)){
-$id = $id_array['id'];
-$correct_resource = mysql_query("SELECT ANSWERS FROM lecturer_ques WHERE id='$id'") or die("Cannot get correct answers");
-$correct = mysql_fetch_array($correct_resource);
+	$id = $id_array['id'];
+	$correct_resource = mysql_query("SELECT ANSWERS FROM lecturer_ques WHERE id='$id'") or die("Cannot get correct answers");
+	$correct = mysql_fetch_array($correct_resource);
 
-if($correct['ANSWERS'][0] == 'A')
-	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnA')") or die ("Could not update score 1");
-if($correct['ANSWERS'][1] == 'B')
-	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 2");
-if($correct['ANSWERS'][2] == 'C')
-	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 3");
-if($correct['ANSWERS'][3] == 'D')
-	mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 4");
-}
-
+	if($correct['ANSWERS'][0] == 'A') {
+		mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnA')") or die ("Could not update score 1");
+	}
+	if($correct['ANSWERS'][1] == 'B') {
+		mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnB')") or die ("Could not update score 2");
+	}
+	if($correct['ANSWERS'][2] == 'C') {
+		mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnC')") or die ("Could not update score 3");
+	}
+	if($correct['ANSWERS'][3] == 'D') {
+		mysql_query("UPDATE student_list SET score=score+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer = 'btnD')") or die ("Could not update score 4");
+	}
+	
+	// Update the total attempted questions
+	mysql_query("UPDATE student_list SET attempted=attempted+1 WHERE username IN (SELECT username FROM q_$id WHERE mcq_answer != '0')") or die ("Could not update attempts");
+	}
 mysql_close($dbcon);
 ?>

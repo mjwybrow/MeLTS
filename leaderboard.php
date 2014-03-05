@@ -15,6 +15,7 @@ echo "
 <tr>
 <th align=\"left\">Nickname</th>
 <th align=\"left\">Score</th>
+<th align=\"left\">Attempted</th>
 </tr>";
 
 // Select all students and their scores
@@ -23,12 +24,14 @@ $score_resource = mysql_query("SELECT * FROM student_list ORDER BY score DESC;")
 // Fill the table
 while($score_row = mysql_fetch_array($score_resource)){
 	$username = $score_row['username'];
+	$attempted = $score_row['attempted'];
 	mysql_select_db('main_database', $dbcon) or die("Cannot select main database!");
 	$nickname_resource = mysql_query("SELECT * FROM account WHERE username = '$username'");	
 	$nickname_row = mysql_fetch_array($nickname_resource);
 	echo "<tr>";
 	echo "<td align=\"left\">" . $nickname_row['nickname'] . "</td>";
 	echo "<td align=\"left\">" . $score_row['score'] . "</td>";
+	echo "<td align=\"left\">" . $score_row['attempted'] . "</td>"; 
 	echo "</tr>";
 }
 echo "</table>";
