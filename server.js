@@ -15,11 +15,14 @@ io.sockets.on('connection', function (socket) {
       var sender = 'unregistered';
       
       // get the name of the sender
-      socket.get('nickname', function (err, name) {
-         console.log('Chat message by ', name);
-         console.log('error ', err);
-         sender = name;
-      });   
+
+      // socket.get('nickname', function (err, name) {
+      //    console.log('Chat message by ', name);
+      //    console.log('error ', err);
+      //    sender = name;
+      // });   // depricated in since 1.0, see: http://stackoverflow.com/questions/10360110/socket-io-socket-set-and-socket-get-what-is-the-callback-argument-for
+
+   		sender = socket.nickname
 
       // broadcast data recieved from the sender
       // to others who are connected, but not 
@@ -117,9 +120,13 @@ io.sockets.on('connection', function (socket) {
       // make a nickname paramater for this socket
       // and then set its value to the name recieved
       // from the register even above. 
-      socket.set('nickname', name, function () {
-      
-      });
+
+      // socket.set('nickname', name, function () {
+      // }); // this was depricated after version 1.0, see: http://stackoverflow.com/questions/10360110/socket-io-socket-set-and-socket-get-what-is-the-callback-argument-for
+
+      socket.nickname = name;
+
+
    });
 
 });
