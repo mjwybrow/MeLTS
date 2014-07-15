@@ -44,7 +44,7 @@ else{
 	$result_res = mysql_query("SELECT * FROM student_list");
 	$question_row = array();
 	array_push($question_row, 'Lecturer'); // Make 'Lecturer' column title
-	array_push($question_row, 'Answers'); // Make 'Answers' column title
+	array_push($question_row, 'Correct Answer'); // Make 'Answers' column title
 	while ($student_list = mysql_fetch_array($result_res)) { // Make all student's name column title's
 			$student = ($student_list["username"]);
 			array_push($question_row, $student);
@@ -60,7 +60,6 @@ else{
 		$lec_ques = $lecturer_questions["lec_ques"]; // the worded lecturer question
 		$result_res = mysql_query("SELECT * FROM student_list"); // obtaining the resource from the database
 		$question_row = array();
-		
 		
 		// Create lecture key
 		$lecturer_list = mysql_fetch_array($lecturer_res); // // Get lecturers into a variable
@@ -91,13 +90,18 @@ else{
 
 $fp = fopen('php://output', 'w');
 
-foreach ($csv_container as $fields) 
-{
-	fputcsv($fp, $fields);
-}
-fclose($fp);
-exit();
+// This part does the transposing.
+// See: http://stackoverflow.com/questions/3460022/is-there-better-way-to-transpose-a-php-2d-array
+array_unshift($csv_container, null);
+$data_t = call_user_func_array('array_map', $csv_container);
 
+foreach ($data_t as $row) {
+	fputcsv($fp, $row);
+}
+
+fclose($fp);
+
+exit();
 
 // Close connection to mySOL
 mysql_close($dbcon);
