@@ -45,9 +45,6 @@ if($num_rows != 0){
 	mysql_query("TRUNCATE TABLE current_lecques")  or die("Lecturer's question table cannot be deleted!");
 }
 
-// Insert question into table
-mysql_query("INSERT INTO current_lecques(id, lec_ques, A, B, C, D) VALUES('$id','$lec_ques','$A','$B','$C','$D')")  or die("Question cannot be added!");
-
 // Close connection to mySOL
 mysql_close($dbcon);
 ?>

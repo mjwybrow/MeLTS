@@ -14,7 +14,7 @@ $(document).ready(function() {
 			data: 'ques_chosen='+ques_chosen,
 			success: function (data) {
 				if(data==""){
-					$.mobile.changePage($(document.location.href="lec_sessionpage.html"), "slideup"); 
+					$.mobile.changePage($(document.location.href="lec_edit_ques.html"), "slideup"); 
 				}
 				else{
 					alert(data);
