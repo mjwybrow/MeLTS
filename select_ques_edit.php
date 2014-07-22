@@ -37,6 +37,7 @@ $_SESSION['A'] = $A;
 $_SESSION['B'] = $B;
 $_SESSION['C'] = $C;
 $_SESSION['D'] = $D;
+$_SESSION['edit_id'] = $id;
 
 $query = mysql_query("SELECT * FROM current_lecques") or die("Cannot query details!");
 $num_rows = mysql_num_rows($query);

@@ -34,7 +34,7 @@
 				</br>
 				<div>
 					<b>Question</b>
-					<input type="text" id="lec_ques" />
+					<input type="text" id="lec_ques" value="<?php echo $_SESSION['lec_ques'] ?>"/>
 					</br>
 				</div>
 				
@@ -44,7 +44,7 @@
 					<input type="checkbox" data-theme="b" name="A" id="ans_A" class="checkbox" value="A" data-iconpos="right" data-mini="true"/>
 					<label for="ans_A">Correct answer</label></div>
 					</td></tr></table>
-					<input type="text" id="A" />
+					<input type="text" id="A" value="<?php echo $_SESSION['A'] ?>"/>
 				</div>
 				<div>
 					<table border="0"><tr><td width="100%"><b>Answer B</b></td><td>
@@ -52,7 +52,7 @@
 					<input type="checkbox" data-theme="b" name="B" id="ans_B" class="checkbox" value="B" data-iconpos="right" data-mini="true"/>
 					<label for="ans_B">Correct answer</label></div>
 					</td></tr></table>
-					<input type="text" id="B" />
+					<input type="text" id="B" value="<?php echo $_SESSION['B'] ?>" />
 				</div>
 				<div>
 					<table border="0"><tr><td width="100%"><b>Answer C</b></td><td>
@@ -60,7 +60,7 @@
 					<input type="checkbox" data-theme="b" name="C" id="ans_C" class="checkbox" value="C" data-iconpos="right" data-mini="true"/>
 					<label for="ans_C">Correct answer</label></div>
 					</td></tr></table>
-					<input type="text" id="C" />
+					<input type="text" id="C" value="<?php echo $_SESSION['C'] ?>" />
 				</div>
 				<div>
 					<table border="0"><tr><td width="100%"><b>Answer D</b></td><td>
@@ -68,11 +68,11 @@
 					<input type="checkbox" data-theme="b" name="D" id="ans_D" class="checkbox" value="D" data-iconpos="right" data-mini="true"/>
 					<label for="ans_D">Correct answer</label></div>
 					</td></tr></table>
-					<input type="text" id="D" />
+					<input type="text" id="D" value="<?php echo $_SESSION['D'] ?>" />
 				</div>
 				</br>
 				<fieldset>
-					<a data-role="button"  data-theme="a" id = "add_ques_submit">Save Changes</a>
+					<a data-role="button"  data-theme="a" id="add_ques_submit">Save Changes</a>
 				</fieldset>
 				<!-- To write message from PHP -->
 				<div>
