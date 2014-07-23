@@ -19,7 +19,6 @@ $B = $_POST['B'];
 $C = $_POST['C'];
 $D = $_POST['D'];
 $answers = $_POST['ANSWERS'];
-$id = $_POST['edit_id'];
 //$ip = $_SERVER['REMOTE_ADDR'];
 
 // Enable saving special characters
@@ -29,7 +28,7 @@ $B = mysql_real_escape_string($B);
 $C = mysql_real_escape_string($C);
 $D = mysql_real_escape_string($D);
 $answers = mysql_real_escape_string($answers);
-$id = mysql_real_escape_string($id);
+$id = $_SESSION['id'];
 
 // Get username and unit code from session variable
 $uname = $_SESSION['uname'];
@@ -38,8 +37,8 @@ $unit_code = $_SESSION['unit_chosen'];
 mysql_select_db($unit_code, $dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("UPDATE lecturer_ques SET username='$uname', lec_ques='$lec_ques', A='$A', B='$B', C='$C', D='$D', ANSWERS='$answers' WHERE id='$id'") or die("Question cannot be added!");
-
+mysql_query("UPDATE lecturer_ques SET lec_ques='$lec_ques', A='$A', B='$B', C='$C', D='$D', ANSWERS='$answers' WHERE id='$id'") or die("Unable to edit question!");
+// , 
 // Close connection to mySOL
 mysql_close($dbcon);
 ?>

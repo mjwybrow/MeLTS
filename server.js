@@ -130,3 +130,5 @@ io.sockets.on('connection', function (socket) {
    });
 
 });
+
+console.log('server running on port 8000')
