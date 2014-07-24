@@ -14,6 +14,7 @@ $(document).ready(function() {
 			$(xml).find('Ques').each(function(){ 
 				var id = $(this).find('ID').text(); 
 				var ques = $(this).find('Question').text(); 		
+				var lecName = $(this).find('LecturersName').text(); 		
 				
 				if (ques== "0"){// means there's no units registered for the lecturer
 					// Empty list, show this msg
@@ -21,7 +22,7 @@ $(document).ready(function() {
 				}
 				else{// list the units in an unordered list
 					$("#msg").text('Please choose a question');	
-					$("#lecturer_queslist").append('<li class="chooseques" data-name="'+id+'"><a href="#">'+ques+'</a></li>');
+					$("#lecturer_queslist").append('<li class="chooseques" data-name="'+id+'"><a href="#">'+lecName+': '+ques+'</a></li>');
 				} 
 			})
 		},  
