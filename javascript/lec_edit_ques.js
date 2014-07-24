@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 	$(document).on('click','#edit_ques_submit', function(){
-			
+
 	   // get question
 		var lec_ques = $("#lec_ques").val();
 		if (!lec_ques) { alert('Please enter your question.'); return false;} 
@@ -66,7 +66,7 @@ $(document).ready(function() {
 			success: function (result) {
 				if (result==""){
 					$("#msg").text("Question edited successfully.");
-					
+
 					//clear the text spaces
 					$("#lec_ques").val('');
 					$("#A").val('');
@@ -77,6 +77,7 @@ $(document).ready(function() {
 				else{
 					$("#msg").text(result);
 				}	 
+				window.location.href = "../lec_edit_ques_list.html";
 			},
 			error: function(){	
 				alert('There was an error saving the question');	
