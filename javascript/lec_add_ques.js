@@ -73,6 +73,7 @@ $(document).ready(function() {
 					$("#B").val('');
 					$("#C").val('');
 					$("#D").val('');
+					document.getElementById("question-form").reset();
 				}
 				else{
 					$("#msg").text(result);

@@ -31,52 +31,55 @@
 			</div>
 			<!-- /header -->
 			<div data-role="content" data-theme="a" style="max-width:800px;margin: 0 auto;">
-				</br>
-				<div>
-					<b>Question</b>
-					<input type="text" id="lec_ques" />
+
+				<form id="question-form">
 					</br>
-				</div>
-				
-				<div>
-					<table border="0"><tr><td width="100%"><b>Answer A</b></td><td>
-					<div style="width:150px">
-					<input type="checkbox" data-theme="b" name="A" id="ans_A" class="checkbox" value="A" data-iconpos="right" data-mini="true"/>
-					<label for="ans_A">Correct answer</label></div>
-					</td></tr></table>
-					<input type="text" id="A" />
-				</div>
-				<div>
-					<table border="0"><tr><td width="100%"><b>Answer B</b></td><td>
-					<div style="width:150px">
-					<input type="checkbox" data-theme="b" name="B" id="ans_B" class="checkbox" value="B" data-iconpos="right" data-mini="true"/>
-					<label for="ans_B">Correct answer</label></div>
-					</td></tr></table>
-					<input type="text" id="B" />
-				</div>
-				<div>
-					<table border="0"><tr><td width="100%"><b>Answer C</b></td><td>
-					<div style="width:150px">
-					<input type="checkbox" data-theme="b" name="C" id="ans_C" class="checkbox" value="C" data-iconpos="right" data-mini="true"/>
-					<label for="ans_C">Correct answer</label></div>
-					</td></tr></table>
-					<input type="text" id="C" />
-				</div>
-				<div>
-					<table border="0"><tr><td width="100%"><b>Answer D</b></td><td>
-					<div style="width:150px">
-					<input type="checkbox" data-theme="b" name="D" id="ans_D" class="checkbox" value="D" data-iconpos="right" data-mini="true"/>
-					<label for="ans_D">Correct answer</label></div>
-					</td></tr></table>
-					<input type="text" id="D" />
-				</div>
-				</br>
-				<fieldset>
-					<a data-role="button"  data-theme="a" id = "add_ques_submit">Add question</a>
-				</fieldset>
+					<div>
+						<b>Question</b>
+						<input type="text" id="lec_ques" />
+						</br>
+					</div>
+					
+					<div>
+						<table border="0"><tr><td width="100%"><b>Answer A</b></td><td>
+						<div style="width:150px">
+						<input type="checkbox" data-theme="b" name="A" id="ans_A" class="checkbox" data-iconpos="right" data-mini="true"//>
+						<label for="ans_A">Correct answer</label></div>
+						</td></tr></table>
+						<input type="text" id="A" />
+					</div>
+					<div>
+						<table border="0"><tr><td width="100%"><b>Answer B</b></td><td>
+						<div style="width:150px">
+						<input type="checkbox" data-theme="b" name="B" id="ans_B" class="checkbox" data-iconpos="right" data-mini="true"/>
+						<label for="ans_B">Correct answer</label></div>
+						</td></tr></table>
+						<input type="text" id="B" />
+					</div>
+					<div>
+						<table border="0"><tr><td width="100%"><b>Answer C</b></td><td>
+						<div style="width:150px">
+						<input type="checkbox" data-theme="b" name="C" id="ans_C" class="checkbox" data-iconpos="right" data-mini="true"/>
+						<label for="ans_C">Correct answer</label></div>
+						</td></tr></table>
+						<input type="text" id="C" />
+					</div>
+					<div>
+						<table border="0"><tr><td width="100%"><b>Answer D</b></td><td>
+						<div style="width:150px">
+						<input type="checkbox" data-theme="b" name="D" id="ans_D" class="checkbox" data-iconpos="right" data-mini="true"/>
+						<label for="ans_D">Correct answer</label></div>
+						</td></tr></table>
+						<input type="text" id="D" />
+					</div>
+					</br>
+					<fieldset>
+						<a data-role="button"  data-theme="a" id = "add_ques_submit">Add question</a>
+					</fieldset>
+				</form>
 				<!-- To write message from PHP -->
 				<div>
-					<p id="msg"></p>
+					<p id="msg"></p>	
 				</div>
 			</div>
 			</br>
