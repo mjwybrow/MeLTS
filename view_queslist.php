@@ -17,7 +17,8 @@ $unit_code = $_SESSION['unit_chosen'];
 mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // Check whether the username for the unit already existed
-$sql="SELECT id, username, lec_ques FROM lecturer_ques WHERE 1 ORDER BY id DESC";
+// $sql="SELECT id, username, lec_ques FROM lecturer_ques WHERE 1 ORDER BY id DESC";
+$sql="SELECT id, lec_ques FROM lecturer_ques WHERE username = '$uname' ORDER BY id DESC";
 $r = mysql_query($sql);
 
 // If error in selecting table
@@ -47,12 +48,12 @@ else{
 		//Get each element
 		$id = $row["id"];
 		$lec_ques = htmlspecialchars($row["lec_ques"]);
-		$lec_name = htmlspecialchars($row["username"]);
+		// $lec_name = htmlspecialchars($row["username"]);
 		
 		// Print each element in XML
 		echo "<Ques>";
 		echo "<ID>$id</ID>";
-		echo "<LecturersName>$lec_name</LecturersName>";
+		// echo "<LecturersName>$lec_name</LecturersName>";
 		echo "<Question>$lec_ques</Question>";
 		echo "</Ques>";
 	}
