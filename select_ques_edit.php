@@ -30,6 +30,7 @@ $A = mysql_real_escape_string($fetch_details['A']);
 $B = mysql_real_escape_string($fetch_details['B']);
 $C = mysql_real_escape_string($fetch_details['C']);
 $D = mysql_real_escape_string($fetch_details['D']);
+$answers = $fetch_details['ANSWERS'];
 
 //Save question chosen into session variables
 $_SESSION['lec_ques'] = $lec_ques;
@@ -38,6 +39,7 @@ $_SESSION['B'] = $B;
 $_SESSION['C'] = $C;
 $_SESSION['D'] = $D;
 $_SESSION['id'] = $id;
+$_SESSION['answers'] = $answers;
 
 $query = mysql_query("SELECT * FROM current_lecques") or die("Cannot query details!");
 $num_rows = mysql_num_rows($query);
