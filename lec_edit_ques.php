@@ -37,7 +37,7 @@ $unit_code = $_SESSION['unit_chosen'];
 mysql_select_db($unit_code, $dbcon) or die("Cannot select database for unit!");
 
 // Insert question into table
-mysql_query("UPDATE lecturer_ques SET lec_ques='$lec_ques', A='$A', B='$B', C='$C', D='$D', ANSWERS='$answers' WHERE id='$id'") or die("Unable to edit question!");
+mysql_query("UPDATE lecturer_ques SET lec_ques='$lec_ques', A='$A', B='$B', C='$C', D='$D', ANSWERS='$answers', ts_activity = ts_activity WHERE id='$id'") or die("Unable to edit question!");
 // , 
 // Close connection to mySOL
 mysql_close($dbcon);
