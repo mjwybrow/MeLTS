@@ -18,7 +18,7 @@ mysql_select_db($unit_code, $dbcon) or die("Cannot select unit database!");
 
 // Check whether the username for the unit already existed
 // $sql="SELECT id, username, lec_ques FROM lecturer_ques WHERE 1 ORDER BY id DESC";
-$sql="SELECT id, lec_ques FROM lecturer_ques WHERE username = '$uname' ORDER BY id DESC";
+$sql="SELECT id, lec_ques FROM lecturer_ques WHERE username = '$uname' ORDER BY ts_activity ASC";
 $r = mysql_query($sql);
 
 // If error in selecting table
