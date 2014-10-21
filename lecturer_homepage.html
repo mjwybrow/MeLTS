@@ -17,16 +17,12 @@
 				url: "username.php",
 				type: 'post',
 				success: function (data) {
-					var find = /Undefined index/gi;
-			
-					if ( data.search(find) == -1 ){
-						$("#puname").text(data);
-					}
-					else{
+					if ( data !== "L" ){
 						alert("Please log in!");
 						$.mobile.changePage($(document.location.href="index.html"), "slideup");  
 					}
-				}, 
+					console.log(data);
+				},
 				error: function() {  
 					alert("Please log in!");
 					$.mobile.changePage($(document.location.href="index.html"), "slideup");  

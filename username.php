@@ -1,14 +1,12 @@
 <?php
-// Written by Shea Yuin Ng
-// Created 11 September 2012
-// Get the first name to be printed on the page header
+// Written by Shea Yuin Ng and Nathan Sherburn
+// Created 11 September 2014 (and check authentication)
+// Get the first name to be printed on the page header 
 
 // Resume session from previous session
 session_start();
 
-// Get first name from session variable
-$fname = $_SESSION['fname'];
+$status = $_SESSION['status'];
+echo($status);
 
-// Reply http post with first name
-echo($fname);
 ?>
